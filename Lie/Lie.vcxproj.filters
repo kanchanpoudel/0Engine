@@ -21,7 +21,7 @@
     <ClCompile Include="Game\game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Debug\console_logger.cpp">
+    <ClCompile Include="Debugger\console_logger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

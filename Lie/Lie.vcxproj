@@ -142,7 +142,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Debug\console_logger.cpp" />
+    <ClCompile Include="Debugger\console_logger.cpp" />
     <ClCompile Include="Game\game.cpp" />
     <ClCompile Include="Graphics\window.cpp" />
   </ItemGroup>
