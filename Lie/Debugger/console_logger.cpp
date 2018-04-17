@@ -1,4 +1,4 @@
-#include "Debug\console_logger.h"
+#include "Debugger\console_logger.h"
 #include <iostream>
 
 #ifdef LIE_DEBUG 

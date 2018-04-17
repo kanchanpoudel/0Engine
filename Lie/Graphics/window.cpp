@@ -1,7 +1,7 @@
 #include "Graphics\window.h"
 #include "GL\glew.h"
 #include "GLFW\glfw3.h"
-#include "Debug\console_logger.h"
+#include "Debugger\console_logger.h"
 #include <string>
 
 namespace Lie

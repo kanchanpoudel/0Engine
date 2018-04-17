@@ -147,7 +147,7 @@
     <ClCompile Include="Graphics\window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Headers\Debug\console_logger.h" />
+    <ClInclude Include="Headers\Debugger\console_logger.h" />
     <ClInclude Include="Headers\exceptions.h" />
     <ClInclude Include="Headers\Game\game.h" />
     <ClInclude Include="Headers\Graphics\window.h" />
