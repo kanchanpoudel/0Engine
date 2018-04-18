@@ -252,6 +252,9 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+cmake/cmake-build-debug
+cmake/cmake-build-release
+cmake/bin
 
 # CodeRush
 .cr/
