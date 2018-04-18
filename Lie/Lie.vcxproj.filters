@@ -38,9 +38,6 @@
     <ClInclude Include="Headers\Game\game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\Debug\console_logger.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Headers\Debugger\console_logger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
