@@ -3,16 +3,17 @@ This is a 2D game engine with a project code name **Lie**
 
 ## Running Using Visual Studio or CLion
 - Run the solution file `Lie.sln` to open the project using Visual Studio in Windows
-- Open the root directory `Lie` using CLion to open the project using CLion in Linux
+- Open the directory `Lie/cmake` using CLion to open the project using CLion in other OS
+- To run using CMake in other OS, you must replace the `./Lie/cmake/Dependencies/lib/` libraries with specific OS libraries
 
 ## Dependencies
 - [GLFW](http://www.glfw.org/)
 - [GLEW](http://glew.sourceforge.net/)
 
-*Note that dependencies for Win32 application are included in `Dependencies/lib` and for linux `Dependencies/linux/lib`*
+*Note that dependencies for Win32 application are included in `Dependencies/lib` and for unix `cmake/Dependencies/lib`*
 *All the headers files that are needed for Dependencies are included in `Dependencies/include`*
 
-## Solution Structure
+## Solution Structure for VS users
 - `./Lie/bin/$(ProjectName)/` should contain all the binaries and executables
 - `./Lie/bin/intermediates/$(ProjectName)` should contain all the logs, debug and release information and intermediate files
 
@@ -20,6 +21,11 @@ This is a 2D game engine with a project code name **Lie**
 - All other directories in the root directory except (`bin`, `Lie` and `Dependencies`)are seperate projects used for example game projects
 - `./Lie/Lie` : This project files should output game engine static C++ library which is then used by the example projects
 - `./Lie/Game` : This is example game project which uses the `Lie Game Engine` static C++ library
+
+## Workspace Structure for CMake users
+ - `./Lie/cmake/cmake-build-debug` or `./Lie/cmake/cmake-build-release` should contain all the binary and executables
+ - `./Lie/cmake/bin` should contain CMake built solution / projects / other CMake files
+ - `./Lie/cmake/.idea` directory can be directly used via CLion IDE, `.idea` has been added to the `.gitignore`
 
 ## Lie Game Engine Directory Structure
 - `Headers` should contain all the directories that contain the header files for all the definations used in Game Engine
