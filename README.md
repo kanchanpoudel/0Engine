@@ -38,9 +38,9 @@ This is a 2D game engine with a project code name **Lie**
 The game can be constructed following ways
 
 ```cpp
-#include "lie.h"                                                        //Inlcude the header file for game engine
+#include "lie.h"                      //Inlcude the header file for game engine
 
-using namespace Lie;                                            //All classes and methods are wrapped inside Lie namespace
+using namespace Lie;          //All classes and methods are wrapped inside Lie namespace
 
 
 //Lie class should be derived and methods should be filled as required
@@ -76,8 +76,10 @@ int main()
     //Construct game from derived class
 	ExampleGame* game = new ExampleGame;
 
-    //Constructs the window for game and calls OnConstruction() method
-	game->Construct("Example Game", 800, 600);      //arguments to be passed are {window_title}, {width}, {height}
+    /*Constructs the window for game and calls OnConstruction() method
+        arguments to be passed are {window_title}, {width}, {height}
+        */
+	game->Construct("Example Game", 800, 600);
 
     //Displays the window
     //Runs the game until closed
@@ -93,20 +95,20 @@ int main()
 
 **Members that can be accessed**
 
-`window` : For access accessing *Window* class
+- `window` : For access accessing *Window* class
 
 
 ## Window Class
 
 **Methods that can be accessed**
 
-`void Close()` : Shuts down the game
-`void Resize(const int& width, const int& height)` : Changes window resolution, width and height can be set as *WINDOW_AUTO_WIDTH* and *WINDOW_AUTO_HEIGHT* for setting resolution to match that of monitor
-`void ToggleFullscreen()` : When window is created by default mode is windowed
-`void ChangeCursor(const char* path)` : Sets the window cursor, **function subject to change**
-`void SetIcon(const char* path)` : Sets the window icon, **function subject to change**
-`void DisableCursor()` : Cursor is totally disabled, virtual cursor will be present that can't get outside of the window
-`void HideCursor()` : Hides the cursor when the cursor position resides inside of the window
-`void EnableCursor()` : Resets cursor property set by *DisableCursor()* and *EnableCursor()* methods
+- `void Close()` : Shuts down the game
+- `void Resize(const int& width, const int& height)` : Changes window resolution, width and height can be set as *WINDOW_AUTO_WIDTH* and - *WINDOW_AUTO_HEIGHT* for setting resolution to match that of monitor
+- `void ToggleFullscreen()` : When window is created by default mode is windowed
+- `void ChangeCursor(const char* path)` : Sets the window cursor, **function subject to change**
+- `void SetIcon(const char* path)` : Sets the window icon, **function subject to change**
+- `void DisableCursor()` : Cursor is totally disabled, virtual cursor will be present that can't get outside of the window
+- `void HideCursor()` : Hides the cursor when the cursor position resides inside of the window
+- `void EnableCursor()` : Resets cursor property set by *DisableCursor()* and *EnableCursor()* methods
 
 **Note that other classes and function will be added when and as required**
