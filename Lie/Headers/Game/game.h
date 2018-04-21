@@ -22,6 +22,7 @@ namespace Lie
 
 	//Methods to Override
 	protected:
+		virtual void OnConstruction();  //Call to construct objects and set default values
 		virtual void FixedUpdate();		//Call 60 times a second
 		virtual void Update();			//Call as frequent as possible OR Vsync-ed
 	};

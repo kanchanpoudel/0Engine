@@ -31,3 +31,82 @@ This is a 2D game engine with a project code name **Lie**
 ...
 *Other directories will and should be added as necessary*
 
+
+## Basic Usage of Lie Game Engine and Object usage documentation
+
+
+The game can be constructed following ways
+
+```cpp
+#include "lie.h"                                                        //Inlcude the header file for game engine
+
+using namespace Lie;                                            //All classes and methods are wrapped inside Lie namespace
+
+
+//Lie class should be derived and methods should be filled as required
+class ExampleGame : public Lie
+{
+	void OnConstruction() override
+	{
+        //Setting up window e.g. window resize and setting up fullscreen, window icon and cursor
+        //All the game objects construction should be done here
+	}
+
+	void FixedUpdate() override
+	{
+        //This function is called 60 times in a second
+        //Usually physics are done here
+        //Other time related updates can be done here
+	}
+
+	void Update() override
+	{
+        //This function is called as many times as possible in a second unless VSync is enabled
+        //All the input and other updates should be done here
+	}
+
+    void ~Lie() override
+    {
+        //All the memory allocation in the OnConstruction() function should be freed here
+    }
+};
+
+int main()
+{
+    //Construct game from derived class
+	ExampleGame* game = new ExampleGame;
+
+    //Constructs the window for game and calls OnConstruction() method
+	game->Construct("Example Game", 800, 600);      //arguments to be passed are {window_title}, {width}, {height}
+
+    //Displays the window
+    //Runs the game until closed
+	game->Start();
+	
+    delete game;
+	return 0;
+}
+```
+
+
+## Lie Class
+
+**Members that can be accessed**
+
+`window` : For access accessing *Window* class
+
+
+## Window Class
+
+**Methods that can be accessed**
+
+`void Close()` : Shuts down the game
+`void Resize(const int& width, const int& height)` : Changes window resolution, width and height can be set as *WINDOW_AUTO_WIDTH* and *WINDOW_AUTO_HEIGHT* for setting resolution to match that of monitor
+`void ToggleFullscreen()` : When window is created by default mode is windowed
+`void ChangeCursor(const char* path)` : Sets the window cursor, **function subject to change**
+`void SetIcon(const char* path)` : Sets the window icon, **function subject to change**
+`void DisableCursor()` : Cursor is totally disabled, virtual cursor will be present that can't get outside of the window
+`void HideCursor()` : Hides the cursor when the cursor position resides inside of the window
+`void EnableCursor()` : Resets cursor property set by *DisableCursor()* and *EnableCursor()* methods
+
+**Note that other classes and function will be added when and as required**

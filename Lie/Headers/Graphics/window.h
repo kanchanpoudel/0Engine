@@ -4,6 +4,7 @@ struct GLFWwindow;
 
 namespace Lie
 {
+
 	class Window
 	{
 	private:
@@ -13,14 +14,25 @@ namespace Lie
 		bool m_fullscreen;
 
 	public:
+		static enum 
+		{ 
+			WINDOW_AUTO_WIDTH = -1,
+			WINDOW_AUTO_HEIGHT = -2
+		};
+
+	public:
 		Window(const char* title, const int& width, const int& height);
 		~Window();
 
+		Window(Window& window) = delete;
 		Window(const Window& window) = delete;
+		Window& operator=(Window& window) = delete;
 		Window& operator=(const Window& window) = delete;
 
-		void Close() const;
+		void Show() const;
 		void Update() const;
+
+		void Close() const;
 		bool IsRunning() const;
 
 		void Resize(const int& width, const int& height);

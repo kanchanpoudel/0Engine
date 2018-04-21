@@ -4,6 +4,11 @@ using namespace Lie;
 
 class ExampleGame : public Lie
 {
+	void OnConstruction() override
+	{
+
+	}
+
 	void FixedUpdate() override
 	{
 

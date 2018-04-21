@@ -6,23 +6,36 @@
 
 namespace Lie
 {
-
+	
 	Window::Window(const char* title, const int& width, const int& height) :
 		m_width{ width }, m_height{ height }, m_fullscreen { false }
 	{
 		glfwInit();
 
+		//Setting up window properties
 		glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+		glfwWindowHint(GLFW_VISIBLE, GLFW_TRUE);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+		//If WINDOW_AUTO_ is passed then set width and height of the monitor
+		const GLFWvidmode* monitorProp = glfwGetVideoMode(glfwGetPrimaryMonitor());
+		if (width == WINDOW_AUTO_WIDTH)
+			m_width = monitorProp->width;
+		else
+			m_width = width;
+		if (height == WINDOW_AUTO_HEIGHT)
+			m_height = monitorProp->height;
+		else
+			m_height = height;
 
 		m_id = glfwCreateWindow(m_width, m_height, title, nullptr, nullptr);
 		if (!m_id)
 			Debug::AddLog("ERROR : GLFW | Window Pointer Empty");
 
 		glfwMakeContextCurrent(m_id);
-		glewInit();
+		glewInit();	//Loading OpenGL function pointers
 		Debug::AddLog("STATUS : OPENGL | Vendor=" +
 			std::string((char*)glGetString(GL_VENDOR)) +
 			" Version=" + std::string((char*)glGetString(GL_VERSION)));
@@ -38,13 +51,14 @@ namespace Lie
 		glfwTerminate();
 	}
 
-	void Window::Close() const
+	void Window::Show() const
 	{
-		glfwSetWindowShouldClose(m_id, true);
+		glfwShowWindow(m_id);
 	}
 
 	void Window::Update() const
 	{
+		//TO-DO
 		glfwSwapBuffers(m_id);
 		glfwPollEvents();
 
@@ -86,6 +100,11 @@ namespace Lie
 #endif 
 	}
 
+	void Window::Close() const
+	{
+		glfwSetWindowShouldClose(m_id, true);
+	}
+
 	bool Window::IsRunning() const
 	{
 		return !glfwWindowShouldClose(m_id);
@@ -93,8 +112,17 @@ namespace Lie
 
 	void Window::Resize(const int& width, const int& height)
 	{
-		m_width = width;
-		m_height = height;
+		//If WINDOW_AUTO_ is passed then set width and height of the monitor
+		const GLFWvidmode* monitorProp = glfwGetVideoMode(glfwGetPrimaryMonitor());
+		if (width == WINDOW_AUTO_WIDTH)
+			m_width = monitorProp->width;
+		else
+			m_width = width;
+		if (height == WINDOW_AUTO_HEIGHT)
+			m_height = monitorProp->height;
+		else 
+			m_height = height;
+		
 		glfwSetWindowAspectRatio(m_id, m_width, m_height);
 		glfwSetWindowSize(m_id, m_width, m_height);
 		glViewport(0, 0, m_width, m_height);
@@ -104,13 +132,20 @@ namespace Lie
 	{
 		if (m_fullscreen)
 		{
+			/*When changing from fullscreen to windowed mode,
+			  we need to position to place the window in the monitor
+			  so we calculate the position such that full window is shown in monitor
+			  */
 			const GLFWvidmode* monitorProp = glfwGetVideoMode(glfwGetPrimaryMonitor());
-			int posX = (monitorProp->width >> 1) - (m_width >> 1);
-			int posY = (monitorProp->height >> 1) - (m_height >> 1);
-			glfwSetWindowMonitor(m_id, nullptr, posX, posY, m_width, m_height, GLFW_DONT_CARE);
+			int posX = (monitorProp->width >> 1) - (m_width >> 1);	//Division by 2 is equivalent to right shift by 1
+			int posY = (monitorProp->height >> 1) - (m_height >> 1); ////Division by 2 is equivalent to right shift by 1
+			glfwSetWindowMonitor(m_id, nullptr, posX, posY, m_width, m_height, GLFW_DONT_CARE); //GLFW_DONT_CARE disables VSync
 		}
 		else
-			glfwSetWindowMonitor(m_id, glfwGetPrimaryMonitor(), 0, 0, m_width, m_height, GLFW_DONT_CARE);
+		{
+			const GLFWvidmode* monitorProp = glfwGetVideoMode(glfwGetPrimaryMonitor());
+			glfwSetWindowMonitor(m_id, glfwGetPrimaryMonitor(), 0, 0, m_width, m_height, GLFW_DONT_CARE); //GLFW_DONT_CARE disables VSync
+		}
 		m_fullscreen = !m_fullscreen;
 	}
 
