@@ -8,7 +8,7 @@ namespace Lie
 {
 	
 	Window::Window(const char* title, const int& width, const int& height) :
-		m_width{ width }, m_height{ height }, m_fullscreen { false }
+		m_width(width), m_height(height), m_fullscreen(false)
 	{
 		glfwInit();
 

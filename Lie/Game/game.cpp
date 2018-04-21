@@ -5,7 +5,7 @@ namespace Lie
 {
 
 	Lie::Lie() :
-		window{ nullptr }
+		window(nullptr)
 	{
 	}
 
