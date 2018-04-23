@@ -14,7 +14,7 @@ namespace Lie
 		bool m_fullscreen;
 
 	public:
-		static enum 
+		enum 
 		{ 
 			WINDOW_AUTO_WIDTH = -1,
 			WINDOW_AUTO_HEIGHT = -2
@@ -24,9 +24,7 @@ namespace Lie
 		Window(const char* title, const int& width, const int& height);
 		~Window();
 
-		Window(Window& window) = delete;
 		Window(const Window& window) = delete;
-		Window& operator=(Window& window) = delete;
 		Window& operator=(const Window& window) = delete;
 
 		void Show() const;

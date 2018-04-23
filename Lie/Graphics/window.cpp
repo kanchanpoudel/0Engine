@@ -142,10 +142,8 @@ namespace Lie
 			glfwSetWindowMonitor(m_id, nullptr, posX, posY, m_width, m_height, GLFW_DONT_CARE); //GLFW_DONT_CARE disables VSync
 		}
 		else
-		{
-			const GLFWvidmode* monitorProp = glfwGetVideoMode(glfwGetPrimaryMonitor());
 			glfwSetWindowMonitor(m_id, glfwGetPrimaryMonitor(), 0, 0, m_width, m_height, GLFW_DONT_CARE); //GLFW_DONT_CARE disables VSync
-		}
+		
 		m_fullscreen = !m_fullscreen;
 	}
 
