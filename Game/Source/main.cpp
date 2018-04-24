@@ -6,8 +6,7 @@ class ExampleGame : public Lie
 {
 	void OnConstruction() override
 	{
-		//window->ToggleFullscreen();
-		window->Resize(500, 500);
+
 	}
 
 	void FixedUpdate() override
