@@ -6,7 +6,8 @@ class ExampleGame : public Lie
 {
 	void OnConstruction() override
 	{
-		window->ToggleFullscreen();
+		//window->ToggleFullscreen();
+		window->Resize(500, 500);
 	}
 
 	void FixedUpdate() override
@@ -23,7 +24,7 @@ class ExampleGame : public Lie
 int main()
 {
 	ExampleGame* game = new ExampleGame;
-	game->Construct("Example Game", Window::WINDOW_AUTO_WIDTH, Window::WINDOW_AUTO_HEIGHT);
+	game->Construct("Example Game", 800, 600);
 	game->Start();
 	delete game;
 	return 0;
