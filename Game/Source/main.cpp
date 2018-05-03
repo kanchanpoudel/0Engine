@@ -1,8 +1,8 @@
-#include "lie.h"
+#include "s00nya.h"
 
-using namespace Lie;
+using namespace s00nya;
 
-class ExampleGame : public Lie
+class ExampleGame : public Game2D
 {
 	void OnConstruction() override
 	{

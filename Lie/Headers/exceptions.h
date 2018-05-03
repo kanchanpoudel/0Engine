@@ -1,4 +1,0 @@
-#pragma once
-
-#define LIE_WINDOW_REGISTRATION_FAILED 1
-#define LIE_WINDOW_CREATION_FAILED 2

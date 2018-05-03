@@ -1,9 +1,9 @@
 #include "Debugger\console_logger.h"
 #include <iostream>
 
-#ifdef LIE_DEBUG 
+#ifdef ENGINE_DEBUG 
 
-namespace Lie
+namespace s00nya
 {
 	void Debug::AddLog(const std::string& log)
 	{
@@ -18,7 +18,7 @@ namespace Lie
 
 #else
 
-namespace Lie
+namespace s00nya
 {
 	void Debug::AddLog(const std::string& log){}
 	void Debug::Log(){}

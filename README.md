@@ -1,8 +1,8 @@
-# Lie
-This is a 2D game engine with a project code name **Lie**
+# 0Engine
+This is a 2D game engine
 
 ## Running Using Visual Studio
-- Run the solution file `Lie.sln` to open the project using Visual Studio in Windows
+- Run the solution file `s00nya.sln` to open the project using Visual Studio in Windows
 
 ## Dependencies
 - [GLFW](http://www.glfw.org/)
@@ -12,18 +12,18 @@ This is a 2D game engine with a project code name **Lie**
 *All the headers files that are needed for Dependencies are included in `Dependencies/include`*
 
 ## Solution Structure for VS users
-- `./Lie/bin/$(ProjectName)/` should contain all the binaries and executables
-- `./Lie/bin/intermediates/$(ProjectName)` should contain all the logs, debug and release information and intermediate files
+- `./s00nya/bin/$(ProjectName)/` should contain all the binaries and executables
+- `./s00nya/bin/intermediates/$(ProjectName)` should contain all the logs, debug and release information and intermediate files
 
-- `./Lie/Lie/` is the project directory for the Game Engine
-- All other directories in the root directory except (`bin`, `Lie` and `Dependencies`)are seperate projects used for example game projects
-- `./Lie/Lie` : This project files should output game engine static C++ library which is then used by the example projects
-- `./Lie/Game` : This is example game project which uses the `Lie Game Engine` static C++ library
+- `./s00nya/0Engine/` is the project directory for the Game Engine
+- All other directories in the root directory except (`bin`, `0Engine` and `Dependencies`)are seperate projects used for example game projects
+- `./s00nya/0Engine` : This project files should output game engine static C++ library which is then used by the example projects
+- `./s00nya/Game` : This is example game project which uses the `Lie Game Engine` static C++ library
 
-## Lie Game Engine Directory Structure
+## 0Engine Directory Structure
 - `Headers` should contain all the directories that contain the header files for all the definations used in Game Engine
-- `Headers/lie.h` should contain all the definations that are needed for the other game projects, this header file is used in game projects
-- `Game` should contain all the files necessary for wrapping the game engine in a single wrapper class named `Lie`
+- `Headers/s00nya.h` should contain all the definations that are needed for the other game projects, this header file is used in game projects
+- `Game` should contain all the files necessary for wrapping the game engine in a single wrapper class named `s00nya`
 - `Debugger` should contain everything necessary for debugging game engine and not game
 - `Graphics` should contain everything necessary related with graphics and OpenGL calls
 - `Input` should handle all Keyboard, Mouse, Joystick events and should have callbacks as necessary
@@ -32,19 +32,19 @@ This is a 2D game engine with a project code name **Lie**
 *Other directories will and should be added as necessary*
 
 
-## Basic Usage of Lie Game Engine and Object usage documentation
+## Basic Usage of 0Engine and Object usage documentation
 
 
 The game can be constructed following ways
 
 ```cpp
-#include "lie.h"                      //Inlcude the header file for game engine
+#include "s00nya.h"                      //Inlcude the header file for game engine
 
-using namespace Lie;          //All classes and methods are wrapped inside Lie namespace
+using namespace s00nya;          //All classes and methods are wrapped inside Lie namespace
 
 
 //Lie class should be derived and methods should be filled as required
-class ExampleGame : public Lie
+class ExampleGame : public Game2D
 {
 	void OnConstruction() override
 	{
@@ -65,7 +65,7 @@ class ExampleGame : public Lie
         //All the input and other updates should be done here
 	}
 
-    void ~Lie() override
+    void ~Game2D() override
     {
         //All the memory allocation in the OnConstruction() function should be freed here
     }
@@ -91,7 +91,7 @@ int main()
 ```
 
 
-## Lie Class
+## Game2D Class
 
 **Members that can be accessed**
 

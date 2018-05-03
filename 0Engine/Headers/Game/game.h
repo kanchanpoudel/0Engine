@@ -1,18 +1,18 @@
 #pragma once
 
-namespace Lie
+namespace s00nya
 {
 
 	class Window;
 
-	class Lie
+	class Game2D
 	{
 	protected:
 		Window* window;
 
 	public:
-		Lie();
-		virtual ~Lie();
+		Game2D();
+		virtual ~Game2D();
 
 		void Construct(const char* title, const int& width, const int& height);
 		void Start();

@@ -4,7 +4,7 @@
 #include "Debugger\console_logger.h"
 #include <string>
 
-namespace Lie
+namespace s00nya
 {
 	
 	Window::Window(const char* title, const int& width, const int& height) :
@@ -63,7 +63,7 @@ namespace Lie
 		glfwSwapBuffers(m_id);
 		glfwPollEvents();
 
-#ifdef LIE_DEBUG
+#ifdef ENGINE_DEBUG
 		GLenum err;
 		while (true)
 		{

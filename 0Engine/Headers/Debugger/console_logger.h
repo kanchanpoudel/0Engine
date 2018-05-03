@@ -1,9 +1,9 @@
 #pragma once
 #include <string>
 
-#ifdef LIE_DEBUG
+#ifdef ENGINE_DEBUG
 
-namespace Lie
+namespace s00nya
 {
 	namespace Debug
 	{
@@ -15,7 +15,7 @@ namespace Lie
 
 #else
 
-namespace Lie
+namespace s00nya
 {
 	namespace Debug
 	{

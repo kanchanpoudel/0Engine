@@ -1,25 +1,25 @@
 #include "Game\game.h"
 #include "Graphics\window.h"
 
-namespace Lie
+namespace s00nya
 {
 
-	Lie::Lie() :
+	Game2D::Game2D() :
 		window(nullptr)
 	{
 	}
 
-	Lie::~Lie()
+	Game2D::~Game2D()
 	{
 	}
 
-	void Lie::Construct(const char* title, const int& width, const int& height)
+	void Game2D::Construct(const char* title, const int& width, const int& height)
 	{
 		window = new Window(title, width, height);
 		OnConstruction();
 	}
 
-	void Lie::Start()
+	void Game2D::Start()
 	{
 		window->Show();
 		//TO-DO
@@ -30,20 +30,20 @@ namespace Lie
 		delete window;
 	}
 
-	void Lie::Tick()
+	void Game2D::Tick()
 	{
 		//TO-DO
 	}
 
-	void Lie::OnConstruction()
+	void Game2D::OnConstruction()
 	{
 	}
 
-	void Lie::FixedUpdate()
+	void Game2D::FixedUpdate()
 	{
 	}
 
-	void Lie::Update()
+	void Game2D::Update()
 	{
 	}
 

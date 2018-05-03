@@ -2,7 +2,7 @@
 
 struct GLFWwindow;
 
-namespace Lie
+namespace s00nya
 {
 
 	class Window
