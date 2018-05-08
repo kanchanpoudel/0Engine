@@ -145,12 +145,14 @@
   <ItemGroup>
     <ClCompile Include="Debugger\console_logger.cpp" />
     <ClCompile Include="Game\game.cpp" />
+    <ClCompile Include="Game\timer.cpp" />
     <ClCompile Include="Graphics\window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\Debugger\console_logger.h" />
     <ClInclude Include="Headers\exceptions.h" />
     <ClInclude Include="Headers\Game\game.h" />
+    <ClInclude Include="Headers\Game\timer.h" />
     <ClInclude Include="Headers\Graphics\window.h" />
     <ClInclude Include="Headers\s00nya.h" />
   </ItemGroup>

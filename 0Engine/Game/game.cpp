@@ -1,5 +1,6 @@
 #include "Game\game.h"
 #include "Graphics\window.h"
+#include "Game\timer.h"
 
 namespace s00nya
 {
@@ -16,6 +17,7 @@ namespace s00nya
 	void Game2D::Construct(const char* title, const int& width, const int& height)
 	{
 		window = new Window(title, width, height);
+		timer = new Timer;
 		OnConstruction();
 	}
 
@@ -28,6 +30,7 @@ namespace s00nya
 			window->Update();
 		}
 		delete window;
+		delete timer;
 	}
 
 	void Game2D::Tick()
