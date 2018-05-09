@@ -147,6 +147,10 @@
     <ClCompile Include="Game\game.cpp" />
     <ClCompile Include="Game\timer.cpp" />
     <ClCompile Include="Graphics\window.cpp" />
+    <ClCompile Include="Math\matrix4.cpp" />
+    <ClCompile Include="Math\vector2.cpp" />
+    <ClCompile Include="Math\vector3.cpp" />
+    <ClCompile Include="Math\vector4.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\Debugger\console_logger.h" />
@@ -154,6 +158,10 @@
     <ClInclude Include="Headers\Game\game.h" />
     <ClInclude Include="Headers\Game\timer.h" />
     <ClInclude Include="Headers\Graphics\window.h" />
+    <ClInclude Include="Headers\Math\matrix4.h" />
+    <ClInclude Include="Headers\Math\vector2.h" />
+    <ClInclude Include="Headers\Math\vector3.h" />
+    <ClInclude Include="Headers\Math\vector4.h" />
     <ClInclude Include="Headers\s00nya.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

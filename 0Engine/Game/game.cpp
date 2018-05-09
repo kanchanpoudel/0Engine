@@ -17,20 +17,24 @@ namespace s00nya
 	void Game2D::Construct(const char* title, const int& width, const int& height)
 	{
 		window = new Window(title, width, height);
-		timer = new Timer;
+		Timer::Initialize();
 		OnConstruction();
 	}
 
 	void Game2D::Start()
 	{
 		window->Show();
-		//TO-DO
+		// Prasiddha and Shaswat have to correct the amount of loop called as required
 		while (window->IsRunning())
 		{
 			window->Update();
+
+			// Make this function be be called 60 times in a sec
+			FixedUpdate(); 
+			// Call this function as much as possible
+			Update();
 		}
 		delete window;
-		delete timer;
 	}
 
 	void Game2D::Tick()

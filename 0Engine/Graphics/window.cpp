@@ -2,6 +2,7 @@
 #include "GL\glew.h"
 #include "GLFW\glfw3.h"
 #include "Debugger\console_logger.h"
+#include "Game\timer.h"
 #include <string>
 
 namespace s00nya
@@ -59,7 +60,7 @@ namespace s00nya
 
 	void Window::Update() const
 	{
-		//TO-DO
+		Timer::Update();
 		glfwSwapBuffers(m_id);
 		glfwPollEvents();
 
