@@ -1,3 +1,4 @@
+#include "Math\vector3.h"
 #include "Math\vector4.h"
 
 // Simran and Kanchan are assigned to fill this file
