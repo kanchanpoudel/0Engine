@@ -33,7 +33,7 @@ namespace s00nya
 	Vector3& Vector3::operator=(const Vector3& vec)
 	{
 		if (this == &vec)
-			return;
+			return *this;
 
 		x = vec.x;
 		y = vec.y;
@@ -96,7 +96,7 @@ namespace s00nya
 		return *this;
 	}
 
-	Vector3 Vector3::operator*(const Vector3& vec, const float& scalar)
+	Vector3 operator*(const Vector3& vec, const float& scalar)
 	{
 		return Vector3(
 			vec.x * scalar,
@@ -105,7 +105,7 @@ namespace s00nya
 		);
 
 	}
-	Vector3 Vector3::operator*(const float& scalar, const Vector3& vec)
+	Vector3 operator*(const float& scalar, const Vector3& vec)
 	{
 		return Vector3(
 			vec.x * scalar,
@@ -115,7 +115,7 @@ namespace s00nya
 
 	}
 
-	Vector3 Vector3::operator*(const Vector3& lhs, const Vector3& rhs)
+	Vector3 operator*(const Vector3& lhs, const Vector3& rhs)
 	{
 		return Vector3(
 			lhs.x * rhs.x,
@@ -125,7 +125,7 @@ namespace s00nya
 
 	}
 
-	Vector3 Vector3::operator+(const Vector3& lhs, const Vector3& rhs)
+	Vector3 operator+(const Vector3& lhs, const Vector3& rhs)
 	{
 		return Vector3(
 			lhs.x + rhs.x,
@@ -133,7 +133,7 @@ namespace s00nya
 			lhs.z + rhs.z
 		);
 	}
-	Vector3 Vector3::operator-(const Vector3& lhs, const Vector3& rhs)
+	Vector3 operator-(const Vector3& lhs, const Vector3& rhs)
 	{
 		return Vector3(
 			lhs.x - rhs.x,

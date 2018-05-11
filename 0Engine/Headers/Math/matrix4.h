@@ -54,12 +54,12 @@ namespace s00nya
 		Matrix4& operator+=(const Matrix4& mat);
 		Matrix4& operator-=(const Matrix4& mat);
 
-		static Matrix4 operator*(const float& scalar, const Matrix4& mat);
-		static Matrix4 operator*(const Matrix4& mat, const float& scalar);
+		friend Matrix4 operator*(const float& scalar, const Matrix4& mat);
+		friend Matrix4 operator*(const Matrix4& mat, const float& scalar);
 		
-		static Matrix4 operator*(const Matrix4& lhs, const Matrix4& rhs);
-		static Matrix4 operator+(const Matrix4& lhs, const Matrix4& rhs);
-		static Matrix4 operator-(const Matrix4& lhs, const Matrix4& rhs);
+		friend Matrix4 operator*(const Matrix4& lhs, const Matrix4& rhs);
+		friend Matrix4 operator+(const Matrix4& lhs, const Matrix4& rhs);
+		friend Matrix4 operator-(const Matrix4& lhs, const Matrix4& rhs);
 
 		Matrix4& Transform(const Matrix4& mat);
 

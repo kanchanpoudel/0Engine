@@ -25,11 +25,11 @@ namespace s00nya
 		Vector2& operator+=(const Vector2& vec);
 		Vector2& operator-=(const Vector2& vec);
 
-		static Vector2 operator*(const Vector2& vec, const float& scalar);
-		static Vector2 operator*(const float& scalar, const Vector2& vec);
+		friend Vector2 operator*(const Vector2& vec, const float& scalar);
+		friend Vector2 operator*(const float& scalar, const Vector2& vec);
 		
-		static Vector2 operator+(const Vector2& lhs, const Vector2& rhs);
-		static Vector2 operator-(const Vector2& lhs, const Vector2& rhs);
+		friend Vector2 operator+(const Vector2& lhs, const Vector2& rhs);
+		friend Vector2 operator-(const Vector2& lhs, const Vector2& rhs);
 	};
 
 }

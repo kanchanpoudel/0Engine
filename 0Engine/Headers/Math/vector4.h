@@ -30,12 +30,12 @@ namespace s00nya
 		Vector4& operator+=(const Vector4& vec);
 		Vector4& operator-=(const Vector4& vec);
 
-		static Vector4 operator*(const Vector4& vec, const float& scalar);
-		static Vector4 operator*(const float& scalar, const Vector4& vec);
-		static Vector4 operator*(const Vector4& lhs, const Vector4& rhs); // Component wise multiplication
+		friend Vector4 operator*(const Vector4& vec, const float& scalar);
+		friend Vector4 operator*(const float& scalar, const Vector4& vec);
+		friend Vector4 operator*(const Vector4& lhs, const Vector4& rhs); // Component wise multiplication
 		
-		static Vector4 operator+(const Vector4& lhs, const Vector4& rhs);
-		static Vector4 operator-(const Vector4& lhs, const Vector4& rhs);
+		friend Vector4 operator+(const Vector4& lhs, const Vector4& rhs);
+		friend Vector4 operator-(const Vector4& lhs, const Vector4& rhs);
 	};
 
 }

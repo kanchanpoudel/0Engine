@@ -27,12 +27,12 @@ namespace s00nya
 		Vector3& operator+=(const Vector3& vec);
 		Vector3& operator-=(const Vector3& vec);
 
-		static Vector3 operator*(const Vector3& vec, const float& scalar);
-		static Vector3 operator*(const float& scalar, const Vector3& vec);
-		static Vector3 operator*(const Vector3& lhs, const Vector3& rhs); // Component wise multiplication
+		friend Vector3 operator*(const Vector3& vec, const float& scalar);
+		friend Vector3 operator*(const float& scalar, const Vector3& vec);
+		friend Vector3 operator*(const Vector3& lhs, const Vector3& rhs); // Component wise multiplication
 		
-		static Vector3 operator+(const Vector3& lhs, const Vector3& rhs);
-		static Vector3 operator-(const Vector3& lhs, const Vector3& rhs);
+		friend Vector3 operator+(const Vector3& lhs, const Vector3& rhs);
+		friend Vector3 operator-(const Vector3& lhs, const Vector3& rhs);
 	};
 
 }

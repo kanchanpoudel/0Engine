@@ -81,22 +81,22 @@ namespace s00nya
 		return *this;
 	}
 
-	Vector2 Vector2::operator*(const Vector2& vec, const float& scalar)
+	Vector2 operator*(const Vector2& vec, const float& scalar)
 	{
 		return Vector2(scalar * vec.x, scalar * vec.y);
 	}
 
-	Vector2 Vector2::operator*(const float& scalar, const Vector2& vec)
+	Vector2 operator*(const float& scalar, const Vector2& vec)
 	{
 		return Vector2(scalar * vec.x, scalar * vec.y);
 	}
 
-	Vector2 Vector2::operator+(const Vector2& lhs, const Vector2& rhs)
+	Vector2 operator+(const Vector2& lhs, const Vector2& rhs)
 	{
 		return Vector2(lhs.x + rhs.x, lhs.y + rhs.y);
 	}
 
-	Vector2 Vector2::operator-(const Vector2& lhs, const Vector2& rhs)
+	Vector2 operator-(const Vector2& lhs, const Vector2& rhs)
 	{
 		return Vector2(lhs.x - rhs.x, lhs.y - rhs.y);
 	}
