@@ -151,4 +151,10 @@ namespace s00nya
 		MOUSE_BUTTON_5 = 7
 	};
 
+	enum Axes
+	{
+		HORIZONTAL = 0,
+		VERTICAL =	1,
+	};
+
 }
