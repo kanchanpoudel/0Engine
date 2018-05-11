@@ -40,7 +40,7 @@ The game can be constructed following ways
 ```cpp
 #include "s00nya.h"                      //Inlcude the header file for game engine
 
-using namespace s00nya;          //All classes and methods are wrapped inside Lie namespace
+using namespace s00nya;          //All classes and methods are wrapped inside s00nya namespace
 
 
 //Lie class should be derived and methods should be filled as required
