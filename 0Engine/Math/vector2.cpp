@@ -1,6 +1,6 @@
 #include "Math\vector2.h"
 #include "Math\vector3.h"
-#include<cmath>
+#include <cmath>
 
 namespace s00nya
 {
@@ -41,12 +41,12 @@ namespace s00nya
 
 	float Vector2::Length() const
 	{
-		return sqrt(x*x + y * y);
+		return sqrt(x * x + y * y);
 	}
 
 	float Vector2::Dot(const Vector2& lhs, const Vector2& rhs)
 	{
-		return(lhs.x*rhs.x + lhs.y*rhs.y);
+		return(lhs.x * rhs.x + lhs.y * rhs.y);
 	}
 
 	Vector3 Vector2::Cross(const Vector2& lhs, const Vector2& rhs)
