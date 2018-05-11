@@ -7,7 +7,10 @@ namespace s00nya
 
 	void Input::Initialize(GLFWwindow* window)
 	{
-		glfwSetKeyCallback(window, Input::KeyCallBack);
+		glfwSetKeyCallback(window, Input::KeyCallback);
+		glfwSetMouseButtonCallback(window, Input::MouseButtonCallback);
+		glfwSetScrollCallback(window, Input::ScrollCallback);
+		glfwSetCursorPosCallback(window, Input::CursorPositionCallback);
 	}
 
 }
