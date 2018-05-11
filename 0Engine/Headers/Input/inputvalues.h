@@ -3,7 +3,7 @@
 namespace s00nya
 {
 
-	enum Keys
+	enum class Keys : int
 	{
 		UNKNOWN = -1,
 
@@ -138,7 +138,7 @@ namespace s00nya
 		MENU =					348
 	};
 
-	enum Buttons
+	enum class Buttons : int
 	{
 		MOUSE_LEFT_CLICK =		0,
 		MOUSE_RIGHT_CLICK =		1,
@@ -151,7 +151,7 @@ namespace s00nya
 		MOUSE_BUTTON_5 = 7
 	};
 
-	enum Axes
+	enum class Axes : int
 	{
 		HORIZONTAL = 0,
 		VERTICAL =	1,

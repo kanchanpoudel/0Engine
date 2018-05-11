@@ -83,5 +83,8 @@
     <ClInclude Include="Headers\Input\input.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\Input\inputactions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
