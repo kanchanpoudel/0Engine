@@ -1,5 +1,6 @@
 #include "Game\game.h"
 #include "Graphics\window.h"
+#include "Debugger\console_logger.h"
 #include "Game\timer.h"
 
 namespace s00nya
@@ -17,29 +18,49 @@ namespace s00nya
 	void Game2D::Construct(const char* title, const int& width, const int& height)
 	{
 		window = new Window(title, width, height);
-		Timer::Initialize();
 		OnConstruction();
 	}
 
 	void Game2D::Start()
 	{
 		window->Show();
-		// Prasiddha and Shaswat have to correct the amount of loop called as required
+
+		// Time Management
+		float now = Timer::ElaspedTime();
+		float deltaTime = 0.0f;
+		float timer = Timer::ElaspedTime();
+		
 		while (window->IsRunning())
 		{
-			window->Update();
+			// Runs every 1 second
+			if (Timer::ElaspedTime() - timer > 1.0f)
+			{
+				timer = Timer::ElaspedTime();
+				Tick();
+			}
+			
+			// Runs 60 times a second
+			if (deltaTime * fps > 1.0f)
+			{
+				deltaTime = 0.0f;
+				FixedUpdate();
+			}
 
-			// Make this function be be called 60 times in a sec
-			FixedUpdate(); 
-			// Call this function as much as possible
+			// Sum up delta time to get total time difference
+			deltaTime += (Timer::ElaspedTime() - now);
+			now = Timer::ElaspedTime();
+
+			// As fast as possible
 			Update();
+
+			window->Update();
 		}
 		delete window;
 	}
 
 	void Game2D::Tick()
 	{
-		//TO-DO
+		printf("\nFPS : %d", (int)(1.0f / Timer::DeltaTime()));
 	}
 
 	void Game2D::OnConstruction()
@@ -53,5 +74,7 @@ namespace s00nya
 	void Game2D::Update()
 	{
 	}
+
+	const float Game2D::fps = 60.0f;
 
 }
