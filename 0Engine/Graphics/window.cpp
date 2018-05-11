@@ -3,6 +3,7 @@
 #include "GLFW\glfw3.h"
 #include "Debugger\console_logger.h"
 #include "Game\timer.h"
+#include "Input\input.h"
 #include <string>
 
 namespace s00nya
@@ -55,6 +56,7 @@ namespace s00nya
 
 	void Window::Show() const
 	{
+		Input::Initialize(m_id);
 		glfwShowWindow(m_id);
 	}
 
@@ -82,7 +84,7 @@ namespace s00nya
 				Debug::AddLog("ERROR : OPENGL | The specified operation is not allowed in the current state");
 				break;
 			case GL_INVALID_FRAMEBUFFER_OPERATION:
-				Debug::AddLog("ERROR : OPENGL | The framebuffer object is not complete");
+				Debug::AddLog("ERROR : OPENGL | The frame buffer object is not complete");
 				break;
 			case GL_OUT_OF_MEMORY:
 				Debug::AddLog("ERROR : OPENGL | There is not enough memory left to execute the command");
@@ -134,7 +136,7 @@ namespace s00nya
 	{
 		if (m_fullscreen)
 		{
-			/*When changing from fullscreen to windowed mode,
+			/*When changing from full screen to windowed mode,
 			  we need to position to place the window in the monitor
 			  so we calculate the position such that full window is shown in monitor
 			  */

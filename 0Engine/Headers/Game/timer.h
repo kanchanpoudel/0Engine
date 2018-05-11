@@ -15,7 +15,7 @@ namespace s00nya
 		static float DeltaTime();
 
 	private:
-		static void Update();
+		static void Update(); // Updated when window is updated
 
 		friend class Window;
 	};
