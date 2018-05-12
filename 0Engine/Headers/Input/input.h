@@ -15,20 +15,21 @@ namespace s00nya
 	class Input
 	{
 	private:
-		static std::map<Keys, InputState> m_keyMaps;
-		static std::map<Buttons, InputState> m_buttonMaps;
+		std::map<Keys, InputState> m_keyMaps;
+		std::map<Buttons, InputState> m_buttonMaps;
 		
 		// first for x and second for y
-		static float m_cursorPosition[2];	// Ranges from 0.0f to window width or height
-		static float m_axesOffset[2];		// Ranges from -1.0f to 1.0f
-		static float m_scrollOffset[2];		// 1.0f for 1 line scroll
+		float m_cursorPosition[2];		// Ranges from 0.0f to window width or height
+		float m_axesOffset[2];			// Ranges from -1.0f to 1.0f
+		float m_scrollOffset[2];		// 1.0f for 1 line scroll
 
 	private:
 		/*
-			Initialized when window is shown
+			Constructed by window through GetInputSystem() method
+			because input events are connected to window
 			Sets up all the callback for input system
 		*/
-		static void Initialize(GLFWwindow* window);
+		Input(GLFWwindow* window);
 
 	private:
 		static void KeyCallback(GLFWwindow* window, int key, int scancodes, int action, int mods);
@@ -37,26 +38,26 @@ namespace s00nya
 		static void ScrollCallback(GLFWwindow* window, double xOffset, double yOffset);
 
 	public:
-		static bool Pressed(Keys key);
-		static bool Held(Keys key);
-		static bool Repeated(Keys key);
+		bool Pressed(Keys key);
+		bool Held(Keys key);
+		bool Repeated(Keys key);
 		// Two key combination, e.g. [Ctrl] + [C]
-		static bool Combined(Keys hold, Keys press); 
+		bool Combined(Keys hold, Keys press); 
 		// Three key combination, e.g. [Ctrl] + [Shift] + [V]
-		static bool Combined(Keys hold1, Keys hold2, Keys press);
+		bool Combined(Keys hold1, Keys hold2, Keys press);
 
-		static bool Pressed(Buttons button);
-		static bool Held(Buttons button);
+		bool Pressed(Buttons button);
+		bool Held(Buttons button);
 		// Mouse buttons do not have repeated event
 
-		static float CursorPositionX();
-		static float CursorPositionY();
+		float CursorPositionX();
+		float CursorPositionY();
 
-		static float HorizontalAxis();
-		static float VerticalAxis();
+		float HorizontalAxis();
+		float VerticalAxis();
 
-		static float ScrollHorizontalAxis();
-		static float ScrollVerticalAxis();
+		float ScrollHorizontalAxis();
+		float ScrollVerticalAxis();
 
 		friend class Window;
 	};

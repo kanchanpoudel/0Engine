@@ -7,7 +7,7 @@ class ExampleGame : public Game2D
 {
 	void OnConstruction() override
 	{
-
+		
 	}
 
 	void FixedUpdate() override
@@ -17,7 +17,7 @@ class ExampleGame : public Game2D
 
 	void Update() override
 	{
-		if (Input::Pressed(Keys::ESCAPE))
+		if (input->Pressed(Keys::ESCAPE))
 			window->Close();
 	}
 };

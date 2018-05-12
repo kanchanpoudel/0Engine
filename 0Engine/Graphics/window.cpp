@@ -54,15 +54,18 @@ namespace s00nya
 		glfwTerminate();
 	}
 
+	Input* Window::GetInputSystem() const
+	{
+		return new Input(m_id);
+	}
+
 	void Window::Show() const
 	{
-		Input::Initialize(m_id);
 		glfwShowWindow(m_id);
 	}
 
 	void Window::Update() const
 	{
-		Timer::Update();
 		glfwSwapBuffers(m_id);
 		glfwPollEvents();
 

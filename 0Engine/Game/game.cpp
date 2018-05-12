@@ -18,6 +18,8 @@ namespace s00nya
 	void Game2D::Construct(const char* title, const int& width, const int& height)
 	{
 		window = new Window(title, width, height);
+		timer = new Timer();
+		input = window->GetInputSystem();
 		OnConstruction();
 	}
 
@@ -26,15 +28,15 @@ namespace s00nya
 		window->Show();
 
 		// Time Management
-		float timer = Timer::ElaspedTime();
+		float now = Timer::ElaspedTime();
 		float deltaTimeForSecond = 0.0f;
 		
 		while (window->IsRunning())
 		{
 			// Runs every 1 second
-			if (Timer::ElaspedTime() - timer > 1.0f)
+			if (Timer::ElaspedTime() - now > 1.0f)
 			{
-				timer = Timer::ElaspedTime();
+				now = Timer::ElaspedTime();
 				Tick();
 			}
 
@@ -49,16 +51,20 @@ namespace s00nya
 			}
 
 			// Sum up delta time to get total time difference
-			deltaTimeForSecond += Timer::DeltaTime();
+			deltaTimeForSecond += timer->DeltaTime();
 
+			timer->Update();
 			window->Update();
 		}
+
+		delete input;
+		delete timer;
 		delete window;
 	}
 
 	void Game2D::Tick()
 	{
-		printf("\nFPS : %d", (int)(1.0f / Timer::DeltaTime()));
+		printf("\nFPS : %d", (int)(1.0f / timer->DeltaTime()));
 	}
 
 	void Game2D::OnConstruction()

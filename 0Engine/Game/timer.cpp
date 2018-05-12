@@ -5,21 +5,24 @@
 namespace s00nya
 {
 
-	float Timer::m_s_lastFrameTime = 0.0f;
+	Timer::Timer() :
+		m_lastFrameTime(0.0f)
+	{
+	}
+
+	float Timer::DeltaTime() const
+	{
+		return (float)glfwGetTime() - m_lastFrameTime;
+	}
 
 	float Timer::ElaspedTime()
 	{
 		return (float)glfwGetTime();
 	}
 
-	float Timer::DeltaTime()
-	{
-		return (float)glfwGetTime() - m_s_lastFrameTime;
-	}
-
 	void Timer::Update()
 	{
-		m_s_lastFrameTime = (float)glfwGetTime();
+		m_lastFrameTime = (float)glfwGetTime();
 	}
 
 }

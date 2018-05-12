@@ -5,12 +5,14 @@ namespace s00nya
 
 	class Window;
 	class Timer;
+	class Input;
 
 	class Game2D
 	{
 	protected:
 		Window* window;
 		Timer* timer;
+		Input* input;
 
 	public:
 		Game2D();

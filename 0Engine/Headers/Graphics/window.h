@@ -5,6 +5,8 @@ struct GLFWwindow;
 namespace s00nya
 {
 
+	class Input;
+
 	class Window
 	{
 	private:
@@ -27,6 +29,7 @@ namespace s00nya
 		Window(const Window& window) = delete;
 		Window& operator=(const Window& window) = delete;
 
+		Input* GetInputSystem() const; // Constructs Input class in heap
 		void Show() const;
 		void Update() const;
 

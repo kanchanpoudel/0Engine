@@ -95,7 +95,9 @@ int main()
 
 **Members that can be accessed**
 
-- `window` : For access accessing *Window* class
+- `window` : For accessing *Window* class
+- `timer` : For accessing **Timer** class
+- `input` : For accessing *Input* class
 
 
 ## Window Class
@@ -116,15 +118,15 @@ int main()
 
 ## Timer Class
 
-**Static Methods that can be accessed**
+**Methods that can be accessed**
 
-- `float ElaspedTime()` : Returns the time from which the Program started
-- `float DeltaTime()` : Returns the time between last and current frame
+- `float ElaspedTime()` : Returns the time spend from which the Program started in seconds
+- `float DeltaTime()` : Returns the time between last and current frame in seconds
 
 
 ## Input Class
 
-**Static Methods that can be accessed**
+**Methods that can be accessed**
 
 - `bool Pressed(Keys key || Buttons button)` : Returns true if the key / button is pressed
 - `bool Held(Keys key || Buttons button)` : Returns true if the key / button is held
