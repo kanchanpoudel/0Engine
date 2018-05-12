@@ -38,6 +38,9 @@ namespace s00nya
 				timer = Timer::ElaspedTime();
 				Tick();
 			}
+
+			// As fast as possible
+			Update();
 			
 			// Runs 60 times a second
 			if (deltaTime * fps > 1.0f)
@@ -49,9 +52,6 @@ namespace s00nya
 			// Sum up delta time to get total time difference
 			deltaTime += (Timer::ElaspedTime() - now);
 			now = Timer::ElaspedTime();
-
-			// As fast as possible
-			Update();
 
 			window->Update();
 		}

@@ -19,9 +19,6 @@ class ExampleGame : public Game2D
 	{
 		if (Input::Pressed(Keys::ESCAPE))
 			window->Close();
-
-		if (Input::Pressed(Buttons::MOUSE_LEFT_CLICK))
-			printf("\n%f %f", Input::CursorPositionX(), Input::CursorPositionY());
 	}
 };
 

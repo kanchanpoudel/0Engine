@@ -20,7 +20,7 @@ namespace s00nya
 		
 		// first for x and second for y
 		static float m_cursorPosition[2];	// Ranges from 0.0f to window width or height
-		static float m_axesOffset[2];		// Ranges from -1.0f to 1.0f by using `axis_factor`
+		static float m_axesOffset[2];		// Ranges from -1.0f to 1.0f
 		static float m_scrollOffset[2];		// 1.0f for 1 line scroll
 
 	private:
@@ -40,9 +40,14 @@ namespace s00nya
 		static bool Pressed(Keys key);
 		static bool Held(Keys key);
 		static bool Repeated(Keys key);
+		// Two key combination, e.g. [Ctrl] + [C]
+		static bool Combined(Keys hold, Keys press); 
+		// Three key combination, e.g. [Ctrl] + [Shift] + [V]
+		static bool Combined(Keys hold1, Keys hold2, Keys press);
 
 		static bool Pressed(Buttons button);
 		static bool Held(Buttons button);
+		// Mouse buttons do not have repeated event
 
 		static float CursorPositionX();
 		static float CursorPositionY();
@@ -52,8 +57,6 @@ namespace s00nya
 
 		static float ScrollHorizontalAxis();
 		static float ScrollVerticalAxis();
-
-		static const float axis_factor;
 
 		friend class Window;
 	};

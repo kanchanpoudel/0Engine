@@ -20,16 +20,16 @@ namespace s00nya
 		void Start();
 
 	private:
-		void Tick();					//Call once in a second
+		void Tick();					// Call once in a second
 
 	//Methods to Override
 	protected:
-		virtual void OnConstruction();  //Call to construct objects and set default values
-		virtual void FixedUpdate();		//Call 60 times a second
-		virtual void Update();			//Call as frequent as possible OR Vsync-ed
+		virtual void OnConstruction();  // Call to construct objects and set default values
+		virtual void FixedUpdate();		// Call 60 times a second
+		virtual void Update();			// Call as frequent as possible OR Vsync-ed
 
 	protected:
-		static const float fps;
+		static const float fps; // Frames per second
 	};
 
 }
