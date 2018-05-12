@@ -156,6 +156,7 @@ namespace s00nya
 	};
 
 	float Input::m_cursorPosition[2]{ 0.0f, 0.0f };
+	float Input::m_axesOffset[2]{ 0.0f, 0.0f };
 	float Input::m_scrollOffset[2]{ 0.0f, 0.0f };
 
 	void Input::Initialize(GLFWwindow* window)
@@ -213,6 +214,9 @@ namespace s00nya
 		int winWidth, winHeight;
 		glfwGetWindowSize(window, &winWidth, &winHeight);
 
+		Input::m_axesOffset[0] = ((float)xPos - m_cursorPosition[0]) / winWidth;
+		Input::m_axesOffset[1] = (m_cursorPosition[1] + (float)yPos - (float)winHeight) / winHeight;
+
 		Input::m_cursorPosition[0] = (float)xPos;
 		Input::m_cursorPosition[1] = winHeight - (float)yPos;
 	}
@@ -265,6 +269,20 @@ namespace s00nya
 	float Input::CursorPositionY()
 	{
 		return m_cursorPosition[1];
+	}
+
+	float Input::HorizontalAxis()
+	{
+		float ha = Input::m_axesOffset[0];
+		Input::m_axesOffset[0] = 0.0f;
+		return ha;
+	}
+
+	float Input::VerticalAxis()
+	{
+		float va = Input::m_axesOffset[1];
+		Input::m_axesOffset[1] = 0.0f;
+		return va;
 	}
 
 }

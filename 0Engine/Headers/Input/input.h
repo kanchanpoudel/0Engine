@@ -18,8 +18,10 @@ namespace s00nya
 		static std::map<Keys, InputState> m_keyMaps;
 		static std::map<Buttons, InputState> m_buttonMaps;
 		
-		static float m_cursorPosition[2];	// first for x and second for y
-		static float m_scrollOffset[2];		// first for x and second for y
+		// first for x and second for y
+		static float m_cursorPosition[2];	// Ranges from 0.0f to window width or height
+		static float m_axesOffset[2];		// Ranges from -1.0f to 1.0f
+		static float m_scrollOffset[2];		// Ranges from -1.0f to 1.0f
 
 	private:
 		/*
@@ -44,6 +46,9 @@ namespace s00nya
 
 		static float CursorPositionX();
 		static float CursorPositionY();
+
+		static float HorizontalAxis();
+		static float VerticalAxis();
 
 		friend class Window;
 	};
