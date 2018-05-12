@@ -155,12 +155,15 @@ namespace s00nya
 		{ Buttons::MOUSE_BUTTON_5, InputState::UP }
 	};
 
+	float Input::m_cursorPosition[2]{ 0.0f, 0.0f };
+	float Input::m_scrollOffset[2]{ 0.0f, 0.0f };
+
 	void Input::Initialize(GLFWwindow* window)
 	{
 		glfwSetKeyCallback(window, Input::KeyCallback);
 		glfwSetMouseButtonCallback(window, Input::MouseButtonCallback);
-		glfwSetScrollCallback(window, Input::ScrollCallback);
 		glfwSetCursorPosCallback(window, Input::CursorPositionCallback);
+		glfwSetScrollCallback(window, Input::ScrollCallback);
 	}
 
 	void Input::KeyCallback(GLFWwindow* window, int key, int scancodes, int action, int mods)
@@ -207,7 +210,11 @@ namespace s00nya
 
 	void Input::CursorPositionCallback(GLFWwindow* window, double xPos, double yPos)
 	{
+		int winWidth, winHeight;
+		glfwGetWindowSize(window, &winWidth, &winHeight);
 
+		Input::m_cursorPosition[0] = (float)xPos;
+		Input::m_cursorPosition[1] = winHeight - (float)yPos;
 	}
 
 	void Input::ScrollCallback(GLFWwindow* window, double xOffset, double yOffset)
@@ -228,6 +235,36 @@ namespace s00nya
 	bool Input::Held(Keys key)
 	{
 		return Input::m_keyMaps[key] == InputState::DOWN;
+	}
+
+	bool Input::Repeated(Keys key)
+	{
+		return Input::m_keyMaps[key] == InputState::REPEATED;
+	}
+
+	bool Input::Pressed(Buttons button)
+	{
+		if (Input::m_buttonMaps[button] == InputState::PRESSED)
+		{
+			Input::m_buttonMaps[button] = InputState::UP;
+			return true;
+		}
+		return false;
+	}
+
+	bool Input::Held(Buttons button)
+	{
+		return Input::m_buttonMaps[button] == InputState::DOWN;
+	}
+
+	float Input::CursorPositionX()
+	{
+		return m_cursorPosition[0];
+	}
+
+	float Input::CursorPositionY()
+	{
+		return m_cursorPosition[1];
 	}
 
 }

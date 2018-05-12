@@ -17,6 +17,9 @@ namespace s00nya
 	private:
 		static std::map<Keys, InputState> m_keyMaps;
 		static std::map<Buttons, InputState> m_buttonMaps;
+		
+		static float m_cursorPosition[2];	// first for x and second for y
+		static float m_scrollOffset[2];		// first for x and second for y
 
 	private:
 		/*
@@ -34,6 +37,13 @@ namespace s00nya
 	public:
 		static bool Pressed(Keys key);
 		static bool Held(Keys key);
+		static bool Repeated(Keys key);
+
+		static bool Pressed(Buttons button);
+		static bool Held(Buttons button);
+
+		static float CursorPositionX();
+		static float CursorPositionY();
 
 		friend class Window;
 	};
