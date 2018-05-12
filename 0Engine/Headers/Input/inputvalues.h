@@ -156,11 +156,4 @@ namespace s00nya
 		MOUSE_BUTTON_5 = 7
 	};
 
-	// Axes values are mapped from -1.0f to 1.0f
-	enum class Axes : int
-	{
-		HORIZONTAL = 0,
-		VERTICAL =	1,
-	};
-
 }
