@@ -119,14 +119,14 @@ int main()
 **Static Methods that can be accessed**
 
 - `float ElaspedTime()` : Returns the time from which the Program started
-- `float DeltaTime()` : Returns the time between last and this frame
+- `float DeltaTime()` : Returns the time between last and current frame
 
 
 ## Input Class
 
 **Static Methods that can be accessed**
 
-- `bool Pressed(Keys key || Bbuttons button)` : Returns true if the key / button is pressed
+- `bool Pressed(Keys key || Buttons button)` : Returns true if the key / button is pressed
 - `bool Held(Keys key || Buttons button)` : Returns true if the key / button is held
 - `bool Repeated(Keys key)` : Return true if the key press is repeated
 - `bool Combined(Keys hold, Keys press)` : Returns true if the first key is held and second is pressed (e.g. [Ctrl] + [C])
