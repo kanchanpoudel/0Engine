@@ -214,8 +214,8 @@ namespace s00nya
 		int winWidth, winHeight;
 		glfwGetWindowSize(window, &winWidth, &winHeight);
 
-		Input::m_axesOffset[0] = ((float)xPos - m_cursorPosition[0]) / winWidth;
-		Input::m_axesOffset[1] = (m_cursorPosition[1] + (float)yPos - (float)winHeight) / winHeight;
+		Input::m_axesOffset[0] = ((float)xPos - m_cursorPosition[0]) / winWidth * axis_factor;
+		Input::m_axesOffset[1] = (m_cursorPosition[1] + (float)yPos - (float)winHeight) / winHeight * axis_factor;
 
 		Input::m_cursorPosition[0] = (float)xPos;
 		Input::m_cursorPosition[1] = winHeight - (float)yPos;
@@ -223,7 +223,8 @@ namespace s00nya
 
 	void Input::ScrollCallback(GLFWwindow* window, double xOffset, double yOffset)
 	{
-
+		Input::m_scrollOffset[0] = xOffset;
+		Input::m_scrollOffset[1] = yOffset;
 	}
 
 	bool Input::Pressed(Keys key)
@@ -284,5 +285,17 @@ namespace s00nya
 		Input::m_axesOffset[1] = 0.0f;
 		return va;
 	}
+
+	float Input::ScrollHorizontalAxis()
+	{
+		return Input::m_scrollOffset[0];
+	}
+
+	float Input::ScrollVerticalAxis()
+	{
+		return Input::m_scrollOffset[1];
+	}
+
+	const float Input::axis_factor = 10.0f;
 
 }

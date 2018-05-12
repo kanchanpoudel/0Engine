@@ -20,8 +20,8 @@ namespace s00nya
 		
 		// first for x and second for y
 		static float m_cursorPosition[2];	// Ranges from 0.0f to window width or height
-		static float m_axesOffset[2];		// Ranges from -1.0f to 1.0f
-		static float m_scrollOffset[2];		// Ranges from -1.0f to 1.0f
+		static float m_axesOffset[2];		// Ranges from -1.0f to 1.0f by using `axis_factor`
+		static float m_scrollOffset[2];		// 1.0f for 1 line scroll
 
 	private:
 		/*
@@ -49,6 +49,11 @@ namespace s00nya
 
 		static float HorizontalAxis();
 		static float VerticalAxis();
+
+		static float ScrollHorizontalAxis();
+		static float ScrollVerticalAxis();
+
+		static const float axis_factor;
 
 		friend class Window;
 	};
