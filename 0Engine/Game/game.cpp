@@ -26,9 +26,8 @@ namespace s00nya
 		window->Show();
 
 		// Time Management
-		float now = Timer::ElaspedTime();
-		float deltaTime = 0.0f;
 		float timer = Timer::ElaspedTime();
+		float deltaTimeForSecond = 0.0f;
 		
 		while (window->IsRunning())
 		{
@@ -43,15 +42,14 @@ namespace s00nya
 			Update();
 			
 			// Runs 60 times a second
-			if (deltaTime * fps > 1.0f)
+			if (deltaTimeForSecond * fps > 1.0f)
 			{
-				deltaTime = 0.0f;
+				deltaTimeForSecond = 0.0f;
 				FixedUpdate();
 			}
 
 			// Sum up delta time to get total time difference
-			deltaTime += (Timer::ElaspedTime() - now);
-			now = Timer::ElaspedTime();
+			deltaTimeForSecond += Timer::DeltaTime();
 
 			window->Update();
 		}
