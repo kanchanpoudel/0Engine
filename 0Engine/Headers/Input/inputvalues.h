@@ -1,8 +1,12 @@
 #pragma once
 
+#define MAX_KEYS		121
+#define MAX_BUTTONS		8
+
 namespace s00nya
 {
 
+	// Keys are all supported keyboard keys
 	enum class Keys : int
 	{
 		UNKNOWN = -1,
@@ -138,6 +142,7 @@ namespace s00nya
 		MENU =					348
 	};
 
+	// Buttons are all supported mouse buttons
 	enum class Buttons : int
 	{
 		MOUSE_LEFT_CLICK =		0,
@@ -151,6 +156,7 @@ namespace s00nya
 		MOUSE_BUTTON_5 = 7
 	};
 
+	// Axes values are mapped from -1.0f to 1.0f
 	enum class Axes : int
 	{
 		HORIZONTAL = 0,

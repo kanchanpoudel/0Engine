@@ -1,4 +1,5 @@
 #include "s00nya.h"
+#include <iostream>
 
 using namespace s00nya;
 
@@ -16,7 +17,8 @@ class ExampleGame : public Game2D
 
 	void Update() override
 	{
-
+		if (Input::Pressed(Keys::ESCAPE))
+			window->Close();
 	}
 };
 

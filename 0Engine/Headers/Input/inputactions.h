@@ -5,9 +5,10 @@ namespace s00nya
 
 	enum class InputState : int
 	{
-		KEY_DOWN =		0,
-		KEY_UP =		1,
-		KEY_REPEAT =	2
+		DOWN =		0,
+		UP =		1,
+		PRESSED =	2,
+		REPEATED =	3
 	};
 
 }
