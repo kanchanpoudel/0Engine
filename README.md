@@ -12,7 +12,7 @@ This is a 2D game engine
 *All the headers files that are needed for Dependencies are included in `Dependencies/include`*
 
 ## Solution Structure for VS users
-- `./s00nya/bin/$(ProjectName)/` should contain all the binaries and executables
+- `./s00nya/bin/` should contain all the binaries and executables
 - `./s00nya/bin/intermediates/$(ProjectName)` should contain all the logs, debug and release information and intermediate files
 
 - `./s00nya/0Engine/` is the project directory for the Game Engine
