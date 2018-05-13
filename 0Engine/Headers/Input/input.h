@@ -30,6 +30,7 @@ namespace s00nya
 			Sets up all the callback for input system
 		*/
 		Input(GLFWwindow* window);
+		~Input();
 
 	private:
 		static void KeyCallback(GLFWwindow* window, int key, int scancodes, int action, int mods);

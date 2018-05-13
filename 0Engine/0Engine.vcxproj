@@ -143,7 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Debugger\console_logger.cpp" />
+    <ClCompile Include="Debugger\logger.cpp" />
     <ClCompile Include="Game\game.cpp" />
     <ClCompile Include="Game\timer.cpp" />
     <ClCompile Include="Graphics\window.cpp" />
@@ -154,7 +154,7 @@
     <ClCompile Include="Math\vector4.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Headers\Debugger\console_logger.h" />
+    <ClInclude Include="Headers\Debugger\logger.h" />
     <ClInclude Include="Headers\exceptions.h" />
     <ClInclude Include="Headers\Game\game.h" />
     <ClInclude Include="Headers\Game\timer.h" />

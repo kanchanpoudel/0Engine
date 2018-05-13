@@ -26,9 +26,11 @@ namespace s00nya
 		Window(const char* title, const int& width, const int& height);
 		~Window();
 
+	private:
 		Window(const Window& window) = delete;
 		Window& operator=(const Window& window) = delete;
 
+	public:
 		Input* GetInputSystem() const; // Constructs Input class in heap
 		void Show() const;
 		void Update() const;

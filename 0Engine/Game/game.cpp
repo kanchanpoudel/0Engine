@@ -1,6 +1,6 @@
 #include "Game\game.h"
 #include "Graphics\window.h"
-#include "Debugger\console_logger.h"
+#include "Debugger\logger.h"
 #include "Game\timer.h"
 
 namespace s00nya
@@ -17,6 +17,7 @@ namespace s00nya
 
 	void Game2D::Construct(const char* title, const int& width, const int& height)
 	{
+		Debug::Initialize();
 		window = new Window(title, width, height);
 		timer = new Timer();
 		input = window->GetInputSystem();
@@ -37,6 +38,7 @@ namespace s00nya
 			if (Timer::ElaspedTime() - now > 1.0f)
 			{
 				now = Timer::ElaspedTime();
+				Debug::Log(true, true);
 				Tick();
 			}
 
@@ -60,6 +62,7 @@ namespace s00nya
 		delete input;
 		delete timer;
 		delete window;
+		Debug::ShutDown();
 	}
 
 	void Game2D::Tick()

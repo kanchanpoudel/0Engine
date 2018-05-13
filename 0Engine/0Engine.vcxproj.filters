@@ -21,9 +21,6 @@
     <ClCompile Include="Game\game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Debugger\console_logger.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Game\timer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -42,6 +39,9 @@
     <ClCompile Include="Input\input.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Debugger\logger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\Graphics\window.h">
@@ -51,9 +51,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Headers\Game\game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Headers\Debugger\console_logger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Headers\s00nya.h">
@@ -84,6 +81,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Headers\Input\inputactions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Debugger\logger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

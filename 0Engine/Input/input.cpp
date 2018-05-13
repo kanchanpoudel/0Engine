@@ -172,6 +172,11 @@ namespace s00nya
 		glfwSetScrollCallback(window, Input::ScrollCallback);
 	}
 
+	Input::~Input()
+	{
+
+	}
+
 	void Input::KeyCallback(GLFWwindow* window, int key, int scancodes, int action, int mods)
 	{
 		const Keys& keyCode = (Keys)key;
@@ -253,8 +258,8 @@ namespace s00nya
 	{
 		// Get the instance of Input class associated with the window
 		Input* currentInput = (Input*)glfwGetWindowUserPointer(window);
-		currentInput->m_scrollOffset[0] = xOffset;
-		currentInput->m_scrollOffset[1] = yOffset;
+		currentInput->m_scrollOffset[0] = (float)xOffset;
+		currentInput->m_scrollOffset[1] = (float)yOffset;
 	}
 
 	bool Input::Pressed(const Keys& key)

@@ -1,7 +1,7 @@
 #include "Graphics\window.h"
 #include "GL\glew.h"
 #include "GLFW\glfw3.h"
-#include "Debugger\console_logger.h"
+#include "Debugger\logger.h"
 #include "Game\timer.h"
 #include "Input\input.h"
 #include <string>
@@ -35,14 +35,13 @@ namespace s00nya
 
 		m_id = glfwCreateWindow(m_width, m_height, title, nullptr, nullptr);
 		if (!m_id)
-			Debug::AddLog("ERROR : GLFW | Window Pointer Empty");
+			Debug::Add("GLFW | Window Pointer Empty", Debug::S00NYA_LOG_ERROR);
 
 		glfwMakeContextCurrent(m_id);
-		glewInit();	//Loading OpenGL function pointers
-		Debug::AddLog("STATUS : OPENGL | Vendor=" +
+		glewInit();	// Loading OpenGL function pointers
+		Debug::Add("OPENGL | Vendor=" +
 			std::string((char*)glGetString(GL_VENDOR)) +
-			" Version=" + std::string((char*)glGetString(GL_VERSION)));
-		Debug::Log();
+			" Version=" + std::string((char*)glGetString(GL_VERSION)), Debug::S00NYA_LOG_INFO);
 
 		glfwSetWindowAspectRatio(m_id, m_width, m_height);
 		glViewport(0, 0, m_width, m_height);
@@ -69,7 +68,6 @@ namespace s00nya
 		glfwSwapBuffers(m_id);
 		glfwPollEvents();
 
-#ifdef ENGINE_DEBUG
 		GLenum err;
 		while (true)
 		{
@@ -78,33 +76,37 @@ namespace s00nya
 			switch (err)
 			{
 			case GL_INVALID_ENUM:
-				Debug::AddLog("ERROR : OPENGL | An unacceptable value is specified for an enumerated argument");
+				Debug::Add("OPENGL | An unacceptable value is specified for an enumerated argument", 
+					Debug::S00NYA_LOG_ERROR);
 				break;
 			case GL_INVALID_VALUE:
-				Debug::AddLog("ERROR : OPENGL | A numeric argument is out of range");
+				Debug::Add("OPENGL | A numeric argument is out of range",
+					Debug::S00NYA_LOG_ERROR);
 				break;
 			case GL_INVALID_OPERATION:
-				Debug::AddLog("ERROR : OPENGL | The specified operation is not allowed in the current state");
+				Debug::Add("OPENGL | The specified operation is not allowed in the current state",
+					Debug::S00NYA_LOG_ERROR);
 				break;
 			case GL_INVALID_FRAMEBUFFER_OPERATION:
-				Debug::AddLog("ERROR : OPENGL | The frame buffer object is not complete");
+				Debug::Add("OPENGL | The frame buffer object is not complete",
+					Debug::S00NYA_LOG_ERROR);
 				break;
 			case GL_OUT_OF_MEMORY:
-				Debug::AddLog("ERROR : OPENGL | There is not enough memory left to execute the command");
+				Debug::Add("OPENGL | There is not enough memory left to execute the command",
+					Debug::S00NYA_LOG_ERROR);
 				break;
 			case GL_STACK_UNDERFLOW:
-				Debug::AddLog("ERROR : OPENGL | An attempt has been made to perform an operation that would cause an internal stack to underflow");
+				Debug::Add("OPENGL | An attempt has been made to perform an operation that would cause an internal stack to underflow",
+					Debug::S00NYA_LOG_ERROR);
 				break;
 			case GL_STACK_OVERFLOW:
-				Debug::AddLog("ERROR : OPENGL | An attempt has been made to perform an operation that would cause an internal stack to overflow");
+				Debug::Add("OPENGL | An attempt has been made to perform an operation that would cause an internal stack to overflow",
+					Debug::S00NYA_LOG_ERROR);
 				break;
 			default:
 				break;
 			}
 		}
-		Debug::Log();
-
-#endif 
 	}
 
 	void Window::Close() const
