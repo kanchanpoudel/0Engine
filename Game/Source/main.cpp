@@ -4,7 +4,7 @@
 using namespace s00nya;
 
 class ExampleGame : public Game2D
-{
+{	
 	void OnConstruction() override
 	{
 		

@@ -60,6 +60,12 @@ namespace s00nya
 		const float& ScrollHorizontalAxis();
 		const float& ScrollVerticalAxis();
 
+		static const char* GetName(const Keys& key);
+		static const char* GetName(const Buttons& button);
+
+	private:
+		static const char* GetInputName(const int& code);
+
 		friend class Window;
 	};
 

@@ -38,51 +38,52 @@ This is a 2D game engine
 The game can be constructed following ways
 
 ```cpp
-#include "s00nya.h"                      //Inlcude the header file for game engine
+#include "s00nya.h"                      // Inlcude the header file for game engine
 
-using namespace s00nya;          //All classes and methods are wrapped inside s00nya namespace
+using namespace s00nya;          // All classes and methods are wrapped inside s00nya namespace
 
 
-//Lie class should be derived and methods should be filled as required
+// Lie class should be derived and methods should be filled as required
 class ExampleGame : public Game2D
 {
 	void OnConstruction() override
 	{
-        //Setting up window e.g. window resize and setting up fullscreen, window icon and cursor
-        //All the game objects construction should be done here
+        // Setting up window e.g. window resize and setting up fullscreen, window icon and cursor
+        // All the game objects construction should be done here
 	}
 
 	void FixedUpdate() override
 	{
-        //This function is called 60 times in a second
-        //Usually physics are done here
-        //Other time related updates can be done here
+        // This function is called 60 times in a second
+        // Usually physics are done here
+        // Other time related updates can be done here
 	}
 
 	void Update() override
 	{
-        //This function is called as many times as possible in a second unless VSync is enabled
-        //All the input and other updates should be done here
+        // This function is called as many times as possible in a second unless VSync is enabled
+        // All the input and other updates should be done here
 	}
 
     void ~Game2D() override
     {
-        //All the memory allocation in the OnConstruction() function should be freed here
+        // All the memory allocation in the OnConstruction() function should be freed here
     }
 };
 
 int main()
 {
-    //Construct game from derived class
+    // Construct game from derived class
 	ExampleGame* game = new ExampleGame;
 
-    /*Constructs the window for game and calls OnConstruction() method
+    /*
+		Constructs the window for game and calls OnConstruction() method
         arguments to be passed are {window_title}, {width}, {height}
         */
 	game->Construct("Example Game", 800, 600);
 
-    //Displays the window
-    //Runs the game until closed
+    // Displays the window
+    // Runs the game until closed
 	game->Start();
 	
     delete game;
@@ -96,7 +97,7 @@ int main()
 **Members that can be accessed**
 
 - `window` : For accessing *Window* class
-- `timer` : For accessing **Timer** class
+- `timer` : For accessing *Timer* class
 - `input` : For accessing *Input* class
 
 
@@ -139,3 +140,4 @@ int main()
 - `const float& VerticalAxis()` : Returns the cursor offset in Y position Ranges (-1.0f, 1.0f)
 - `const float& ScrollHorizontalAxis()` : Returns the number of scroll turns made horizontally
 - `const float& ScrollVerticalAxis()` : Returns the number of scroll turns made vertically
+- `const char* GetName(const Keys& key || const Buttons& button)` : Returns the name of given key / button 

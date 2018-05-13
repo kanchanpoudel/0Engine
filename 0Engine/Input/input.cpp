@@ -391,4 +391,155 @@ namespace s00nya
 		return m_scrollOffset[1];
 	}
 
+	const char* Input::GetName(const Keys& key)
+	{
+		return GetInputName((int)key);
+	}
+
+	const char* Input::GetName(const Buttons& button)
+	{
+		return GetInputName((int)button);
+	}
+
+	const char* Input::GetInputName(const int& code)
+	{
+		switch (code)
+		{
+		case 0: return "Left Click";
+		case 1: return "Right Click";
+		case 2: return "Middle Click";
+
+		case 32: return "Space";
+		case 39: return "'";
+		case 44: return ",";
+		case 45: return "-";
+		case 46: return ".";
+		case 47: return "/";
+
+		case 48: return " 0";
+		case 49: return " 1";
+		case 50: return " 2";
+		case 51: return " 3";
+		case 52: return " 4";
+		case 53: return " 5";
+		case 54: return " 6";
+		case 55: return " 7";
+		case 56: return " 8";
+		case 57: return " 9";
+
+		case 59: return ";";
+		case 61: return "=";
+
+		case 65: return "A";
+		case 66: return "B";
+		case 67: return "C";
+		case 68: return "D";
+		case 69: return "E";
+		case 70: return "F";
+		case 71: return "G";
+		case 72: return "H";
+		case 73: return "I";
+		case 74: return "J";
+		case 75: return "K";
+		case 76: return "L";
+		case 77: return "M";
+		case 78: return "N";
+		case 79: return "O";
+		case 80: return "P";
+		case 81: return "Q";
+		case 82: return "R";
+		case 83: return "S";
+		case 84: return "T";
+		case 85: return "U";
+		case 86: return "V";
+		case 87: return "W";
+		case 88: return "X";
+		case 89: return "Y";
+		case 90: return "Z";
+
+		case 91: return "[";
+		case 92: return "\\";
+		case 93: return "]";
+		case 96: return "`";
+		case 256: return "Escape";
+		case 257: return "Enter";
+		case 258: return "Tab";
+		case 259: return "Backspace";
+		case 260: return "Insert";
+		case 261: return "Delete";
+
+		case 262: return "Right";
+		case 263: return "Left";
+		case 264: return "Down";
+		case 265: return "Up";
+
+		case 266: return "Page Up";
+		case 267: return "Page Down";
+		case 268: return "Home";
+		case 269: return "End";
+		case 280: return "Caps Lock";
+		case 281: return "Scroll Lock";
+		case 282: return "Num Lock";
+		case 283: return "Print Screen Sys Req";
+		case 284: return "Pause";
+
+		case 290: return "F1";
+		case 291: return "F2";
+		case 292: return "F3";
+		case 293: return "F4";
+		case 294: return "F5";
+		case 295: return "F6";
+		case 296: return "F7";
+		case 297: return "F8";
+		case 298: return "F9";
+		case 299: return "F10";
+		case 300: return "F11";
+		case 301: return "F12";
+		case 302: return "F13";
+		case 303: return "F14";
+		case 304: return "F15";
+		case 305: return "F16";
+		case 306: return "F17";
+		case 307: return "F18";
+		case 308: return "F19";
+		case 309: return "F20";
+		case 310: return "F21";
+		case 311: return "F22";
+		case 312: return "F23";
+		case 313: return "F24";
+		case 314: return "F25";
+
+		case 320: return " 0";
+		case 321: return " 1";
+		case 322: return " 2";
+		case 323: return " 3";
+		case 324: return " 4";
+		case 325: return " 5";
+		case 326: return " 6";
+		case 327: return " 7";
+		case 328: return " 8";
+		case 329: return " 9";
+
+		case 330: return ".";
+		case 331: return "/";
+		case 332: return "*";
+		case 333: return "-";
+		case 334: return "+";
+		case 335: return "Enter";
+		case 336: return "=";
+		case 340: return "Left Shift";
+		case 341: return "Left Control";
+		case 342: return "Left Alt";
+		case 343: return "Left Super";
+		case 344: return "Right Shift";
+		case 345: return "Right Control";
+		case 346: return "Right Alt";
+		case 347: return "Right Super";
+		case 348: return "Menu";
+
+		default:
+			return "Unknown";
+		}
+	}
+
 }
