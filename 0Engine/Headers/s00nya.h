@@ -8,5 +8,5 @@
 #include "Graphics\window.h"
 
 // Input manager include
-#include "Input\inputvalues.h"
+#include "Input\input_values.h"
 #include "Input\input.h"

@@ -74,16 +74,16 @@
     <ClInclude Include="Headers\Math\matrix4.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\Input\inputvalues.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Headers\Input\input.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\Input\inputactions.h">
+    <ClInclude Include="Headers\Debugger\logger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\Debugger\logger.h">
+    <ClInclude Include="Headers\Input\input_values.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Input\input_actions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

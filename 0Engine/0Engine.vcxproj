@@ -159,8 +159,8 @@
     <ClInclude Include="Headers\Game\game.h" />
     <ClInclude Include="Headers\Game\timer.h" />
     <ClInclude Include="Headers\Input\input.h" />
-    <ClInclude Include="Headers\Input\inputactions.h" />
-    <ClInclude Include="Headers\Input\inputvalues.h" />
+    <ClInclude Include="Headers\Input\input_actions.h" />
+    <ClInclude Include="Headers\Input\input_values.h" />
     <ClInclude Include="Headers\Math\matrix4.h" />
     <ClInclude Include="Headers\Math\vector2.h" />
     <ClInclude Include="Headers\Math\vector3.h" />
