@@ -30,7 +30,6 @@ namespace s00nya
 		y = vec.y;
 		z = vec.z;
 		w = vec.w;
-
 	}
 
 	Vector4::Vector4(const float& _x, const float& _y, const float& _z, const float& _w)
