@@ -1,6 +1,7 @@
 #pragma once
 #include "vector3.h"
 #include "vector4.h"
+#include <sstream>
 
 /*
 	Matrix4x4 (Matrix4) uses Row Major Matrix System which basically means
@@ -89,6 +90,8 @@ namespace s00nya
 
 		// Vector and Matrix multiplies one way only
 		friend Vector4 operator*(const Vector4& vec, const Matrix4& mat);
+
+		std::stringstream GetStringStream() const;
 	};
 
 }

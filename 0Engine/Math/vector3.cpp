@@ -133,6 +133,7 @@ namespace s00nya
 			lhs.z + rhs.z
 		);
 	}
+
 	Vector3 operator-(const Vector3& lhs, const Vector3& rhs)
 	{
 		return Vector3(
@@ -140,6 +141,13 @@ namespace s00nya
 			lhs.y - rhs.y,
 			lhs.z - rhs.z
 		);
+	}
+
+	std::stringstream Vector3::GetStringStream() const
+	{
+		std::stringstream vecStr;
+		vecStr << "Vector3 (" << x << ", " << y << ", " << z << ")";
+		return vecStr;
 	}
 
 }

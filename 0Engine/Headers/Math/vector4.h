@@ -1,4 +1,5 @@
 #pragma once
+#include <sstream>
 
 namespace s00nya
 {
@@ -12,7 +13,7 @@ namespace s00nya
 		union { float z; float b; };
 		union { float w; float a; };
 
-		Vector4();	// Initializes eveything to zero
+		Vector4();	// Initializes everything to zero
 		Vector4(const Vector3& vec, const float& _w); // Construct from Vector3
 		Vector4(const Vector4& vec);
 		Vector4(const float& _x, const float& _y, const float& _z, const float& _w);
@@ -36,6 +37,8 @@ namespace s00nya
 		
 		friend Vector4 operator+(const Vector4& lhs, const Vector4& rhs);
 		friend Vector4 operator-(const Vector4& lhs, const Vector4& rhs);
+
+		std::stringstream GetStringStream() const;
 	};
 
 }

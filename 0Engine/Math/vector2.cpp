@@ -101,4 +101,11 @@ namespace s00nya
 		return Vector2(lhs.x - rhs.x, lhs.y - rhs.y);
 	}
 
+	std::stringstream Vector2::GetStringStream() const
+	{
+		std::stringstream vecStr;
+		vecStr << "Vector2 (" << x << ", " << y << ")";
+		return vecStr;
+	}
+
 }

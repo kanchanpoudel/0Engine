@@ -1,4 +1,5 @@
 #pragma once
+#include <sstream>
 
 namespace s00nya
 {
@@ -30,6 +31,8 @@ namespace s00nya
 		
 		friend Vector2 operator+(const Vector2& lhs, const Vector2& rhs);
 		friend Vector2 operator-(const Vector2& lhs, const Vector2& rhs);
+
+		std::stringstream GetStringStream() const;
 	};
 
 }
