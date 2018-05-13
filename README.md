@@ -128,14 +128,14 @@ int main()
 
 **Methods that can be accessed**
 
-- `bool Pressed(Keys key || Buttons button)` : Returns true if the key / button is pressed
-- `bool Held(Keys key || Buttons button)` : Returns true if the key / button is held
-- `bool Repeated(Keys key)` : Return true if the key press is repeated
-- `bool Combined(Keys hold, Keys press)` : Returns true if the first key is held and second is pressed (e.g. [Ctrl] + [C])
-- `bool Combined(Keys hold1, Keys hold2, Keys press)` : Return true if the first two keys are held and last one is pressed
-- `float CursorPositionX()` : Returns the current X position of the cursor
-- `float CursorPositionY()` : Returns the current Y position of the cursor
-- `float HorizontalAxis()` : Returns the cursor offset in X position Ranges (-1.0f, 1.0f)
-- `float VerticalAxis()` : Returns the cursor offset in Y position Ranges (-1.0f, 1.0f)
-- `float ScrollHorizontalAxis()` : Returns the number of scroll turns made horizontally
-- `float ScrollVerticalAxis()` : Returns the number of scroll turns made vertically
+- `bool Pressed(const Keys& key || const Buttons& button)` : Returns true if the key / button is pressed
+- `bool Held(const Keys& key || const Buttons& button)` : Returns true if the key / button is held
+- `bool Repeated(const Keys& key)` : Return true if the key press is repeated
+- `bool Combined(const Keys& hold, const Keys& press)` : Returns true if the first key is held and second is pressed (e.g. [Ctrl] + [C])
+- `bool Combined(const Keys& hold1, const Keys& hold2, const Keys& press)` : Return true if the first two keys are held and last one is pressed
+- `const float& CursorPositionX()` : Returns the current X position of the cursor
+- `const float& CursorPositionY()` : Returns the current Y position of the cursor
+- `const float& HorizontalAxis()` : Returns the cursor offset in X position Ranges (-1.0f, 1.0f)
+- `const float& VerticalAxis()` : Returns the cursor offset in Y position Ranges (-1.0f, 1.0f)
+- `const float& ScrollHorizontalAxis()` : Returns the number of scroll turns made horizontally
+- `const float& ScrollVerticalAxis()` : Returns the number of scroll turns made vertically
