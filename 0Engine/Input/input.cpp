@@ -174,7 +174,7 @@ namespace s00nya
 
 	void Input::KeyCallback(GLFWwindow* window, int key, int scancodes, int action, int mods)
 	{
-		Keys keyCode = (Keys)key;
+		const Keys& keyCode = (Keys)key;
 		// Get the instance of Input class associated with the window
 		Input* currentInput = (Input*)glfwGetWindowUserPointer(window);
 
@@ -201,7 +201,7 @@ namespace s00nya
 
 	void Input::MouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
 	{
-		Buttons buttonCode = (Buttons)button;
+		const Buttons& buttonCode = (Buttons)button;
 		// Get the instance of Input class associated with the window
 		Input* currentInput = (Input*)glfwGetWindowUserPointer(window);
 
@@ -257,7 +257,7 @@ namespace s00nya
 		currentInput->m_scrollOffset[1] = yOffset;
 	}
 
-	bool Input::Pressed(Keys key)
+	bool Input::Pressed(const Keys& key)
 	{
 		if (m_keyMaps[key] == InputState::PRESSED)
 		{
@@ -273,17 +273,17 @@ namespace s00nya
 		return false;
 	}
 
-	bool Input::Held(Keys key)
+	bool Input::Held(const Keys& key)
 	{
 		return m_keyMaps[key] == InputState::DOWN;
 	}
 
-	bool Input::Repeated(Keys key)
+	bool Input::Repeated(const Keys& key)
 	{
 		return m_keyMaps[key] == InputState::REPEATED;
 	}
 
-	bool Input::Combined(Keys hold, Keys press)
+	bool Input::Combined(const Keys& hold, const Keys& press)
 	{
 		/*
 			First Pressing event is checked because
@@ -303,7 +303,7 @@ namespace s00nya
 		return false;
 	}
 
-	bool Input::Combined(Keys hold1, Keys hold2, Keys press)
+	bool Input::Combined(const Keys& hold1, const Keys& hold2, const Keys& press)
 	{
 		/*
 		First Pressing event is checked because
@@ -323,7 +323,7 @@ namespace s00nya
 		return false;
 	}
 
-	bool Input::Pressed(Buttons button)
+	bool Input::Pressed(const Buttons& button)
 	{
 		if (m_buttonMaps[button] == InputState::PRESSED)
 		{
@@ -339,24 +339,24 @@ namespace s00nya
 		return false;
 	}
 
-	bool Input::Held(Buttons button)
+	bool Input::Held(const Buttons& button)
 	{
 		return m_buttonMaps[button] == InputState::DOWN;
 	}
 
-	float Input::CursorPositionX()
+	const float& Input::CursorPositionX()
 	{
 		return m_cursorPosition[0];
 	}
 
-	float Input::CursorPositionY()
+	const float& Input::CursorPositionY()
 	{
 		return m_cursorPosition[1];
 	}
 
-	float Input::HorizontalAxis()
+	const float& Input::HorizontalAxis()
 	{
-		float ha = m_axesOffset[0];
+		const float& ha = m_axesOffset[0];
 		/*
 			Once the offset is called for we want to clear offset
 			because Axes offsets do not have callbacks
@@ -365,9 +365,9 @@ namespace s00nya
 		return ha;
 	}
 
-	float Input::VerticalAxis()
+	const float& Input::VerticalAxis()
 	{
-		float va = m_axesOffset[1];
+		const float& va = m_axesOffset[1];
 		/*
 		Once the offset is called for we want to clear offset
 		because Axes offsets do not have callbacks
@@ -376,12 +376,12 @@ namespace s00nya
 		return va;
 	}
 
-	float Input::ScrollHorizontalAxis()
+	const float& Input::ScrollHorizontalAxis()
 	{
 		return m_scrollOffset[0];
 	}
 
-	float Input::ScrollVerticalAxis()
+	const float& Input::ScrollVerticalAxis()
 	{
 		return m_scrollOffset[1];
 	}

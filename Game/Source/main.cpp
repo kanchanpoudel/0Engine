@@ -12,7 +12,7 @@ class ExampleGame : public Game2D
 
 	void FixedUpdate() override
 	{
-
+		
 	}
 
 	void Update() override

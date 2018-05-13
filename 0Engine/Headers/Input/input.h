@@ -38,26 +38,26 @@ namespace s00nya
 		static void ScrollCallback(GLFWwindow* window, double xOffset, double yOffset);
 
 	public:
-		bool Pressed(Keys key);
-		bool Held(Keys key);
-		bool Repeated(Keys key);
+		bool Pressed(const Keys& key);
+		bool Held(const Keys& key);
+		bool Repeated(const Keys& key);
 		// Two key combination, e.g. [Ctrl] + [C]
-		bool Combined(Keys hold, Keys press); 
+		bool Combined(const Keys& hold, const Keys& press); 
 		// Three key combination, e.g. [Ctrl] + [Shift] + [V]
-		bool Combined(Keys hold1, Keys hold2, Keys press);
+		bool Combined(const Keys& hold1, const Keys& hold2, const Keys& press);
 
-		bool Pressed(Buttons button);
-		bool Held(Buttons button);
+		bool Pressed(const Buttons& button);
+		bool Held(const Buttons& button);
 		// Mouse buttons do not have repeated event
 
-		float CursorPositionX();
-		float CursorPositionY();
+		const float& CursorPositionX();
+		const float& CursorPositionY();
 
-		float HorizontalAxis();
-		float VerticalAxis();
+		const float& HorizontalAxis();
+		const float& VerticalAxis();
 
-		float ScrollHorizontalAxis();
-		float ScrollVerticalAxis();
+		const float& ScrollHorizontalAxis();
+		const float& ScrollVerticalAxis();
 
 		friend class Window;
 	};
