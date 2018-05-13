@@ -7,7 +7,7 @@ namespace s00nya
 {
 
 	Game2D::Game2D() :
-		window(nullptr)
+		window(nullptr), timer(nullptr), input(nullptr)
 	{
 	}
 
