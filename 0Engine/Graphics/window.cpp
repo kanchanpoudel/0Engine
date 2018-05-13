@@ -144,24 +144,24 @@ namespace s00nya
 			  so we calculate the position such that full window is shown in monitor
 			  */
 			const GLFWvidmode* monitorProp = glfwGetVideoMode(glfwGetPrimaryMonitor());
-			int posX = (monitorProp->width >> 1) - (m_width >> 1);	//Division by 2 is equivalent to right shift by 1
-			int posY = (monitorProp->height >> 1) - (m_height >> 1); ////Division by 2 is equivalent to right shift by 1
-			glfwSetWindowMonitor(m_id, nullptr, posX, posY, m_width, m_height, GLFW_DONT_CARE); //GLFW_DONT_CARE disables VSync
+			int posX = (monitorProp->width >> 1) - (m_width >> 1);		// Division by 2 is equivalent to right shift by 1
+			int posY = (monitorProp->height >> 1) - (m_height >> 1);	// Division by 2 is equivalent to right shift by 1
+			glfwSetWindowMonitor(m_id, nullptr, posX, posY, m_width, m_height, GLFW_DONT_CARE); // GLFW_DONT_CARE disables VSync
 		}
 		else
-			glfwSetWindowMonitor(m_id, glfwGetPrimaryMonitor(), 0, 0, m_width, m_height, GLFW_DONT_CARE); //GLFW_DONT_CARE disables VSync
+			glfwSetWindowMonitor(m_id, glfwGetPrimaryMonitor(), 0, 0, m_width, m_height, GLFW_DONT_CARE); // GLFW_DONT_CARE disables VSync
 		
 		m_fullscreen = !m_fullscreen;
 	}
 
 	void Window::ChangeCursor(const char* cursorPath) const
 	{
-		//TO-DO
+		// TO-DO
 	}
 
 	void Window::SetIcon(const char* iconPath) const
 	{
-		//TO-DO
+		// TO-DO
 	}
 
 	void Window::DisableCursor() const
