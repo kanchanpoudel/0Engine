@@ -8,9 +8,14 @@ This is a 2D game engine
 - [GLFW](http://www.glfw.org/)
 - [GLEW](http://glew.sourceforge.net/)
 
-*Note that dependencies are available in `Dependencies/lib`*
+**NOTE**
+
+*All dependencies are available in `Dependencies/lib`*
+
 *All the headers files that are needed for Dependencies are included in `Dependencies/${DepName}/include`*
-*For GLFW, you have to define platform macro in the file `Dependencies/GLFW/src/glfw_config`, further documentation is available in [official GLFW site](http://glew.sourceforge.net/)*
+
+*For GLFW, you have to define platform macro in the file `Dependencies/GLFW/src/glfw_config.h`, further documentation is available in [official GLFW site](http://glew.sourceforge.net/)*
+
 
 ## Solution Structure 
 - `./s00nya/bin/` should contain all the binaries and executables
@@ -20,6 +25,7 @@ This is a 2D game engine
 - All other directories in the root directory except (`bin`, `0Engine` and `Dependencies`)are seperate projects used for example game projects
 - `./s00nya/0Engine` : This project files should output game engine static C++ library which is then used by the example projects
 - `./s00nya/Game` : This is example game project which uses the `Lie Game Engine` static C++ library
+
 
 ## 0Engine Directory Structure
 - `Headers` should contain all the directories that contain the header files for all the definations used in Game Engine
