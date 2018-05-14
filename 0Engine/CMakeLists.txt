@@ -1,0 +1,167 @@
+# Project : 0Engine/0Engine.vcxproj
+cmake_minimum_required(VERSION 3.0.0 FATAL_ERROR)
+
+##################### Variables ############################
+############################################################
+
+# Project
+get_filename_component(PROJECT_DIR "${CMAKE_CURRENT_SOURCE_DIR}" ABSOLUTE)
+set(DEPENDENCIES_DIR ${PROJECT_DIR}/dependencies)
+set(PROJECT_NAME 0Engine)
+
+# Dependencies
+set(GLEW_DIR ../Dependencies/GLEW)
+set(GLFW_DIR ../Dependencies/GLFW)
+
+# Outputs
+set(OUTPUT_DEBUG project/build/x64/${PROJECT_DIR})
+set(OUTPUT_RELEASE project/build/x64/${PROJECT_DIR})
+
+################# CMake Project ############################
+# The main options of project                              #
+############################################################
+
+project(${PROJECT_NAME} CXX)
+
+# Define Release by default.
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE "Release")
+  message(STATUS "Build type not specified: Use Release by default.")
+endif(NOT CMAKE_BUILD_TYPE)
+
+############## Artefacts Output ############################
+# Defines outputs , depending BUILD TYPE                   #
+############################################################
+
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+  set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_DIR}/${OUTPUT_DEBUG}")
+  set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_DIR}/${OUTPUT_DEBUG}")
+  set(CMAKE_EXECUTABLE_OUTPUT_DIRECTORY "${PROJECT_DIR}/${OUTPUT_DEBUG}")
+else()
+  set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_DIR}/${OUTPUT_RELEASE}")
+  set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_DIR}/${OUTPUT_RELEASE}")
+  set(CMAKE_EXECUTABLE_OUTPUT_DIRECTORY "${PROJECT_DIR}/${OUTPUT_RELEASE}")
+endif()
+
+# Messages
+message("${PROJECT_NAME}: MAIN PROJECT: ${CMAKE_PROJECT_NAME}")
+message("${PROJECT_NAME}: CURR PROJECT: ${CMAKE_CURRENT_SOURCE_DIR}")
+message("${PROJECT_NAME}: CURR BIN DIR: ${CMAKE_CURRENT_BINARY_DIR}")
+
+###################### Includes ############################
+# Include files and directories                            #
+############################################################
+
+# Include directories 
+include_directories(${GLEW_DIR}/include)
+include_directories(${GLFW_DIR}/include)
+include_directories(./Headers)
+
+################## Dependencies ############################
+# Add Dependencies to project                              #
+############################################################
+
+# Dependencies: disable BUILD_DEPENDS to link with libraries already built
+option(BUILD_DEPENDS "Build other CMake project." ON)
+
+if(BUILD_DEPENDS)
+  if(NOT TARGET GLEW)
+    add_subdirectory("${GLEW_DIR}" ${CMAKE_BINARY_DIR}/GLEW)
+  endif()
+  if(NOT TARGET GLFW)
+    add_subdirectory("${GLFW_DIR}" ${CMAKE_BINARY_DIR}/GLFW)
+  endif()
+else()
+   link_directories(${DEPENDENCIES_DIR}/GLEW)
+   link_directories(${DEPENDENCIES_DIR}/GLFW)
+endif()
+
+
+
+
+############################################################
+############################################################
+############### Files & Targets ############################
+# Files of project and target to build                     #
+############################################################
+############################################################
+
+# Source Files
+set(SRC_FILES
+    Debugger/logger.cpp
+    Game/game.cpp
+    Game/timer.cpp
+    Graphics/window.cpp
+    Input/input.cpp
+    Math/matrix4.cpp
+    Math/vector2.cpp
+    Math/vector3.cpp
+    Math/vector4.cpp
+)
+source_group("Sources" FILES ${SRC_FILES})
+
+# Header Files
+set(HEADERS_FILES
+    Headers/Debugger/logger.h
+    Headers/exceptions.h
+    Headers/s00nya.h
+    Headers/Game/game.h
+    Headers/Game/timer.h
+    Headers/Input/input.h
+    Headers/Input/input_actions.h
+    Headers/Input/input_values.h
+    Headers/Math/matrix4.h
+    Headers/Math/vector2.h
+    Headers/Math/vector3.h
+    Headers/Math/vector4.h
+    Headers/Graphics/window.h
+)
+source_group("Headers" FILES ${HEADERS_FILES})
+
+
+
+
+# Add library to build.
+add_library(${PROJECT_NAME} STATIC
+   ${SRC_FILES} ${HEADERS_FILES}
+)
+
+######################### Flags ############################
+# Defines Flags for Windows and Linux                      #
+############################################################
+
+if(NOT MSVC)
+   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
+   if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+       set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++")
+   endif()
+endif(NOT MSVC)
+
+# Preprocessor definitions
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    target_compile_definitions(${PROJECT_NAME} PRIVATE 
+   -DENGINE_DEBUG 
+    )
+    if(MSVC)
+        target_compile_options(${PROJECT_NAME} PRIVATE  /W3 /MD /Od /EHsc)
+    endif()
+endif()
+
+if(CMAKE_BUILD_TYPE STREQUAL "Release")
+    target_compile_definitions(${PROJECT_NAME} PRIVATE 
+   -DENGINE_RELEASE 
+    )
+    if(MSVC)
+        target_compile_options(${PROJECT_NAME} PRIVATE  /W3 /GL /Oi /Gy /EHsc)
+    endif()
+endif()
+
+########### Link & Dependencies ############################
+# Add project dependencies and Link to project             #
+############################################################
+
+# Project dependencies
+add_dependencies(${PROJECT_NAME} GLEW GLFW)
+
+# Link with other dependencies.
+target_link_libraries(${PROJECT_NAME} GLEW GLFW )
