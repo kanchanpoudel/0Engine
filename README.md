@@ -10,7 +10,7 @@ This is a 2D game engine
 
 **NOTE**
 
-*All dependencies are available in `Dependencies/lib`*
+*All dependencies are available in `Dependencies` directory*
 
 *All the headers files that are needed for Dependencies are included in `Dependencies/${DepName}/include`*
 
