@@ -1,8 +1,8 @@
-#include "Input\input_values.h"
-#include "Input\input_actions.h"
-#include "Input\input.h"
-#include "GL\glew.h"
-#include "GLFW\glfw3.h"
+#include "Input/input_values.h"
+#include "Input/input_actions.h"
+#include "Input/input.h"
+#include "GL/glew.h"
+#include "GLFW/glfw3.h"
 
 namespace s00nya
 {

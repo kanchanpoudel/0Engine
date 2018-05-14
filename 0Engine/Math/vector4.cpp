@@ -1,5 +1,5 @@
-#include "Math\vector3.h"
-#include "Math\vector4.h"
+#include "Math/vector3.h"
+#include "Math/vector4.h"
 #include <cmath>
 
 namespace s00nya

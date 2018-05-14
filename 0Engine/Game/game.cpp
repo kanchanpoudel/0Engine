@@ -1,7 +1,7 @@
-#include "Game\game.h"
-#include "Graphics\window.h"
-#include "Debugger\logger.h"
-#include "Game\timer.h"
+#include "Game/game.h"
+#include "Graphics/window.h"
+#include "Debugger/logger.h"
+#include "Game/timer.h"
 
 namespace s00nya
 {

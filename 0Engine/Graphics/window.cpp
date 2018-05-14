@@ -1,9 +1,9 @@
-#include "Graphics\window.h"
-#include "GL\glew.h"
-#include "GLFW\glfw3.h"
-#include "Debugger\logger.h"
-#include "Game\timer.h"
-#include "Input\input.h"
+#include "Graphics/window.h"
+#include "GL/glew.h"
+#include "GLFW/glfw3.h"
+#include "Debugger/logger.h"
+#include "Game/timer.h"
+#include "Input/input.h"
 #include <string>
 
 namespace s00nya
