@@ -8,10 +8,11 @@ This is a 2D game engine
 - [GLFW](http://www.glfw.org/)
 - [GLEW](http://glew.sourceforge.net/)
 
-*Note that dependencies for Win32 application are included in `Dependencies/lib`*
-*All the headers files that are needed for Dependencies are included in `Dependencies/include`*
+*Note that dependencies are available in `Dependencies/lib`*
+*All the headers files that are needed for Dependencies are included in `Dependencies/${DepName}/include`*
+*For GLFW, you have to define platform macro in the file `Dependencies/GLFW/src/glfw_config`, further documentation is available in [official GLFW site](http://glew.sourceforge.net/)
 
-## Solution Structure for VS users
+## Solution Structure 
 - `./s00nya/bin/` should contain all the binaries and executables
 - `./s00nya/bin/intermediates/$(ProjectName)` should contain all the logs, debug and release information and intermediate files
 
