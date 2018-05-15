@@ -2,6 +2,7 @@
 #include "Graphics/window.h"
 #include "Debugger/logger.h"
 #include "Game/timer.h"
+#include "Input/input.h"
 
 namespace s00nya
 {
