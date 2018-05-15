@@ -131,11 +131,11 @@ endif()
 add_dependencies(${PROJECT_NAME} 0Engine)
 
 # Link with other dependencies.
-target_link_libraries(${PROJECT_NAME} 0Engine )
+target_link_libraries(${PROJECT_NAME} 0Engine GLEW )
 if(MSVC)
    target_link_libraries(${PROJECT_NAME} Opengl32.lib )
 endif(MSVC)
 
 if(NOT MSVC)
-   target_link_libraries(${PROJECT_NAME} OpenGL)
+   target_link_libraries(${PROJECT_NAME} OpenGL32)
 endif(NOT MSVC)

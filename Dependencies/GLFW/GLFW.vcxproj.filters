@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="COPYING.txt" />
+    <Text Include="CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\context.c">

@@ -41,5 +41,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="LICENSE.txt" />
+    <Text Include="CMakeLists.txt" />
   </ItemGroup>
 </Project>
