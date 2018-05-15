@@ -24,7 +24,7 @@ This is a 2D game engine
 - `./s00nya/0Engine/` is the project directory for the Game Engine
 - All other directories in the root directory except (`bin`, `0Engine` and `Dependencies`)are seperate projects used for example game projects
 - `./s00nya/0Engine` : This project files should output game engine static C++ library which is then used by the example projects
-- `./s00nya/Game` : This is example game project which uses the `Lie Game Engine` static C++ library
+- `./s00nya/Game` : This is example game project which uses the `0Engine` static C++ library
 
 
 ## 0Engine Directory Structure

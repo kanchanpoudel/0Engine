@@ -6,16 +6,11 @@ cmake_minimum_required(VERSION 3.0.0 FATAL_ERROR)
 
 # Project
 get_filename_component(PROJECT_DIR "${CMAKE_CURRENT_SOURCE_DIR}" ABSOLUTE)
-set(DEPENDENCIES_DIR ${PROJECT_DIR}/dependencies)
 set(PROJECT_NAME 0Engine)
 
 # Dependencies
 set(GLEW_DIR ../Dependencies/GLEW)
 set(GLFW_DIR ../Dependencies/GLFW)
-
-# Outputs
-set(OUTPUT_DEBUG project/build/x64/${PROJECT_DIR})
-set(OUTPUT_RELEASE project/build/x64/${PROJECT_DIR})
 
 ################# CMake Project ############################
 # The main options of project                              #
@@ -34,13 +29,15 @@ endif(NOT CMAKE_BUILD_TYPE)
 ############################################################
 
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-  set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_DIR}/${OUTPUT_DEBUG}")
-  set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_DIR}/${OUTPUT_DEBUG}")
-  set(CMAKE_EXECUTABLE_OUTPUT_DIRECTORY "${PROJECT_DIR}/${OUTPUT_DEBUG}")
+  set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${OUTPUT_DEBUG}")
+  set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${OUTPUT_DEBUG}")
+  set(CMAKE_EXECUTABLE_OUTPUT_DIRECTORY "${OUTPUT_DEBUG}")
+  set(EXECUTABLE_OUTPUT_PATH "${OUTPUT_DEBUG}")
 else()
-  set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_DIR}/${OUTPUT_RELEASE}")
-  set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_DIR}/${OUTPUT_RELEASE}")
-  set(CMAKE_EXECUTABLE_OUTPUT_DIRECTORY "${PROJECT_DIR}/${OUTPUT_RELEASE}")
+  set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${OUTPUT_RELEASE}")
+  set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${OUTPUT_RELEASE}")
+  set(CMAKE_EXECUTABLE_OUTPUT_DIRECTORY "${OUTPUT_RELEASE}")
+  set(EXECUTABLE_OUTPUT_PATH "${OUTPUT_RELEASE}")
 endif()
 
 # Messages
@@ -72,8 +69,8 @@ if(BUILD_DEPENDS)
     add_subdirectory("${GLFW_DIR}" ${CMAKE_BINARY_DIR}/GLFW)
   endif()
 else()
-   link_directories(${DEPENDENCIES_DIR}/GLEW)
-   link_directories(${DEPENDENCIES_DIR}/GLFW)
+   link_directories(${CMAKE_BINARY_DIR}/GLEW)
+   link_directories(${CMAKE_BINARY_DIR}/GLFW)
 endif()
 
 
