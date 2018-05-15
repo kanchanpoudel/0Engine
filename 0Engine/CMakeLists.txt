@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.0.0 FATAL_ERROR)
 ############################################################
 
 # Project
-get_filename_component(PROJECT_DIR "${CMAKE_CURRENT_SOURCE_DIR}" ABSOLUTE)
+set(PROJECT_DIR "${CMAKE_CURRENT_SOURCE_DIR}" RELATIVE)
 set(PROJECT_NAME 0Engine)
 
 # Dependencies

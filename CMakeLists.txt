@@ -6,7 +6,7 @@ cmake_minimum_required(VERSION 3.0.0 FATAL_ERROR)
 
 # Solution
 set(SOLUTION_NAME Game)
-get_filename_component(SOLUTION_DIR "${CMAKE_CURRENT_SOURCE_DIR}" ABSOLUTE)
+set(SOLUTION_DIR "./")
 
 # Output Locations
 set(OUTPUT_DEBUG ${SOLUTION_DIR}/bin/Debug/x64/)
