@@ -18,7 +18,7 @@ namespace s00nya
 		std::tm time;
 		localtime_s(&time, &now);
 		std::stringstream timeStream;
-		timeStream << "s00nya logs : [ " << std::put_time(&time, "%Y-%m-%d %X") << " ]" << "/n/n";
+		timeStream << "s00nya logs : [ " << std::put_time(&time, "%Y-%m-%d %X") << " ]" << "\n\n";
 		m_s_logFile << timeStream.str();
 	}
 
