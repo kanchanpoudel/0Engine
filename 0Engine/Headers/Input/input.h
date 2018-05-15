@@ -30,6 +30,14 @@ namespace s00nya
 			Sets up all the callback for input system
 		*/
 		Input(GLFWwindow* window);
+
+		// Should not be able to use default constructor, because window in needed for Input
+		Input() = delete;
+		// Input cannot be copied
+		Input(const Input& input) = delete;
+		Input& operator=(const Input& input) = delete;
+
+	public:
 		~Input();
 
 	private:

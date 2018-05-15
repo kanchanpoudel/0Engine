@@ -11,6 +11,11 @@ namespace s00nya
 	public:
 		Timer();
 
+	private:
+		Timer(const Timer& timer) = delete;
+		Timer& operator=(const Timer& timer) = delete;
+
+	public:
 		void Update();
 		float DeltaTime() const;
 		

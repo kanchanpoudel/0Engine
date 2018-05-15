@@ -18,6 +18,12 @@ namespace s00nya
 		Game2D();
 		virtual ~Game2D();
 
+	private:
+		Game2D(const Game2D& game) = delete;
+		Game2D& operator=(const Game2D& game) = delete;
+
+	public:
+
 		void Construct(const char* title, const int& width, const int& height);
 		void Start();
 
