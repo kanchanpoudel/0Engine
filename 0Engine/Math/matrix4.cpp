@@ -532,13 +532,13 @@ namespace s00nya
 	}
 	Matrix4 Matrix4::LookAt(const Vector3& position, const Vector3& target, const Vector3& up)
 	{
-		Vector3 right = Vector3::Normalize(target - position);
-		Vector3 fwd = Vector3::Normalize((Vector3::Cross(right, up)));
+		Vector3 fwd = Vector3::Normalize(position - target);
+		Vector3 right = Vector3::Normalize((Vector3::Cross(up , fwd)));
 		Vector3 _up = Vector3::Cross(fwd, right);
 		return(right.x, right.y, right.z, 0.0f,
 			_up.x, _up.y, _up.z, 0.0f,
 			fwd.x, fwd.y, fwd.z, 0.f,
-			position.x, position.y, position.z, 1);
+			position.x, position.y, position.z, 1.0f);
 	}
 
 	Matrix4 Matrix4::Orthographic(
