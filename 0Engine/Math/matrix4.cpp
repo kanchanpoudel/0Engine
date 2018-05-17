@@ -1,11 +1,5 @@
-
-
 #include "Math/matrix4.h"
 #include<cmath>
-
-
-
-
 
 namespace s00nya
 {
@@ -33,22 +27,18 @@ namespace s00nya
 		const Vector4& row1,
 		const Vector4& row2,
 		const Vector4& row3
-	)
+	):
+		rows{ row0, row1, row2, row3 }
 	{
-		rows[0] = row0;
-		rows[1] = row1;
-		rows[2] = row2;
-		rows[3] = row3;
-
 	}
-
 
 	Matrix4::Matrix4(
 		const float& e00, const float& e10, const float& e20, const float& e30,
 		const float& e01, const float& e11, const float& e21, const float& e31,
 		const float& e02, const float& e12, const float& e22, const float& e32,
 		const float& e03, const float& e13, const float& e23, const float& e33
-	) :elements{
+	) :
+		elements{
 		e00, e10, e20, e30,
 		e01, e11, e21, e31,
 		e02, e12, e22, e32,
@@ -57,8 +47,8 @@ namespace s00nya
 	{
 	}
 
-	Matrix4::Matrix4(const float& diagonalElement)
-		:elements{
+	Matrix4::Matrix4(const float& diagonalElement) :
+		elements{
 		diagonalElement,0.0f,0.0f,0.0f,
 		0.0f,diagonalElement,0.0f,0.0f,
 		0.0f,0.0f,diagonalElement,0.0f,
@@ -91,8 +81,6 @@ namespace s00nya
 
 	}
 
-
-
 	Matrix4& Matrix4::operator=(const Matrix4& mat)
 	{
 		if (this == &mat)
@@ -114,11 +102,7 @@ namespace s00nya
 		elements[14] = mat.elements[14];
 		elements[15] = mat.elements[15];
 		return *this;
-
-
 	}
-
-
 
 	Matrix4 Matrix4::operator-() const
 	{
@@ -139,9 +123,7 @@ namespace s00nya
 			-elements[13],
 			-elements[14],
 			-elements[15]
-
 		);
-
 	}
 
 	Matrix4& Matrix4::operator*=(const Matrix4& mat)
@@ -157,16 +139,10 @@ namespace s00nya
 				for (k = 0; k < 4; k++)
 				{
 					this->elements[j + 4 * x] += temp.elements[k + 4 * x] * mat.elements[j + 4 * k];
-
 				}
-
-
 			}
 		}
 		return *this;
-
-
-
 	}
 
 	Matrix4& Matrix4::operator+=(const Matrix4& mat)
@@ -187,10 +163,9 @@ namespace s00nya
 		elements[13] += mat.elements[13];
 		elements[14] += mat.elements[14];
 		elements[15] += mat.elements[15];
-
 		return *this;
-
 	}
+
 	Matrix4& Matrix4:: operator-=(const Matrix4& mat)
 	{
 		elements[0] -= mat.elements[0];
@@ -209,13 +184,13 @@ namespace s00nya
 		elements[13] -= mat.elements[13];
 		elements[14] -= mat.elements[14];
 		elements[15] -= mat.elements[15];
-
 		return *this;
-
 	}
+
 	Matrix4 operator*(const float& scalar, const Matrix4& mat)
 	{
-		return Matrix4(mat.elements[0] * scalar,
+		return Matrix4(
+			mat.elements[0] * scalar,
 			mat.elements[1] * scalar,
 			mat.elements[2] * scalar,
 			mat.elements[3] * scalar,
@@ -232,9 +207,11 @@ namespace s00nya
 			mat.elements[14] * scalar,
 			mat.elements[15] * scalar);
 	}
+
 	Matrix4 operator*(const Matrix4& mat, const float& scalar)
 	{
-		return Matrix4(mat.elements[0] * scalar,
+		return Matrix4(
+			mat.elements[0] * scalar,
 			mat.elements[1] * scalar,
 			mat.elements[2] * scalar,
 			mat.elements[3] * scalar,
@@ -250,7 +227,6 @@ namespace s00nya
 			mat.elements[13] * scalar,
 			mat.elements[14] * scalar,
 			mat.elements[15] * scalar);
-
 	}
 
 	Matrix4 operator*(const Matrix4& lhs, const Matrix4& rhs)
@@ -265,22 +241,16 @@ namespace s00nya
 				for (k = 0; k < 4; k++)
 				{
 					temp.elements[j + 4 * i] += lhs.elements[k + 4 * i] * rhs.elements[j + 4 * k];
-
-
-
 				}
-
-
 			}
 		}
 		return temp;
-
-
 	}
 
 	Matrix4 operator+(const Matrix4& lhs, const Matrix4& rhs)
 	{
-		return(lhs.elements[0] + rhs.elements[0],
+		return Matrix4(
+			lhs.elements[0] + rhs.elements[0],
 			lhs.elements[1] + rhs.elements[1],
 			lhs.elements[2] + rhs.elements[2],
 			lhs.elements[3] + rhs.elements[3],
@@ -297,12 +267,12 @@ namespace s00nya
 			lhs.elements[14] + rhs.elements[14],
 			lhs.elements[15] + rhs.elements[15]
 			);
-
 	}
 
 	Matrix4 operator-(const Matrix4& lhs, const Matrix4& rhs)
 	{
-		return(lhs.elements[0] - rhs.elements[0],
+		return Matrix4(
+			lhs.elements[0] - rhs.elements[0],
 			lhs.elements[1] - rhs.elements[1],
 			lhs.elements[2] - rhs.elements[2],
 			lhs.elements[3] - rhs.elements[3],
@@ -319,7 +289,6 @@ namespace s00nya
 			lhs.elements[14] - rhs.elements[14],
 			lhs.elements[15] - rhs.elements[15]
 			);
-
 	}
 
 	Matrix4& Matrix4::Transform(const Matrix4& mat)
@@ -327,7 +296,6 @@ namespace s00nya
 
 		*this *= mat;
 		return *this;
-
 	}
 
 	Matrix4 Matrix4::Transpose(const Matrix4& mat)
@@ -337,8 +305,6 @@ namespace s00nya
 		{
 			for (int j = 0; j < 4; j++)
 				temp.elements[4 * i + j] = mat.elements[4 * j + i];
-
-
 		}
 		return temp;
 	}
@@ -356,10 +322,6 @@ namespace s00nya
 			0.0f, 0.0f, vec.z, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f
 		);
-
-
-
-
 	}
 
 	Matrix4 Matrix4::Translation(const Vector3& vec)
@@ -370,7 +332,6 @@ namespace s00nya
 			0.0f, 0.0f, 1.0f, 0.0f,
 			vec.x, vec.y, vec.z, 1.0f
 		);
-
 	}
 
 	Matrix4 Matrix4::Rotation(const float& angle, const Vector3& axis)
@@ -388,8 +349,6 @@ namespace s00nya
 			xy * (1.0 - c) + axis.z * s, yy * (1.0 - c) + c, yz * (1.0 - c) - axis.x * s, 0.0f,
 			xz * (1.0 - c) - axis.y * s, yz * (1.0 - c) + axis.x * s, zz *(1.0 - c) + c, zz *(1.0 - c) + c,
 			0.0f, 0.0f, 0.0f, 1.0f);
-
-
 	}
 
 	Vector4 operator*(const Vector4& vec, const Matrix4& mat)
@@ -401,12 +360,10 @@ namespace s00nya
 			vec.x*mat.elements[3] + vec.y*mat.elements[7] + vec.z*mat.elements[11] + vec.w*mat.elements[15]
 		);
 	}
+
 	Matrix4 Matrix4::Inverse(const Matrix4& mat)
 	{
 		Matrix4 INV;
-		double det;
-
-		int i;
 
 		INV.elements[0] = mat.elements[5] * mat.elements[10] * mat.elements[15] -
 			mat.elements[5] * mat.elements[11] * mat.elements[14] -
@@ -520,25 +477,25 @@ namespace s00nya
 			mat.elements[8] * mat.elements[1] * mat.elements[6] -
 			mat.elements[8] * mat.elements[2] * mat.elements[5];
 
-		det = mat.elements[0] * INV.elements[0] + mat.elements[1] * INV.elements[4] + mat.elements[2] * INV.elements[8] + mat.elements[3] * INV.elements[12];
-
-
-
+		float det(mat.elements[0] * INV.elements[0] + mat.elements[1] * INV.elements[4] + mat.elements[2] * INV.elements[8] + mat.elements[3] * INV.elements[12]);
 		det = 1.0f / det;
 
-		for (i = 0; i < 16; i++)
+		for (int i = 0; i < 16; i++)
 			INV.elements[i] = INV.elements[i] * det;
 		return INV;
 	}
-	Matrix4 Matrix4::LookAt(const Vector3& position, const Vector3& target, const Vector3& up)
+
+	Matrix4 Matrix4::LookAt(const Vector3& position, const Vector3& target, const Vector3& worldUp)
 	{
 		Vector3 fwd = Vector3::Normalize(position - target);
-		Vector3 right = Vector3::Normalize((Vector3::Cross(up , fwd)));
-		Vector3 _up = Vector3::Cross(fwd, right);
-		return(right.x, right.y, right.z, 0.0f,
-			_up.x, _up.y, _up.z, 0.0f,
-			fwd.x, fwd.y, fwd.z, 0.f,
-			position.x, position.y, position.z, 1.0f);
+		Vector3 right = Vector3::Normalize((Vector3::Cross(worldUp, fwd)));
+		Vector3 up = Vector3::Cross(fwd, right);
+		return Matrix4(
+			right.x, right.y, right.z, 0.0f,
+			up.x,	 up.y,	  up.z,	   0.0f,
+			fwd.x,	 fwd.y,	  fwd.z,   0.f,
+			0.0f,    0.0f,    0.0f,    1.0f
+		);
 	}
 
 	Matrix4 Matrix4::Orthographic(
@@ -550,9 +507,10 @@ namespace s00nya
 		const float& far
 	)
 	{
-		return (2 / (right - left), 0.0f, 0.0f, -(right + left) / (right - left),
-			0.0f, 2 / (top - bottom), 0.0f, -(top + bottom) / (top - bottom),
-			0.0f, 0.0f, -2 / (far - near), -(far + near) / (far - near),
+		return Matrix4(
+			2.0f / (right - left), 0.0f, 0.0f, -(right + left) / (right - left),
+			0.0f, 2.0f / (top - bottom), 0.0f, -(top + bottom) / (top - bottom),
+			0.0f, 0.0f, -2.0f / (far - near), -(far + near) / (far - near),
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 
@@ -564,13 +522,14 @@ namespace s00nya
 		const float& far
 	)
 	{
-		return (1 / (tanf(fov)*aspectRatio), 0.0f, 0.0f, 0.0f,
-			0.0f, 1 / tan(fov / 2), 0.0f, 0.0f,
+		float cot = 1.0f / tanf(fov / 2.0f);
+		return Matrix4(
+			cot / aspectRatio, 0.0f, 0.0f, 0.0f,
+			0.0f, cot, 0.0f, 0.0f,
 			0.0f, 0.0f, -(far + near) / (far - near), -1.0f,
 			0.0f, 0.0f, (-2 * far*near) / (far - near), 0.0f
 			);
 	}
-
 
 	std::stringstream Matrix4::GetStringStream() const
 	{
@@ -579,20 +538,8 @@ namespace s00nya
 			<< elements[4] << ", " << elements[5] << ", " << elements[6] << ", " << elements[7] << '\n'
 			<< elements[8] << ", " << elements[9] << ", " << elements[10] << ", " << elements[11] << '\n'
 			<< elements[12] << ", " << elements[13] << ", " << elements[14] << ", " << elements[15] << ")";
-
-
 		return MatStr;
 	}
-
-
-
-
-
-
-
-
-
-
 
 }
 
