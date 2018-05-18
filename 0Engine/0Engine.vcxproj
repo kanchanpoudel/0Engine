@@ -144,6 +144,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Debugger\logger.cpp" />
+    <ClCompile Include="GameObject\gameobject.cpp" />
     <ClCompile Include="Game\game.cpp" />
     <ClCompile Include="Game\timer.cpp" />
     <ClCompile Include="Graphics\window.cpp" />
@@ -155,6 +156,7 @@
     <ClCompile Include="Math\vector4.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Headers\GameObject\gameobject.h" />
     <ClInclude Include="Headers\Input\input_manager.h" />
     <ClInclude Include="Headers\Debugger\logger.h" />
     <ClInclude Include="Headers\exceptions.h" />
