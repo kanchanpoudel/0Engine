@@ -151,6 +151,7 @@
     <ClCompile Include="Input\input_manager.cpp" />
     <ClCompile Include="Input\input.cpp" />
     <ClCompile Include="Math\matrix4.cpp" />
+    <ClCompile Include="Math\transform2D.cpp" />
     <ClCompile Include="Math\vector2.cpp" />
     <ClCompile Include="Math\vector3.cpp" />
     <ClCompile Include="Math\vector4.cpp" />
@@ -166,6 +167,7 @@
     <ClInclude Include="Headers\Input\input_actions.h" />
     <ClInclude Include="Headers\Input\input_values.h" />
     <ClInclude Include="Headers\Math\matrix4.h" />
+    <ClInclude Include="Headers\Math\transform2D.h" />
     <ClInclude Include="Headers\Math\vector2.h" />
     <ClInclude Include="Headers\Math\vector3.h" />
     <ClInclude Include="Headers\Math\vector4.h" />
