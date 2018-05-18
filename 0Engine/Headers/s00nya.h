@@ -10,3 +10,4 @@
 // Input manager include
 #include "Input\input_values.h"
 #include "Input\input.h"
+#include "Input\input_manager.h"

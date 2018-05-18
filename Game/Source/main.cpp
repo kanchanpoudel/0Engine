@@ -5,9 +5,14 @@ using namespace s00nya;
 
 class ExampleGame : public Game2D
 {	
+
+	InputManager inputManager;
+
 	void OnConstruction() override
 	{
-		
+		inputManager.SupplySystem(input);
+		inputManager.AddKeyMap("Jump", { Keys::SPACE, Keys::ALPAHBET_W });
+		inputManager.AddKeyMap("Quit", { Keys::ESCAPE, Keys::ALPAHBET_Q });
 	}
 
 	void FixedUpdate() override
@@ -17,7 +22,9 @@ class ExampleGame : public Game2D
 
 	void Update() override
 	{
-		if (input->Pressed(Keys::ESCAPE))
+		if(inputManager.KeyMapHeld("Jump"))
+			std::cout << "Player Jumped!" << std::endl;
+		if (inputManager.KeyMapPressed("Quit"))
 			window->Close();
 	}
 };
