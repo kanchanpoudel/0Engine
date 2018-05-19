@@ -1,6 +1,7 @@
 #include "Math\transform2D.h"
 
-namespace s00nya {
+namespace s00nya 
+{
 
 	Transform2D::Transform2D() :
 		position(0.0f, 0.0f, 0.0f), scale(1.0f, 1.0f, 1.0f), rotation(0.0f)
@@ -11,4 +12,5 @@ namespace s00nya {
 		position(pos), scale(sc), rotation(rot)
 	{
 	}
+
 }

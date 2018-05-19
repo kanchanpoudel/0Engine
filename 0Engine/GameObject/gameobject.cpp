@@ -1,6 +1,7 @@
 #include "GameObject\gameobject.h"
 
-namespace s00nya {
+namespace s00nya 
+{
 
 
 }

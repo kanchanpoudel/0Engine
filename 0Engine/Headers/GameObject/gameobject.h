@@ -1,9 +1,11 @@
 #pragma once
 #include "Math\transform2D.h"
 
-namespace s00nya {
+namespace s00nya 
+{
 
-	class Gameobject {
+	class Gameobject 
+	{
 
 		Transform2D transform;
 

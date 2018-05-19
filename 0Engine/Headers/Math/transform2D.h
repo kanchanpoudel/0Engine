@@ -1,16 +1,17 @@
 #pragma once
 #include "Math\vector3.h"
 
-namespace s00nya {
+namespace s00nya 
+{
 
-	class Transform2D {
-
+	class Transform2D 
+	{
 		Vector3 position;
-		Vector3 scale;
 		float rotation;
+		Vector3 scale;
 
 		Transform2D();
-		Transform2D(Vector3, Vector3, float);
-
+		Transform2D(Vector3 pos, Vector3 sc, float rot);
 	};
+
 }
