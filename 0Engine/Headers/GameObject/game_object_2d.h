@@ -4,7 +4,7 @@
 namespace s00nya 
 {
 
-	class Gameobject 
+	class GameObject2D 
 	{
 
 		Transform2D transform;

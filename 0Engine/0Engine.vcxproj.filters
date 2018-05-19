@@ -45,10 +45,10 @@
     <ClCompile Include="Math\matrix4.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject\gameobject.cpp">
+    <ClCompile Include="Math\transform2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Math\transform2D.cpp">
+    <ClCompile Include="GameObject\game_object_2d.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -98,10 +98,10 @@
     <ClInclude Include="Headers\Math\matrix4.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\GameObject\gameobject.h">
+    <ClInclude Include="Headers\Math\transform2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\Math\transform2D.h">
+    <ClInclude Include="Headers\GameObject\game_object_2d.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
