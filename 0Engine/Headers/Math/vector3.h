@@ -35,7 +35,7 @@ namespace s00nya
 		friend Vector3 operator+(const Vector3& lhs, const Vector3& rhs);
 		friend Vector3 operator-(const Vector3& lhs, const Vector3& rhs);
 
-		std::stringstream GetStringStream() const;
+		std::string GetString() const;
 	};
 
 }

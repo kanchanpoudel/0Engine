@@ -25,9 +25,19 @@ namespace s00nya
 		static void Initialize();
 		static void ShutDown();
 
-		static void Add(std::string logStr, int level);
-		static void Add(std::stringstream log, int level);
+		static void Add(const std::string& logStr, int level);
 		static void Log(bool logToConsole = true, bool logToFile = false);
+		
+	private:
+		static void __stdcall OpenGLErrorCallback(
+			unsigned int source, 
+			unsigned int type,
+			unsigned int id,
+			unsigned int severity,
+			int length,
+			const char* message,
+			const void* userParam
+		);
 	};
 
 }

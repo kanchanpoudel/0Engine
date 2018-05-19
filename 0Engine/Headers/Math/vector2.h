@@ -32,7 +32,7 @@ namespace s00nya
 		friend Vector2 operator+(const Vector2& lhs, const Vector2& rhs);
 		friend Vector2 operator-(const Vector2& lhs, const Vector2& rhs);
 
-		std::stringstream GetStringStream() const;
+		std::string GetString() const;
 	};
 
 }

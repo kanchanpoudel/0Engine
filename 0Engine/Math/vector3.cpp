@@ -143,11 +143,11 @@ namespace s00nya
 		);
 	}
 
-	std::stringstream Vector3::GetStringStream() const
+	std::string Vector3::GetString() const
 	{
 		std::stringstream vecStr;
 		vecStr << "Vector3 (" << x << ", " << y << ", " << z << ")";
-		return vecStr;
+		return vecStr.str();
 	}
 
 }

@@ -1,5 +1,5 @@
 #include "Math/matrix4.h"
-#include<cmath>
+#include <cmath>
 
 namespace s00nya
 {
@@ -531,14 +531,14 @@ namespace s00nya
 			);
 	}
 
-	std::stringstream Matrix4::GetStringStream() const
+	std::string Matrix4::GetString() const
 	{
 		std::stringstream MatStr;
 		MatStr << "Matrix4 (" << elements[0] << ", " << elements[1] << ", " << elements[2] << ", " << elements[3] << '\n'
 			<< elements[4] << ", " << elements[5] << ", " << elements[6] << ", " << elements[7] << '\n'
 			<< elements[8] << ", " << elements[9] << ", " << elements[10] << ", " << elements[11] << '\n'
 			<< elements[12] << ", " << elements[13] << ", " << elements[14] << ", " << elements[15] << ")";
-		return MatStr;
+		return MatStr.str();
 	}
 
 }

@@ -22,6 +22,10 @@ namespace s00nya
 		glfwWindowHint(GLFW_SAMPLES, 4);
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
+#ifdef ENGINE_DEBUG
+		glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
+#endif
+
 		//If WINDOW_AUTO_ is passed then set width and height of the monitor
 		const GLFWvidmode* monitorProp = glfwGetVideoMode(glfwGetPrimaryMonitor());
 		if (width == WINDOW_AUTO_WIDTH)
@@ -67,46 +71,6 @@ namespace s00nya
 	{
 		glfwSwapBuffers(m_id);
 		glfwPollEvents();
-
-		GLenum err;
-		while (true)
-		{
-			err = glGetError();
-			if (!err) break;
-			switch (err)
-			{
-			case GL_INVALID_ENUM:
-				Debug::Add("OPENGL | An unacceptable value is specified for an enumerated argument", 
-					Debug::S00NYA_LOG_ERROR);
-				break;
-			case GL_INVALID_VALUE:
-				Debug::Add("OPENGL | A numeric argument is out of range",
-					Debug::S00NYA_LOG_ERROR);
-				break;
-			case GL_INVALID_OPERATION:
-				Debug::Add("OPENGL | The specified operation is not allowed in the current state",
-					Debug::S00NYA_LOG_ERROR);
-				break;
-			case GL_INVALID_FRAMEBUFFER_OPERATION:
-				Debug::Add("OPENGL | The frame buffer object is not complete",
-					Debug::S00NYA_LOG_ERROR);
-				break;
-			case GL_OUT_OF_MEMORY:
-				Debug::Add("OPENGL | There is not enough memory left to execute the command",
-					Debug::S00NYA_LOG_ERROR);
-				break;
-			case GL_STACK_UNDERFLOW:
-				Debug::Add("OPENGL | An attempt has been made to perform an operation that would cause an internal stack to underflow",
-					Debug::S00NYA_LOG_ERROR);
-				break;
-			case GL_STACK_OVERFLOW:
-				Debug::Add("OPENGL | An attempt has been made to perform an operation that would cause an internal stack to overflow",
-					Debug::S00NYA_LOG_ERROR);
-				break;
-			default:
-				break;
-			}
-		}
 	}
 
 	void Window::Close() const
