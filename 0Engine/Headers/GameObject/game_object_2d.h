@@ -1,5 +1,5 @@
 #pragma once
-#include "Math\transform2D.h"
+#include "Math/transform_2d.h"
 
 namespace s00nya 
 {
@@ -10,4 +10,5 @@ namespace s00nya
 		Transform2D transform;
 
 	};
+
 }

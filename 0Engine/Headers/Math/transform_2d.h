@@ -4,7 +4,7 @@
 namespace s00nya 
 {
 
-	class Transform2D 
+	struct Transform2D 
 	{
 		Vector3 position;
 		float rotation;
