@@ -2,14 +2,13 @@
 #include "GL/glew.h"
 #include "GLFW/glfw3.h"
 #include "Debugger/logger.h"
-#include "Game/timer.h"
 #include "Input/input.h"
 #include <string>
 
 namespace s00nya
 {
 	
-	Window::Window(const char* title, const int& width, const int& height) :
+	Window::Window(const Character* title, const Integer& width, const Integer& height) :
 		m_id(nullptr), m_width(width), m_height(height), m_fullscreen(false)
 	{
 		glfwInit();
@@ -83,7 +82,7 @@ namespace s00nya
 		return !glfwWindowShouldClose(m_id);
 	}
 
-	void Window::Resize(const int& width, const int& height)
+	void Window::Resize(const Integer& width, const Integer& height)
 	{
 		//If WINDOW_AUTO_ is passed then set width and height of the monitor
 		const GLFWvidmode* monitorProp = glfwGetVideoMode(glfwGetPrimaryMonitor());
@@ -110,8 +109,8 @@ namespace s00nya
 			  so we calculate the position such that full window is shown in monitor
 			  */
 			const GLFWvidmode* monitorProp = glfwGetVideoMode(glfwGetPrimaryMonitor());
-			int posX = (monitorProp->width >> 1) - (m_width >> 1);		// Division by 2 is equivalent to right shift by 1
-			int posY = (monitorProp->height >> 1) - (m_height >> 1);	// Division by 2 is equivalent to right shift by 1
+			Integer posX = (monitorProp->width >> 1) - (m_width >> 1);		// Division by 2 is equivalent to right shift by 1
+			Integer posY = (monitorProp->height >> 1) - (m_height >> 1);	// Division by 2 is equivalent to right shift by 1
 			glfwSetWindowMonitor(m_id, nullptr, posX, posY, m_width, m_height, GLFW_DONT_CARE); // GLFW_DONT_CARE disables VSync
 		}
 		else
@@ -120,12 +119,12 @@ namespace s00nya
 		m_fullscreen = !m_fullscreen;
 	}
 
-	void Window::ChangeCursor(const char* cursorPath) const
+	void Window::ChangeCursor(const Character* cursorPath) const
 	{
 		// TO-DO
 	}
 
-	void Window::SetIcon(const char* iconPath) const
+	void Window::SetIcon(const Character* iconPath) const
 	{
 		// TO-DO
 	}

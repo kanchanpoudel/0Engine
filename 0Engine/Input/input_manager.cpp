@@ -3,17 +3,12 @@
 namespace s00nya
 {
 
-	InputManager::InputManager():
-		m_system(nullptr)
+	InputManager::InputManager(Input* system):
+		m_system(system)
 	{
 	}
 
-	void InputManager::SupplySystem(Input* system)
-	{
-		m_system = system;
-	}
-
-	bool InputManager::AddKeyMap(const std::string& name, const std::vector<Keys>& keyMaps)
+	Boolean InputManager::AddKeyMap(const std::string& name, const std::vector<Keys>& keyMaps)
 	{
 		if (keyMaps.empty()) 
 			return false;
@@ -26,7 +21,7 @@ namespace s00nya
 		return true;
 	}
 
-	bool InputManager::RemoveKeyMaps(const std::string & name)
+	Boolean InputManager::RemoveKeyMaps(const std::string & name)
 	{
 		for (auto& keymap : m_keyMaps)
 		{
@@ -40,7 +35,7 @@ namespace s00nya
 		return false;
 	}
 
-	bool InputManager::KeyMapPressed(const std::string & name)
+	Boolean InputManager::KeyMapPressed(const std::string & name)
 	{
 		for (auto& keymap : m_keyMaps)
 		{
@@ -57,7 +52,7 @@ namespace s00nya
 		return false;
 	}
 
-	bool InputManager::KeyMapHeld(const std::string & name)
+	Boolean InputManager::KeyMapHeld(const std::string & name)
 	{
 		for (auto& keymap : m_keyMaps)
 		{

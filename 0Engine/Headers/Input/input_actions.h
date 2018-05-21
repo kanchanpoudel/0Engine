@@ -1,9 +1,10 @@
 #pragma once
+#include "s00nya_defs.h"
 
 namespace s00nya
 {
 
-	enum class InputState : int
+	enum class S00NYA_API InputState : Integer
 	{
 		DOWN =		0,
 		UP =		1,

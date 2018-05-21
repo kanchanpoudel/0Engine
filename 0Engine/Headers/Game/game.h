@@ -1,4 +1,5 @@
 #pragma once
+#include "s00nya_defs.h"
 
 namespace s00nya
 {
@@ -6,16 +7,18 @@ namespace s00nya
 	class Window;
 	class Timer;
 	class Input;
+	class InputManager;
 
-	class Game2D
+	class S00NYA_API Game2D
 	{
 	protected:
 		Window* window;
 		Timer* timer;
 		Input* input;
+		InputManager* inputManager;
 
 	public:
-		Game2D();
+		Game2D(const Character* title, const Integer& width, const Integer& height);
 		virtual ~Game2D();
 
 	private:
@@ -23,8 +26,6 @@ namespace s00nya
 		Game2D& operator=(const Game2D& game) = delete;
 
 	public:
-
-		void Construct(const char* title, const int& width, const int& height);
 		void Start();
 
 	private:
@@ -32,12 +33,19 @@ namespace s00nya
 
 	//Methods to Override
 	protected:
-		virtual void OnConstruction();  // Call to construct objects and set default values
 		virtual void FixedUpdate();		// Call 60 times a second
 		virtual void Update();			// Call as frequent as possible OR Vsync-ed
 
+	public:
+		static Input& GetInput();
+		static Timer& GetTimer();
+		static InputManager& GetInputManager();
+
 	protected:
-		static const float fps; // Frames per second
+		static const Float fps; // Frames per second
+	
+	private:
+		static Game2D* instance;
 	};
 
 }

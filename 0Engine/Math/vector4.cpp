@@ -13,7 +13,7 @@ namespace s00nya
 	{
 	}
 
-	Vector4::Vector4(const Vector3& vec, const float& _w):
+	Vector4::Vector4(const Vector3& vec, const Float& _w):
 		 x(vec.x), 
 		 y(vec.y), 
 		 z(vec.z),
@@ -32,7 +32,7 @@ namespace s00nya
 		w = vec.w;
 	}
 
-	Vector4::Vector4(const float& _x, const float& _y, const float& _z, const float& _w)
+	Vector4::Vector4(const Float& _x, const Float& _y, const Float& _z, const Float& _w)
 		: x(_x), y(_y), z(_z), w(_w)
 	{
 	}
@@ -54,7 +54,7 @@ namespace s00nya
 		return Vector4(-x, -y, -z, -w);
 	}
 
-	float Vector4::Length() const
+	Float Vector4::Length() const
 	{
 		return sqrt(x * x + y * y + z * z + w * w);
 	}
@@ -64,7 +64,7 @@ namespace s00nya
 		return Vector3(x , y , z);
 	}
 
-	float Vector4::Dot(const Vector4& lhs, const Vector4& rhs)
+	Float Vector4::Dot(const Vector4& lhs, const Vector4& rhs)
 	{
 		return (
 			lhs.x * rhs.x +
@@ -86,7 +86,7 @@ namespace s00nya
 
 	Vector4 Vector4::Normalize(const Vector4& vec)
 	{
-		float inv_length = 1.0f / vec.Length();
+		Float inv_length = 1.0f / vec.Length();
 		return Vector4(
 			vec.x * inv_length,
 			vec.y * inv_length,
@@ -95,7 +95,7 @@ namespace s00nya
 		);
 	}
 
-	Vector4& Vector4::operator*=(const float& scalar)
+	Vector4& Vector4::operator*=(const Float& scalar)
 	{
 		x *= scalar;
 		y *= scalar;
@@ -122,7 +122,7 @@ namespace s00nya
 		return *this;
 	}
 
-	Vector4 operator*(const Vector4& vec, const float& scalar)
+	Vector4 operator*(const Vector4& vec, const Float& scalar)
 	{
 		return Vector4(
 			scalar * vec.x, 
@@ -132,7 +132,7 @@ namespace s00nya
 		);
 	}
 
-	Vector4 operator*(const float& scalar, const Vector4& vec)
+	Vector4 operator*(const Float& scalar, const Vector4& vec)
 	{
 		return Vector4(
 			scalar * vec.x,

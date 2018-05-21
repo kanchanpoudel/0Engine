@@ -1,18 +1,17 @@
 #pragma once
-#include <string>
 #include <fstream>
-#include <iostream>
-#include <sstream>
+#include <string>
+#include "s00nya_defs.h"
 
 #ifdef ENGINE_DEBUG
 
 namespace s00nya
 {
 
-	class Debug
+	class S00NYA_API Debug
 	{
 	private:
-		static std::stringstream m_s_logs;
+		static std::string m_s_logs;
 		static std::fstream m_s_logFile;
 
 		Debug() = delete;
@@ -25,17 +24,17 @@ namespace s00nya
 		static void Initialize();
 		static void ShutDown();
 
-		static void Add(const std::string& logStr, int level);
-		static void Log(bool logToConsole = true, bool logToFile = false);
+		static void Add(const std::string& logStr, Integer level);
+		static void Log(Boolean logToConsole = true, Boolean logToFile = false);
 		
 	private:
 		static void __stdcall OpenGLErrorCallback(
-			unsigned int source, 
-			unsigned int type,
-			unsigned int id,
-			unsigned int severity,
-			int length,
-			const char* message,
+			UInteger source, 
+			UInteger type,
+			UInteger id,
+			UInteger severity,
+			Integer length,
+			const Character* message,
 			const void* userParam
 		);
 	};
@@ -47,7 +46,7 @@ namespace s00nya
 namespace s00nya
 {
 	
-	class Debug
+	class S00NYA_ENTRY Debug
 	{
 	private:
 		Debug() = delete;

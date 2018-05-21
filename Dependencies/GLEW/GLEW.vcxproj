@@ -30,7 +30,6 @@
     <ClCompile Include="src\visualinfo.c" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="CMakeLists.txt" />
     <Text Include="LICENSE.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

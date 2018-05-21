@@ -1,28 +1,30 @@
 #include "Game/game.h"
 #include "Graphics/window.h"
 #include "Debugger/logger.h"
-#include "Game/timer.h"
+#include "Utility/timer.h"
 #include "Input/input.h"
+#include "Input/input_manager.h"
 
 namespace s00nya
 {
 
-	Game2D::Game2D() :
-		window(nullptr), timer(nullptr), input(nullptr)
+	Game2D::Game2D(const Character* title, const Integer& width, const Integer& height) :
+		window(new Window(title, width, height)), 
+		timer(new Timer()),
+		input(window->GetInputSystem()), 
+		inputManager(new InputManager(input))
 	{
+		Debug::Initialize();
+		instance = this;
 	}
 
 	Game2D::~Game2D()
 	{
-	}
-
-	void Game2D::Construct(const char* title, const int& width, const int& height)
-	{
-		window = new Window(title, width, height);
-		Debug::Initialize();
-		timer = new Timer();
-		input = window->GetInputSystem();
-		OnConstruction();
+		delete input;
+		delete inputManager;
+		delete timer;
+		delete window;
+		Debug::ShutDown();
 	}
 
 	void Game2D::Start()
@@ -30,8 +32,8 @@ namespace s00nya
 		window->Show();
 
 		// Time Management
-		float now = Timer::ElaspedTime();
-		float deltaTimeForSecond = 0.0f;
+		Float now = Timer::ElaspedTime();
+		Float deltaTimeForSecond = 0.0f;
 		
 		while (window->IsRunning())
 		{
@@ -58,21 +60,12 @@ namespace s00nya
 			timer->Update();
 			window->Update();
 		}
-
-		delete input;
-		delete timer;
-		delete window;
-		Debug::ShutDown();
 	}
 
 	void Game2D::Tick()
 	{
 		Debug::Log(true, true);
-		printf("\nFPS : %d", (int)(1.0f / timer->DeltaTime()));
-	}
-
-	void Game2D::OnConstruction()
-	{
+		printf("\nFPS : %d", (Integer)(1.0f / timer->DeltaTime()));
 	}
 
 	void Game2D::FixedUpdate()
@@ -83,6 +76,23 @@ namespace s00nya
 	{
 	}
 
-	const float Game2D::fps = 60.0f;
+	Input& Game2D::GetInput()
+	{
+		return *(instance->input);
+	}
+
+	Timer& Game2D::GetTimer()
+	{
+		return *(instance->timer);
+	}
+
+	InputManager& Game2D::GetInputManager()
+	{
+		return *(instance->inputManager);
+	}
+
+	const Float Game2D::fps = 60.0f;
+
+	Game2D* Game2D::instance = nullptr;
 
 }

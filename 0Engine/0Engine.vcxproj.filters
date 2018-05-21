@@ -21,9 +21,6 @@
     <ClCompile Include="Game\game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\timer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Math\vector2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -51,21 +48,18 @@
     <ClCompile Include="Math\transform_2d.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Utility\timer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\Graphics\window.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Headers\exceptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Headers\Game\game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Headers\s00nya.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Headers\Game\timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Headers\Math\vector2.h">
@@ -104,8 +98,14 @@
     <ClInclude Include="Headers\Math\transform_2d.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="CMakeLists.txt" />
+    <ClInclude Include="Headers\Utility\events.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Utility\timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\s00nya_defs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

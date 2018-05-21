@@ -10,7 +10,7 @@ namespace s00nya
 	{
 	}
 
-	Vector2::Vector2(const float& _x, const float& _y) :
+	Vector2::Vector2(const Float& _x, const Float& _y) :
 		x(_x), y(_y)
 	{
 	}
@@ -39,12 +39,12 @@ namespace s00nya
 		return Vector2(-x, -y);
 	}
 
-	float Vector2::Length() const
+	Float Vector2::Length() const
 	{
 		return sqrt(x * x + y * y);
 	}
 
-	float Vector2::Dot(const Vector2& lhs, const Vector2& rhs)
+	Float Vector2::Dot(const Vector2& lhs, const Vector2& rhs)
 	{
 		return(lhs.x * rhs.x + lhs.y * rhs.y);
 	}
@@ -56,11 +56,11 @@ namespace s00nya
 
 	Vector2 Vector2::Normalize(const Vector2& vec)
 	{
-		float inv_length = 1.0f / vec.Length();
+		Float inv_length = 1.0f / vec.Length();
 		return Vector2(vec.x * inv_length, vec.y * inv_length);
 	}
 
-	Vector2& Vector2::operator*=(const float& scalar)
+	Vector2& Vector2::operator*=(const Float& scalar)
 	{
 		x *= scalar;
 		y *= scalar;
@@ -81,12 +81,12 @@ namespace s00nya
 		return *this;
 	}
 
-	Vector2 operator*(const Vector2& vec, const float& scalar)
+	Vector2 operator*(const Vector2& vec, const Float& scalar)
 	{
 		return Vector2(scalar * vec.x, scalar * vec.y);
 	}
 
-	Vector2 operator*(const float& scalar, const Vector2& vec)
+	Vector2 operator*(const Float& scalar, const Vector2& vec)
 	{
 		return Vector2(scalar * vec.x, scalar * vec.y);
 	}

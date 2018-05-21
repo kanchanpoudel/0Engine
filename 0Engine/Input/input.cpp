@@ -177,7 +177,7 @@ namespace s00nya
 
 	}
 
-	void Input::KeyCallback(GLFWwindow* window, int key, int scancodes, int action, int mods)
+	void Input::KeyCallback(GLFWwindow* window, Integer key, Integer scancodes, Integer action, Integer mods)
 	{
 		const Keys& keyCode = (Keys)key;
 		// Get the instance of Input class associated with the window
@@ -204,7 +204,7 @@ namespace s00nya
 			currentInput->m_keyMaps[keyCode] = InputState::UP;
 	}
 
-	void Input::MouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
+	void Input::MouseButtonCallback(GLFWwindow* window, Integer button, Integer action, Integer mods)
 	{
 		const Buttons& buttonCode = (Buttons)button;
 		// Get the instance of Input class associated with the window
@@ -227,13 +227,13 @@ namespace s00nya
 			currentInput->m_buttonMaps[buttonCode] = InputState::UP;
 	}
 
-	void Input::CursorPositionCallback(GLFWwindow* window, double xPos, double yPos)
+	void Input::CursorPositionCallback(GLFWwindow* window, Double xPos, Double yPos)
 	{
 		// Get the instance of Input class associated with the window
 		Input* currentInput = (Input*)glfwGetWindowUserPointer(window);
 
 		// We need window screen width and height to map the offset to -1.0f to 1.0f
-		int winWidth, winHeight;
+		Integer winWidth, winHeight;
 		glfwGetWindowSize(window, &winWidth, &winHeight);
 
 		/*
@@ -241,28 +241,28 @@ namespace s00nya
 			multiplied by 10.0f because value ranges in the order 1e-2
 		*/
 		currentInput->m_axesOffset[0] =
-			((float)xPos - currentInput->m_cursorPosition[0]) / winWidth * 10.0f;
+			((Float)xPos - currentInput->m_cursorPosition[0]) / winWidth * 10.0f;
 		currentInput->m_axesOffset[1] =
-			(currentInput->m_cursorPosition[1] + (float)yPos - (float)winHeight) / winHeight * 10.0f;
+			(currentInput->m_cursorPosition[1] + (Float)yPos - (Float)winHeight) / winHeight * 10.0f;
 
-		currentInput->m_cursorPosition[0] = (float)xPos;
+		currentInput->m_cursorPosition[0] = (Float)xPos;
 		/*
 			Because we are using the Right Hand Co-ordinate system
 			where y starts from bottom to top, but windows gives us
 			Left Hand Co-ordinate system's y value, so changing handness
 		*/
-		currentInput->m_cursorPosition[1] = winHeight - (float)yPos;
+		currentInput->m_cursorPosition[1] = winHeight - (Float)yPos;
 	}
 
-	void Input::ScrollCallback(GLFWwindow* window, double xOffset, double yOffset)
+	void Input::ScrollCallback(GLFWwindow* window, Double xOffset, Double yOffset)
 	{
 		// Get the instance of Input class associated with the window
 		Input* currentInput = (Input*)glfwGetWindowUserPointer(window);
-		currentInput->m_scrollOffset[0] = (float)xOffset;
-		currentInput->m_scrollOffset[1] = (float)yOffset;
+		currentInput->m_scrollOffset[0] = (Float)xOffset;
+		currentInput->m_scrollOffset[1] = (Float)yOffset;
 	}
 
-	bool Input::Pressed(const Keys& key)
+	Boolean Input::Pressed(const Keys& key)
 	{
 		if (m_keyMaps[key] == InputState::PRESSED)
 		{
@@ -278,17 +278,17 @@ namespace s00nya
 		return false;
 	}
 
-	bool Input::Held(const Keys& key)
+	Boolean Input::Held(const Keys& key)
 	{
 		return m_keyMaps[key] == InputState::DOWN;
 	}
 
-	bool Input::Repeated(const Keys& key)
+	Boolean Input::Repeated(const Keys& key)
 	{
 		return m_keyMaps[key] == InputState::REPEATED;
 	}
 
-	bool Input::Combined(const Keys& hold, const Keys& press)
+	Boolean Input::Combined(const Keys& hold, const Keys& press)
 	{
 		/*
 			First Pressing event is checked because
@@ -308,7 +308,7 @@ namespace s00nya
 		return false;
 	}
 
-	bool Input::Combined(const Keys& hold1, const Keys& hold2, const Keys& press)
+	Boolean Input::Combined(const Keys& hold1, const Keys& hold2, const Keys& press)
 	{
 		/*
 		First Pressing event is checked because
@@ -328,7 +328,7 @@ namespace s00nya
 		return false;
 	}
 
-	bool Input::Pressed(const Buttons& button)
+	Boolean Input::Pressed(const Buttons& button)
 	{
 		if (m_buttonMaps[button] == InputState::PRESSED)
 		{
@@ -344,24 +344,24 @@ namespace s00nya
 		return false;
 	}
 
-	bool Input::Held(const Buttons& button)
+	Boolean Input::Held(const Buttons& button)
 	{
 		return m_buttonMaps[button] == InputState::DOWN;
 	}
 
-	const float& Input::CursorPositionX()
+	const Float& Input::CursorPositionX()
 	{
 		return m_cursorPosition[0];
 	}
 
-	const float& Input::CursorPositionY()
+	const Float& Input::CursorPositionY()
 	{
 		return m_cursorPosition[1];
 	}
 
-	const float& Input::HorizontalAxis()
+	const Float& Input::HorizontalAxis()
 	{
-		const float& ha = m_axesOffset[0];
+		const Float& ha = m_axesOffset[0];
 		/*
 			Once the offset is called for we want to clear offset
 			because Axes offsets do not have callbacks
@@ -370,9 +370,9 @@ namespace s00nya
 		return ha;
 	}
 
-	const float& Input::VerticalAxis()
+	const Float& Input::VerticalAxis()
 	{
-		const float& va = m_axesOffset[1];
+		const Float& va = m_axesOffset[1];
 		/*
 		Once the offset is called for we want to clear offset
 		because Axes offsets do not have callbacks
@@ -381,27 +381,27 @@ namespace s00nya
 		return va;
 	}
 
-	const float& Input::ScrollHorizontalAxis()
+	const Float& Input::ScrollHorizontalAxis()
 	{
 		return m_scrollOffset[0];
 	}
 
-	const float& Input::ScrollVerticalAxis()
+	const Float& Input::ScrollVerticalAxis()
 	{
 		return m_scrollOffset[1];
 	}
 
-	const char* Input::GetName(const Keys& key)
+	const Character* Input::GetName(const Keys& key)
 	{
 		return GetInputName((int)key);
 	}
 
-	const char* Input::GetName(const Buttons& button)
+	const Character* Input::GetName(const Buttons& button)
 	{
 		return GetInputName((int)button);
 	}
 
-	const char* Input::GetInputName(const int& code)
+	const Character* Input::GetInputName(const Integer& code)
 	{
 		switch (code)
 		{

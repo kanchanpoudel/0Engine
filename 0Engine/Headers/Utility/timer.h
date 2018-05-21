@@ -1,12 +1,13 @@
 #pragma once
+#include "s00nya_defs.h"
 
 namespace s00nya
 {
 
-	class Timer
+	class S00NYA_API Timer
 	{
 	private:
-		float m_lastFrameTime;
+		Float m_lastFrameTime;
 	
 	public:
 		Timer();
@@ -17,9 +18,9 @@ namespace s00nya
 
 	public:
 		void Update();
-		float DeltaTime() const;
+		Float DeltaTime() const;
 		
-		static float ElaspedTime();
+		static Float ElaspedTime();
 	};
 
 }

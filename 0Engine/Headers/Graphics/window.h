@@ -1,4 +1,5 @@
-#pragma once 
+#pragma once
+#include "s00nya_defs.h"
 
 struct GLFWwindow;
 
@@ -7,7 +8,7 @@ namespace s00nya
 
 	class Input;
 
-	class Window
+	class S00NYA_API Window
 	{
 	private:
 		GLFWwindow* m_id;
@@ -23,7 +24,7 @@ namespace s00nya
 		};
 
 	public:
-		Window(const char* title, const int& width, const int& height);
+		Window(const Character* title, const Integer& width, const Integer& height);
 		~Window();
 
 	private:
@@ -38,11 +39,11 @@ namespace s00nya
 		void Close() const;
 		bool IsRunning() const;
 
-		void Resize(const int& width, const int& height);
+		void Resize(const Integer& width, const Integer& height);
 		void ToggleFullscreen();
 
-		void ChangeCursor(const char* path) const;
-		void SetIcon(const char* path) const;
+		void ChangeCursor(const Character* path) const;
+		void SetIcon(const Character* path) const;
 		void DisableCursor() const;
 		void HideCursor() const;
 		void EnableCursor() const;

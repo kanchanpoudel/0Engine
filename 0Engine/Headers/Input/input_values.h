@@ -1,4 +1,5 @@
 #pragma once
+#include "s00nya_defs.h"
 
 #define MAX_KEYS		121
 #define MAX_BUTTONS		8
@@ -7,7 +8,7 @@ namespace s00nya
 {
 
 	// Keys are all supported keyboard keys
-	enum class Keys : int
+	enum class S00NYA_API Keys : Integer
 	{
 		UNKNOWN = -1,
 
@@ -143,7 +144,7 @@ namespace s00nya
 	};
 
 	// Buttons are all supported mouse buttons
-	enum class Buttons : int
+	enum class Buttons : Integer
 	{
 		MOUSE_LEFT_CLICK =		0,
 		MOUSE_RIGHT_CLICK =		1,

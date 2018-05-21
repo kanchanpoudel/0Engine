@@ -1,5 +1,6 @@
 #pragma once
 #include <map>
+#include "s00nya_defs.h"
 
 struct GLFWwindow;
 
@@ -8,20 +9,20 @@ namespace s00nya
 
 	class Window;
 
-	enum class Keys : int;
-	enum class Buttons : int;
-	enum class InputState : int;
+	enum class Keys : Integer;
+	enum class Buttons : Integer;
+	enum class InputState : Integer;
 
-	class Input
+	class S00NYA_API Input
 	{
 	private:
 		std::map<Keys, InputState> m_keyMaps;
 		std::map<Buttons, InputState> m_buttonMaps;
 		
 		// first for x and second for y
-		float m_cursorPosition[2];		// Ranges from 0.0f to window width or height
-		float m_axesOffset[2];			// Ranges from -1.0f to 1.0f
-		float m_scrollOffset[2];		// 1.0f for 1 line scroll
+		Float m_cursorPosition[2];		// Ranges from 0.0f to window width or height
+		Float m_axesOffset[2];			// Ranges from -1.0f to 1.0f
+		Float m_scrollOffset[2];		// 1.0f for 1 line scroll
 
 	private:
 		/*
@@ -41,38 +42,38 @@ namespace s00nya
 		~Input();
 
 	private:
-		static void KeyCallback(GLFWwindow* window, int key, int scancodes, int action, int mods);
-		static void MouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
-		static void CursorPositionCallback(GLFWwindow* window, double xPos, double yPos);
-		static void ScrollCallback(GLFWwindow* window, double xOffset, double yOffset);
+		static void KeyCallback(GLFWwindow* window, Integer key, Integer scancodes, Integer action, Integer mods);
+		static void MouseButtonCallback(GLFWwindow* window, Integer button, Integer action, Integer mods);
+		static void CursorPositionCallback(GLFWwindow* window, Double xPos, Double yPos);
+		static void ScrollCallback(GLFWwindow* window, Double xOffset, Double yOffset);
 
 	public:
-		bool Pressed(const Keys& key);
-		bool Held(const Keys& key);
-		bool Repeated(const Keys& key);
+		Boolean Pressed(const Keys& key);
+		Boolean Held(const Keys& key);
+		Boolean Repeated(const Keys& key);
 		// Two key combination, e.g. [Ctrl] + [C]
-		bool Combined(const Keys& hold, const Keys& press); 
+		Boolean Combined(const Keys& hold, const Keys& press);
 		// Three key combination, e.g. [Ctrl] + [Shift] + [V]
-		bool Combined(const Keys& hold1, const Keys& hold2, const Keys& press);
+		Boolean Combined(const Keys& hold1, const Keys& hold2, const Keys& press);
 
-		bool Pressed(const Buttons& button);
-		bool Held(const Buttons& button);
+		Boolean Pressed(const Buttons& button);
+		Boolean Held(const Buttons& button);
 		// Mouse buttons do not have repeated event
 
-		const float& CursorPositionX();
-		const float& CursorPositionY();
+		const Float& CursorPositionX();
+		const Float& CursorPositionY();
 
-		const float& HorizontalAxis();
-		const float& VerticalAxis();
+		const Float& HorizontalAxis();
+		const Float& VerticalAxis();
 
-		const float& ScrollHorizontalAxis();
-		const float& ScrollVerticalAxis();
+		const Float& ScrollHorizontalAxis();
+		const Float& ScrollVerticalAxis();
 
-		static const char* GetName(const Keys& key);
-		static const char* GetName(const Buttons& button);
+		static const Character* GetName(const Keys& key);
+		static const Character* GetName(const Buttons& button);
 
 	private:
-		static const char* GetInputName(const int& code);
+		static const Character* GetInputName(const Integer& code);
 
 		friend class Window;
 	};

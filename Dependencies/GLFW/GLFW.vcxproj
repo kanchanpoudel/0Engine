@@ -155,7 +155,6 @@
     <ClInclude Include="src\xkb_unicode.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="CMakeLists.txt" />
     <Text Include="COPYING.txt" />
   </ItemGroup>
   <ItemGroup>

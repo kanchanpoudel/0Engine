@@ -1,13 +1,23 @@
 #pragma once
 
 // Wrapper and Utilities include
-#include "Game\game.h"
-#include "Game\timer.h"
+#include "Game/game.h"
+#include "Utility/timer.h"
 
 // Graphics include
-#include "Graphics\window.h"
+#include "Graphics/window.h"
 
 // Input manager include
-#include "Input\input_values.h"
-#include "Input\input.h"
-#include "Input\input_manager.h"
+#include "Input/input_values.h"
+#include "Input/input.h"
+#include "Input/input_manager.h"
+
+// Mathematics
+#include "Math/vector2.h"
+#include "Math/vector3.h"
+#include "Math/vector4.h"
+#include "Math/matrix4.h"
+#include "Math/transform_2d.h"
+
+// Game Objects and Components
+#include "GameObject/game_object_2d.h"

@@ -10,7 +10,7 @@ namespace s00nya
 	{
 	}
 
-	Vector3::Vector3(const Vector2& vec, const float& _z) :
+	Vector3::Vector3(const Vector2& vec, const Float& _z) :
 		x(vec.x), y(vec.y), z(_z)
 	{
 	}
@@ -25,7 +25,7 @@ namespace s00nya
 		z = vec.z;
 	}
 
-	Vector3::Vector3(const float& _x, const float& _y, const float& _z) :
+	Vector3::Vector3(const Float& _x, const Float& _y, const Float& _z) :
 		x(_x), y(_y), z(_z)
 	{
 	}
@@ -46,12 +46,12 @@ namespace s00nya
 		return Vector3(-x, -y, -z);
 	}
 
-	float Vector3::Length()const
+	Float Vector3::Length()const
 	{
 		return sqrt(x * x + y * y + z * z);
 	}
 
-	float Vector3::Dot(const Vector3& lhs, const Vector3& rhs)
+	Float Vector3::Dot(const Vector3& lhs, const Vector3& rhs)
 	{
 		return lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z;
 	}
@@ -67,12 +67,12 @@ namespace s00nya
 
 	Vector3 Vector3::Normalize(const Vector3& vec)
 	{
-		float inverse_length(1.0f / vec.Length());
+		Float inverse_length(1.0f / vec.Length());
 		return Vector3(vec.x * inverse_length, vec.y * inverse_length, vec.z * inverse_length);
 
 	}
 
-	Vector3& Vector3::operator*=(const float& scalar)
+	Vector3& Vector3::operator*=(const Float& scalar)
 	{
 		this->x *= scalar;
 		this->y *= scalar;
@@ -96,7 +96,7 @@ namespace s00nya
 		return *this;
 	}
 
-	Vector3 operator*(const Vector3& vec, const float& scalar)
+	Vector3 operator*(const Vector3& vec, const Float& scalar)
 	{
 		return Vector3(
 			vec.x * scalar,
@@ -105,7 +105,7 @@ namespace s00nya
 		);
 
 	}
-	Vector3 operator*(const float& scalar, const Vector3& vec)
+	Vector3 operator*(const Float& scalar, const Vector3& vec)
 	{
 		return Vector3(
 			vec.x * scalar,

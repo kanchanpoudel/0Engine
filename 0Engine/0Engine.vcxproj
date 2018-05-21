@@ -95,6 +95,10 @@
       <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\GLEW\include;$(ProjectDir)Headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>ENGINE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <NoEntryPoint>false</NoEntryPoint>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -105,6 +109,10 @@
       <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\GLEW\include;$(ProjectDir)Headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>ENGINE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <NoEntryPoint>false</NoEntryPoint>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -122,6 +130,8 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <NoEntryPoint>false</NoEntryPoint>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -140,13 +150,15 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <NoEntryPoint>false</NoEntryPoint>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Debugger\logger.cpp" />
     <ClCompile Include="GameObject\game_object_2d.cpp" />
     <ClCompile Include="Game\game.cpp" />
-    <ClCompile Include="Game\timer.cpp" />
+    <ClCompile Include="Utility\timer.cpp" />
     <ClCompile Include="Graphics\window.cpp" />
     <ClCompile Include="Input\input_manager.cpp" />
     <ClCompile Include="Input\input.cpp" />
@@ -160,9 +172,10 @@
     <ClInclude Include="Headers\GameObject\game_object_2d.h" />
     <ClInclude Include="Headers\Input\input_manager.h" />
     <ClInclude Include="Headers\Debugger\logger.h" />
-    <ClInclude Include="Headers\exceptions.h" />
+    <ClInclude Include="Headers\s00nya_defs.h" />
+    <ClInclude Include="Headers\Utility\events.h" />
     <ClInclude Include="Headers\Game\game.h" />
-    <ClInclude Include="Headers\Game\timer.h" />
+    <ClInclude Include="Headers\Utility\timer.h" />
     <ClInclude Include="Headers\Input\input.h" />
     <ClInclude Include="Headers\Input\input_actions.h" />
     <ClInclude Include="Headers\Input\input_values.h" />
@@ -181,9 +194,6 @@
     <ProjectReference Include="..\Dependencies\GLFW\GLFW.vcxproj">
       <Project>{9640c8dc-6caf-4baa-a27e-58ad0dba345f}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="CMakeLists.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

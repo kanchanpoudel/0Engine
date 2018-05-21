@@ -2,6 +2,7 @@
 #include "vector3.h"
 #include "vector4.h"
 #include <sstream>
+#include "s00nya_defs.h"
 
 /*
 	Matrix4x4 (Matrix4) uses Row Major Matrix System which basically means
@@ -24,12 +25,12 @@
 namespace s00nya
 {
 
-	struct Matrix4
+	struct S00NYA_API Matrix4
 	{
-		union { float elements[4 * 4]; Vector4 rows[4]; };
+		union { Float elements[4 * 4]; Vector4 rows[4]; };
 
 		Matrix4(); // Initializes a Identity Matrix
-		Matrix4(const float elementsArray[4 * 4]);
+		Matrix4(const Float elementsArray[4 * 4]);
 
 		Matrix4(
 			const Vector4& row0,
@@ -39,13 +40,13 @@ namespace s00nya
 		);	// Construct from 4 rows
 
 		Matrix4(
-			const float& e00, const float& e10, const float& e20, const float& e30,
-			const float& e01, const float& e11, const float& e21, const float& e31,
-			const float& e02, const float& e12, const float& e22, const float& e32,
-			const float& e03, const float& e13, const float& e23, const float& e33
+			const Float& e00, const Float& e10, const Float& e20, const Float& e30,
+			const Float& e01, const Float& e11, const Float& e21, const Float& e31,
+			const Float& e02, const Float& e12, const Float& e22, const Float& e32,
+			const Float& e03, const Float& e13, const Float& e23, const Float& e33
 		);
 
-		Matrix4(const float& diagonalElement); // Diagonal Matrix with given element
+		Matrix4(const Float& diagonalElement); // Diagonal Matrix with given element
 
 		Matrix4(const Matrix4& mat);
 		Matrix4& operator=(const Matrix4& mat);
@@ -55,8 +56,8 @@ namespace s00nya
 		Matrix4& operator+=(const Matrix4& mat);
 		Matrix4& operator-=(const Matrix4& mat);
 
-		friend Matrix4 operator*(const float& scalar, const Matrix4& mat);
-		friend Matrix4 operator*(const Matrix4& mat, const float& scalar);
+		friend Matrix4 operator*(const Float& scalar, const Matrix4& mat);
+		friend Matrix4 operator*(const Matrix4& mat, const Float& scalar);
 		
 		friend Matrix4 operator*(const Matrix4& lhs, const Matrix4& rhs);
 		friend Matrix4 operator+(const Matrix4& lhs, const Matrix4& rhs);
@@ -70,22 +71,22 @@ namespace s00nya
 		static Matrix4 Identity();
 		static Matrix4 Scale(const Vector3& vec);
 		static Matrix4 Translation(const Vector3& vec);
-		static Matrix4 Rotation(const float& angle, const Vector3& axis); // Does not normalize axis
+		static Matrix4 Rotation(const Float& angle, const Vector3& axis); // Does not normalize axis
 		static Matrix4 LookAt(const Vector3& position, const Vector3& target, const Vector3& up);
 
 		static Matrix4 Orthographic(
-			const float& left,
-			const float& right,
-			const float& bottom,
-			const float& top,
-			const float& near,
-			const float& far
+			const Float& left,
+			const Float& right,
+			const Float& bottom,
+			const Float& top,
+			const Float& near,
+			const Float& far
 		);
 		static Matrix4 Perspective(
-			const float& fov,
-			const float& aspectRatio,
-			const float& near,
-			const float& far
+			const Float& fov,
+			const Float& aspectRatio,
+			const Float& near,
+			const Float& far
 		);
 
 		// Vector and Matrix multiplies one way only

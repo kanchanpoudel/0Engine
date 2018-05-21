@@ -14,9 +14,9 @@ namespace s00nya
 	{
 	}
 
-	Matrix4::Matrix4(const float elementsArray[4 * 4])
+	Matrix4::Matrix4(const Float elementsArray[4 * 4])
 	{
-		for (int i = 0; i < 16; i++)
+		for (Integer i = 0; i < 16; i++)
 		{
 			this->elements[i] = elementsArray[i];
 		}
@@ -33,10 +33,10 @@ namespace s00nya
 	}
 
 	Matrix4::Matrix4(
-		const float& e00, const float& e10, const float& e20, const float& e30,
-		const float& e01, const float& e11, const float& e21, const float& e31,
-		const float& e02, const float& e12, const float& e22, const float& e32,
-		const float& e03, const float& e13, const float& e23, const float& e33
+		const Float& e00, const Float& e10, const Float& e20, const Float& e30,
+		const Float& e01, const Float& e11, const Float& e21, const Float& e31,
+		const Float& e02, const Float& e12, const Float& e22, const Float& e32,
+		const Float& e03, const Float& e13, const Float& e23, const Float& e33
 	) :
 		elements{
 		e00, e10, e20, e30,
@@ -47,7 +47,7 @@ namespace s00nya
 	{
 	}
 
-	Matrix4::Matrix4(const float& diagonalElement) :
+	Matrix4::Matrix4(const Float& diagonalElement) :
 		elements{
 		diagonalElement,0.0f,0.0f,0.0f,
 		0.0f,diagonalElement,0.0f,0.0f,
@@ -130,7 +130,7 @@ namespace s00nya
 	{
 		Matrix4 temp;
 		temp = *this;
-		int x, j, k;
+		Integer x, j, k;
 		for (x = 0; x < 4; x++)
 		{
 			for (j = 0; j < 4; j++)
@@ -187,7 +187,7 @@ namespace s00nya
 		return *this;
 	}
 
-	Matrix4 operator*(const float& scalar, const Matrix4& mat)
+	Matrix4 operator*(const Float& scalar, const Matrix4& mat)
 	{
 		return Matrix4(
 			mat.elements[0] * scalar,
@@ -208,7 +208,7 @@ namespace s00nya
 			mat.elements[15] * scalar);
 	}
 
-	Matrix4 operator*(const Matrix4& mat, const float& scalar)
+	Matrix4 operator*(const Matrix4& mat, const Float& scalar)
 	{
 		return Matrix4(
 			mat.elements[0] * scalar,
@@ -232,7 +232,7 @@ namespace s00nya
 	Matrix4 operator*(const Matrix4& lhs, const Matrix4& rhs)
 	{
 		Matrix4 temp;
-		int i, j, k;
+		Integer i, j, k;
 		for (i = 0; i < 4; i++)
 		{
 			for (j = 0; j < 4; j++)
@@ -301,9 +301,9 @@ namespace s00nya
 	Matrix4 Matrix4::Transpose(const Matrix4& mat)
 	{
 		Matrix4 temp;
-		for (int i = 0; i < 4; i++)
+		for (Integer i = 0; i < 4; i++)
 		{
-			for (int j = 0; j < 4; j++)
+			for (Integer j = 0; j < 4; j++)
 				temp.elements[4 * i + j] = mat.elements[4 * j + i];
 		}
 		return temp;
@@ -334,20 +334,20 @@ namespace s00nya
 		);
 	}
 
-	Matrix4 Matrix4::Rotation(const float& angle, const Vector3& axis)
+	Matrix4 Matrix4::Rotation(const Float& angle, const Vector3& axis)
 	{
-		float c = cosf(angle);
-		float s = sinf(angle);
-		float xx = axis.x * axis.x;
-		float xy = axis.x *axis.y;
-		float xz = axis.x *axis.z;
-		float yy = axis.y *axis.y;
-		float yz = axis.y *axis.z;
-		float zz = axis.z *axis.z;
+		Float c = cosf(angle);
+		Float s = sinf(angle);
+		Float xx = axis.x * axis.x;
+		Float xy = axis.x *axis.y;
+		Float xz = axis.x *axis.z;
+		Float yy = axis.y *axis.y;
+		Float yz = axis.y *axis.z;
+		Float zz = axis.z *axis.z;
 
-		return Matrix4(xx * (1.0 - c) + c, xy * (1.0 - c) - axis.z * s, xz * (1.0 - c) + axis.y * s, 0.0f,
-			xy * (1.0 - c) + axis.z * s, yy * (1.0 - c) + c, yz * (1.0 - c) - axis.x * s, 0.0f,
-			xz * (1.0 - c) - axis.y * s, yz * (1.0 - c) + axis.x * s, zz *(1.0 - c) + c, zz *(1.0 - c) + c,
+		return Matrix4(xx * (1.0f - c) + c, xy * (1.0f - c) - axis.z * s, xz * (1.0f - c) + axis.y * s, 0.0f,
+			xy * (1.0f - c) + axis.z * s, yy * (1.0f - c) + c, yz * (1.0f - c) - axis.x * s, 0.0f,
+			xz * (1.0f - c) - axis.y * s, yz * (1.0f - c) + axis.x * s, zz *(1.0f - c) + c, zz *(1.0f - c) + c,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 
@@ -477,10 +477,10 @@ namespace s00nya
 			mat.elements[8] * mat.elements[1] * mat.elements[6] -
 			mat.elements[8] * mat.elements[2] * mat.elements[5];
 
-		float det(mat.elements[0] * INV.elements[0] + mat.elements[1] * INV.elements[4] + mat.elements[2] * INV.elements[8] + mat.elements[3] * INV.elements[12]);
+		Float det(mat.elements[0] * INV.elements[0] + mat.elements[1] * INV.elements[4] + mat.elements[2] * INV.elements[8] + mat.elements[3] * INV.elements[12]);
 		det = 1.0f / det;
 
-		for (int i = 0; i < 16; i++)
+		for (Integer i = 0; i < 16; i++)
 			INV.elements[i] = INV.elements[i] * det;
 		return INV;
 	}
@@ -499,12 +499,12 @@ namespace s00nya
 	}
 
 	Matrix4 Matrix4::Orthographic(
-		const float& left,
-		const float& right,
-		const float& bottom,
-		const float& top,
-		const float& near,
-		const float& far
+		const Float& left,
+		const Float& right,
+		const Float& bottom,
+		const Float& top,
+		const Float& near,
+		const Float& far
 	)
 	{
 		return Matrix4(
@@ -516,13 +516,13 @@ namespace s00nya
 
 	Matrix4 Matrix4::Perspective(
 
-		const float& fov,
-		const float& aspectRatio,
-		const float& near,
-		const float& far
+		const Float& fov,
+		const Float& aspectRatio,
+		const Float& near,
+		const Float& far
 	)
 	{
-		float cot = 1.0f / tanf(fov / 2.0f);
+		Float cot = 1.0f / tanf(fov / 2.0f);
 		return Matrix4(
 			cot / aspectRatio, 0.0f, 0.0f, 0.0f,
 			0.0f, cot, 0.0f, 0.0f,
