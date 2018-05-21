@@ -1,5 +1,7 @@
 #include "Debugger/logger.h"
 #include "GL/glew.h"
+#include <sstream>
+#include <iostream>
 #include <chrono>
 #include <iomanip>
 #include <ctime>
@@ -9,7 +11,7 @@
 namespace s00nya
 {
 	
-	std::stringstream Debug::m_s_logs;
+	std::string Debug::m_s_logs;
 	std::fstream Debug::m_s_logFile;
 
 	void Debug::Initialize()
@@ -41,44 +43,44 @@ namespace s00nya
 		Debug::m_s_logFile.close();
 	}
 
-	void Debug::Add(const std::string& logStr, int level)
+	void Debug::Add(const std::string& logStr, Integer level)
 	{
 		switch (level)
 		{
 		case Debug::S00NYA_LOG_INFO:
-			Debug::m_s_logs << "INFO :: " << logStr << '\n';
+			Debug::m_s_logs += ("INFO :: " + logStr + '\n');
 			return;
 		case Debug::S00NYA_LOG_WARNING:
-			Debug::m_s_logs << "WARNING :: " << logStr << '\n';
+			Debug::m_s_logs += ("WARNING :: " + logStr + '\n');
 			return;
 		case Debug::S00NYA_LOG_ERROR:
-			Debug::m_s_logs << "ERROR :: " << logStr << '\n';
+			Debug::m_s_logs += ("ERROR :: " + logStr + '\n');
 			return;
 		default:
-			Debug::m_s_logs << "UNSPECIFIED :: " << logStr << '\n';
+			Debug::m_s_logs += ("UNSPECIFIED :: " + logStr + '\n');
 		}
 	}
 
-	void Debug::Log(bool logToConsole, bool logToFile)
+	void Debug::Log(Boolean logToConsole, Boolean logToFile)
 	{
 		if (logToConsole)
 		{
-			std::cout << Debug::m_s_logs.str();
+			std::cout << Debug::m_s_logs;
 		}
 		if (logToFile)
 		{
-			m_s_logFile << Debug::m_s_logs.str();
+			m_s_logFile << Debug::m_s_logs;
 		}
-		Debug::m_s_logs.str(std::string());
+		Debug::m_s_logs.clear();
 	}
 
 	void Debug::OpenGLErrorCallback(
-		unsigned int source,
-		unsigned int type,
-		unsigned int id,
-		unsigned int severity,
-		int length,
-		const char* message,
+		UInteger source,
+		UInteger type,
+		UInteger id,
+		UInteger severity,
+		Integer length,
+		const Character* message,
 		const void* userParam
 	)
 	{
@@ -90,36 +92,35 @@ namespace s00nya
 			level = Debug::S00NYA_LOG_WARNING;
 
 		// Get error source
-		std::stringstream strStream;
-		strStream << "Source = [";
+		std::string str("Source = [");
 		switch (source)
 		{
-		case GL_DEBUG_SOURCE_API:             strStream << "API"; break;
-		case GL_DEBUG_SOURCE_WINDOW_SYSTEM:   strStream << "Window System"; break;
-		case GL_DEBUG_SOURCE_SHADER_COMPILER: strStream << "Shader Compiler"; break;
-		case GL_DEBUG_SOURCE_THIRD_PARTY:     strStream << "Third Party"; break;
-		case GL_DEBUG_SOURCE_APPLICATION:     strStream << "Application"; break;
-		case GL_DEBUG_SOURCE_OTHER:           strStream << "Other"; break;
+		case GL_DEBUG_SOURCE_API:             str += "API"; break;
+		case GL_DEBUG_SOURCE_WINDOW_SYSTEM:   str += "Window System"; break;
+		case GL_DEBUG_SOURCE_SHADER_COMPILER: str += "Shader Compiler"; break;
+		case GL_DEBUG_SOURCE_THIRD_PARTY:     str += "Third Party"; break;
+		case GL_DEBUG_SOURCE_APPLICATION:     str += "Application"; break;
+		case GL_DEBUG_SOURCE_OTHER:           str += "Other"; break;
 		}
 
 		// Get error type
-		strStream << "] Type = [";
+		str += "] Type = [";
 		switch (type)
 		{
-		case GL_DEBUG_TYPE_ERROR:               strStream << "Error"; break;
-		case GL_DEBUG_TYPE_DEPRECATED_BEHAVIOR: strStream << "Deprecated Behavior"; break;
-		case GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR:  strStream << "Undefined Behavior"; break;
-		case GL_DEBUG_TYPE_PORTABILITY:         strStream << "Portability"; break;
-		case GL_DEBUG_TYPE_PERFORMANCE:         strStream << "Performance"; break;
-		case GL_DEBUG_TYPE_MARKER:              strStream << "Marker"; break;
-		case GL_DEBUG_TYPE_PUSH_GROUP:          strStream << "Push Group"; break;
-		case GL_DEBUG_TYPE_POP_GROUP:           strStream << "Pop Group"; break;
-		case GL_DEBUG_TYPE_OTHER:               strStream << "Other"; break;
+		case GL_DEBUG_TYPE_ERROR:               str += "Error"; break;
+		case GL_DEBUG_TYPE_DEPRECATED_BEHAVIOR: str += "Deprecated Behavior"; break;
+		case GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR:  str += "Undefined Behavior"; break;
+		case GL_DEBUG_TYPE_PORTABILITY:         str += "Portability"; break;
+		case GL_DEBUG_TYPE_PERFORMANCE:         str += "Performance"; break;
+		case GL_DEBUG_TYPE_MARKER:              str += "Marker"; break;
+		case GL_DEBUG_TYPE_PUSH_GROUP:          str += "Push Group"; break;
+		case GL_DEBUG_TYPE_POP_GROUP:           str += "Pop Group"; break;
+		case GL_DEBUG_TYPE_OTHER:               str += "Other"; break;
 		}
 
 		// Get error message and add to debug
-		strStream << "] Message = [" << message << "]";
-		Debug::Add(strStream.str(), level);
+		str += ("] Message = [" + std::string(message) + "]");
+		Debug::Add(str, level);
 	}
 
 }
