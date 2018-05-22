@@ -159,6 +159,9 @@
     <ClCompile Include="GameObject\game_object_2d.cpp" />
     <ClCompile Include="Game\game.cpp" />
     <ClCompile Include="Game\locator.cpp" />
+    <ClCompile Include="Graphics\material.cpp" />
+    <ClCompile Include="Physics\rigid_body.cpp" />
+    <ClCompile Include="Physics\collider_sat.cpp" />
     <ClCompile Include="Utility\timer.cpp" />
     <ClCompile Include="Graphics\window.cpp" />
     <ClCompile Include="Input\input_manager.cpp" />
@@ -172,8 +175,11 @@
   <ItemGroup>
     <ClInclude Include="Headers\GameObject\game_object_2d.h" />
     <ClInclude Include="Headers\Game\locator.h" />
+    <ClInclude Include="Headers\Graphics\material.h" />
     <ClInclude Include="Headers\Input\input_manager.h" />
     <ClInclude Include="Headers\Debugger\logger.h" />
+    <ClInclude Include="Headers\Physics\collider_sat.h" />
+    <ClInclude Include="Headers\Physics\rigid_body.h" />
     <ClInclude Include="Headers\s00nya_defs.h" />
     <ClInclude Include="Headers\Utility\events.h" />
     <ClInclude Include="Headers\Game\game.h" />

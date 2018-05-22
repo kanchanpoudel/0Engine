@@ -13,6 +13,8 @@ namespace s00nya
 
 		Transform2D();
 		Transform2D(Vector3 pos, Vector3 sc, Float rot);
+
+		// TO-DO : Other methods required
 	};
 
 }
