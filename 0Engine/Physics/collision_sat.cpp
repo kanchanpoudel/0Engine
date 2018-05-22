@@ -13,6 +13,7 @@ namespace s00nya
 	bool CollisionSAT::DetectCollision(const GameObject2D& lhs, const GameObject2D& rhs)
 	{
 		// TO-DO : 2 objects collision detection
+		return false;
 	}
 
 	void CollisionSAT::ResolveCollision(const GameObject2D& lhs, const GameObject2D& rhs)
