@@ -30,7 +30,7 @@ namespace s00nya
 	typedef signed char       	FInteger8;
 	typedef int               	FInteger16;
 	typedef int               	FInteger32;
-	typedef long long         	FINteger64;
+	typedef long long         	FInteger64;
 	typedef unsigned char     	FUInteger8;
 	typedef unsigned int      	FUInteger16;
 	typedef unsigned int      	FUInteger32;
