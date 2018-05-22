@@ -21,10 +21,10 @@ namespace s00nya
 		~Locator();
 
 	public:
-		Window* GetWindow(const Character* title, const Integer& width, const Integer& height) const;
-		Timer* GetTimer() const;
-		Input* GetInput(const Window* window) const;
-		InputManager* GetInputManager(Input* input) const;
+		Window* WindowService(const Character* title, const Integer& width, const Integer& height) const;
+		Timer* TimerService() const;
+		Input* InputService(const Window* window) const;
+		InputManager* InputManagerService(Input* input) const;
 
 		static Locator& Get();
 	};

@@ -10,10 +10,10 @@ namespace s00nya
 {
 
 	Game2D::Game2D(const Character* title, const Integer& width, const Integer& height) :
-		window(Locator::Get().GetWindow(title, width, height)),
-		timer(Locator::Get().GetTimer()),
-		input(Locator::Get().GetInput(window)),
-		inputManager(Locator::Get().GetInputManager(input))
+		window(Locator::Get().WindowService(title, width, height)),
+		timer(Locator::Get().TimerService()),
+		input(Locator::Get().InputService(window)),
+		inputManager(Locator::Get().InputManagerService(input))
 	{
 		instance = this;
 	}

@@ -23,24 +23,24 @@ namespace s00nya
 		}
 	}
 
-	Window* Locator::GetWindow(const Character* title, const Integer& width, const Integer& height) const
+	Window* Locator::WindowService(const Character* title, const Integer& width, const Integer& height) const
 	{
 		Window* temp = new Window(title, width, height);
 		Debug::Initialize();
 		return temp;
 	}
 
-	Timer* s00nya::Locator::GetTimer() const
+	Timer* s00nya::Locator::TimerService() const
 	{
 		return new Timer();
 	}
 
-	Input* Locator::GetInput(const Window* window) const
+	Input* Locator::InputService(const Window* window) const
 	{
 		return new Input(window->m_id);
 	}
 
-	InputManager* Locator::GetInputManager(Input* input) const
+	InputManager* Locator::InputManagerService(Input* input) const
 	{
 		return new InputManager(input);
 	}
