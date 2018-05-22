@@ -4,17 +4,17 @@
 #include "Utility/timer.h"
 #include "Input/input.h"
 #include "Input/input_manager.h"
+#include "Game/locator.h"
 
 namespace s00nya
 {
 
 	Game2D::Game2D(const Character* title, const Integer& width, const Integer& height) :
-		window(new Window(title, width, height)), 
-		timer(new Timer()),
-		input(window->GetInputSystem()), 
-		inputManager(new InputManager(input))
+		window(Locator::Get().GetWindow(title, width, height)),
+		timer(Locator::Get().GetTimer()),
+		input(Locator::Get().GetInput(window)),
+		inputManager(Locator::Get().GetInputManager(input))
 	{
-		Debug::Initialize();
 		instance = this;
 	}
 
@@ -24,7 +24,6 @@ namespace s00nya
 		delete inputManager;
 		delete timer;
 		delete window;
-		Debug::ShutDown();
 	}
 
 	void Game2D::Start()

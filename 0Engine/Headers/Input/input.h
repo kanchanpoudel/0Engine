@@ -8,6 +8,7 @@ namespace s00nya
 {
 
 	class Window;
+	class Locator;
 
 	enum class Keys : Integer;
 	enum class Buttons : Integer;
@@ -76,6 +77,7 @@ namespace s00nya
 		static const Character* GetInputName(const Integer& code);
 
 		friend class Window;
+		friend class Locator;
 	};
 
 }

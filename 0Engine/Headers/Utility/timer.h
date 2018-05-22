@@ -4,12 +4,14 @@
 namespace s00nya
 {
 
+	class Locator;
+
 	class S00NYA_API Timer
 	{
 	private:
 		Float m_lastFrameTime;
 	
-	public:
+	private:
 		Timer();
 
 	private:
@@ -21,6 +23,8 @@ namespace s00nya
 		Float DeltaTime() const;
 		
 		static Float ElaspedTime();
+
+		friend class Locator;
 	};
 
 }

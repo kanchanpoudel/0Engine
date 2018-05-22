@@ -8,6 +8,8 @@
 namespace s00nya
 {
 
+	class Locator;
+
 	class S00NYA_API Debug
 	{
 	private:
@@ -17,12 +19,12 @@ namespace s00nya
 		Debug() = delete;
 		void operator=(const Debug& debug) = delete;
 		Debug(const Debug& debug) = delete;
+		
+		static void Initialize();
+		static void ShutDown();
 
 	public:
 		enum { S00NYA_LOG_INFO, S00NYA_LOG_ERROR, S00NYA_LOG_WARNING };
-
-		static void Initialize();
-		static void ShutDown();
 
 		static void Add(const std::string& logStr, Integer level);
 		static void Log(Boolean logToConsole = true, Boolean logToFile = false);
@@ -37,6 +39,8 @@ namespace s00nya
 			const Character* message,
 			const void* userParam
 		);
+
+		friend class Locator;
 	};
 
 }

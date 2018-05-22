@@ -158,6 +158,7 @@
     <ClCompile Include="Debugger\logger.cpp" />
     <ClCompile Include="GameObject\game_object_2d.cpp" />
     <ClCompile Include="Game\game.cpp" />
+    <ClCompile Include="Game\locator.cpp" />
     <ClCompile Include="Utility\timer.cpp" />
     <ClCompile Include="Graphics\window.cpp" />
     <ClCompile Include="Input\input_manager.cpp" />
@@ -170,6 +171,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\GameObject\game_object_2d.h" />
+    <ClInclude Include="Headers\Game\locator.h" />
     <ClInclude Include="Headers\Input\input_manager.h" />
     <ClInclude Include="Headers\Debugger\logger.h" />
     <ClInclude Include="Headers\s00nya_defs.h" />

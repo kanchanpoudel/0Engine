@@ -49,16 +49,16 @@ namespace s00nya
 		glfwSetWindowAspectRatio(m_id, m_width, m_height);
 		glViewport(0, 0, m_width, m_height);
 	}
+
+	Input* Window::GetInputSystem() const
+	{
+		return new Input(m_id);
+	}
 	
 	Window::~Window()
 	{
 		glfwDestroyWindow(m_id);
 		glfwTerminate();
-	}
-
-	Input* Window::GetInputSystem() const
-	{
-		return new Input(m_id);
 	}
 
 	void Window::Show() const

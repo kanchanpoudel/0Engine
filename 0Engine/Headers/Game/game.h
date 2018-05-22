@@ -18,7 +18,7 @@ namespace s00nya
 		InputManager* inputManager;
 
 	public:
-		Game2D(const Character* title, const Integer& width, const Integer& height);
+		Game2D(const Character* title = "s00nya Game", const Integer& width = 800, const Integer& height = 600);
 		virtual ~Game2D();
 
 	private:

@@ -7,6 +7,7 @@ namespace s00nya
 {
 
 	class Input;
+	class Locator;
 
 	class S00NYA_API Window
 	{
@@ -23,8 +24,11 @@ namespace s00nya
 			WINDOW_AUTO_HEIGHT = -2
 		};
 
-	public:
+	private:
 		Window(const Character* title, const Integer& width, const Integer& height);
+		Input* GetInputSystem() const; // Constructs Input class in heap
+	
+	public:
 		~Window();
 
 	private:
@@ -32,7 +36,6 @@ namespace s00nya
 		Window& operator=(const Window& window) = delete;
 
 	public:
-		Input* GetInputSystem() const; // Constructs Input class in heap
 		void Show() const;
 		void Update() const;
 
@@ -47,6 +50,8 @@ namespace s00nya
 		void DisableCursor() const;
 		void HideCursor() const;
 		void EnableCursor() const;
+
+		friend class Locator;
 	};
 
 }
