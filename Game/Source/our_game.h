@@ -9,8 +9,4 @@ class s00nyaApp : public s00nya::Game2D
 {
 public:
 	s00nyaApp();
-
-	void FixedUpdate() override;
-
-	void Update() override;
 };

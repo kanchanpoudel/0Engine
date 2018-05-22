@@ -63,6 +63,9 @@
     <ClCompile Include="Physics\rigid_body.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Physics\collision_sat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\Graphics\window.h">
@@ -129,6 +132,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Headers\Physics\rigid_body.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Physics\collision_sat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
