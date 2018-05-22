@@ -1,5 +1,8 @@
 #pragma once
 #include "s00nya_defs.h"
+#include <vector>
+#include <map>
+#include <string>
 
 namespace s00nya
 {
@@ -8,6 +11,7 @@ namespace s00nya
 	class Timer;
 	class Input;
 	class InputManager;
+	class GameObject2D;
 
 	class S00NYA_API Game2D
 	{
@@ -16,6 +20,10 @@ namespace s00nya
 		Timer* timer;
 		Input* input;
 		InputManager* inputManager;
+
+	private:
+		std::vector<GameObject2D> m_gameObjects;
+		std::map<std::string, UInteger> m_gameObjectsName;
 
 	public:
 		Game2D(const Character* title = "s00nya Game", const Integer& width = 800, const Integer& height = 600);
@@ -29,12 +37,9 @@ namespace s00nya
 		void Start();
 
 	private:
-		void Tick();					// Call once in a second
-
-	//Methods to Override
-	protected:
-		virtual void FixedUpdate();		// Call 60 times a second
-		virtual void Update();			// Call as frequent as possible OR Vsync-ed
+		void Tick();			// Call once in a second
+		void FixedUpdate();		// Call 60 times a second
+		void Update();			// Call as frequent as possible OR Vsync-ed
 
 	public:
 		static Input& GetInput();

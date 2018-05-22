@@ -5,6 +5,9 @@
 #include "Input/input.h"
 #include "Input/input_manager.h"
 #include "Game/locator.h"
+#include "Physics/collider_sat.h"
+#include "Physics/collision_sat.h"
+#include "GameObject/game_object_2d.h"
 
 namespace s00nya
 {
@@ -69,10 +72,15 @@ namespace s00nya
 
 	void Game2D::FixedUpdate()
 	{
+		for (auto& object : m_gameObjects)
+			object.FixedUpdate();
+		CollisionSAT::CollsionResolution(m_gameObjects);
 	}
 
 	void Game2D::Update()
 	{
+		for (auto& object : m_gameObjects)
+			object.Update();
 	}
 
 	Input& Game2D::GetInput()
