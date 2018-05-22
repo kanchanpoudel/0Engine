@@ -3,7 +3,7 @@
 #include <string>
 #include <list>
 #include <utility>
-#include "Input\input.h"
+#include "Input/input.h"
 #include "s00nya_defs.h"
 
 namespace s00nya
