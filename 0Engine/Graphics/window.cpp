@@ -136,7 +136,11 @@ namespace s00nya
 
 	void Window::SetIcon(const RawImage* image)
 	{
-		// TO-DO
+		GLFWimage icon;
+		icon.width = image->Width();
+		icon.height = image->Height();
+		icon.pixels = (UCharacter*)image->Data();
+		glfwSetWindowIcon(m_id, 1, &icon);
 	}
 
 	void Window::DisableCursor() const

@@ -47,8 +47,8 @@ namespace s00nya
 		void Resize(const Integer& width, const Integer& height);
 		void ToggleFullscreen();
 
-		void ChangeCursor(const RawImage* path);
-		void SetIcon(const RawImage* path);
+		void ChangeCursor(const RawImage* image);
+		void SetIcon(const RawImage* image);
 		void DisableCursor() const;
 		void HideCursor() const;
 		void EnableCursor() const;
