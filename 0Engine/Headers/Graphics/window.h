@@ -8,11 +8,13 @@ namespace s00nya
 
 	class Input;
 	class Locator;
+	class RawImage;
 
 	class S00NYA_API Window
 	{
 	private:
 		GLFWwindow* m_id;
+		GLFWcursor* m_cursor;
 		int m_width;
 		int m_height;
 		bool m_fullscreen;
@@ -45,8 +47,8 @@ namespace s00nya
 		void Resize(const Integer& width, const Integer& height);
 		void ToggleFullscreen();
 
-		void ChangeCursor(const Character* path) const;
-		void SetIcon(const Character* path) const;
+		void ChangeCursor(const RawImage* path);
+		void SetIcon(const RawImage* path);
 		void DisableCursor() const;
 		void HideCursor() const;
 		void EnableCursor() const;

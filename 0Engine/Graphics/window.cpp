@@ -3,13 +3,14 @@
 #include "GLFW/glfw3.h"
 #include "Debugger/logger.h"
 #include "Input/input.h"
+#include "Graphics/raw_images.h"
 #include <string>
 
 namespace s00nya
 {
 	
 	Window::Window(const Character* title, const Integer& width, const Integer& height) :
-		m_id(nullptr), m_width(width), m_height(height), m_fullscreen(false)
+		m_id(nullptr), m_cursor(nullptr), m_width(width), m_height(height), m_fullscreen(false)
 	{
 		glfwInit();
 
@@ -57,6 +58,7 @@ namespace s00nya
 	
 	Window::~Window()
 	{
+		if (m_cursor) glfwDestroyCursor(m_cursor);
 		glfwDestroyWindow(m_id);
 		glfwTerminate();
 	}
@@ -119,12 +121,20 @@ namespace s00nya
 		m_fullscreen = !m_fullscreen;
 	}
 
-	void Window::ChangeCursor(const Character* cursorPath) const
+	void Window::ChangeCursor(const RawImage* image)
 	{
-		// TO-DO
+		if (m_cursor) glfwDestroyCursor(m_cursor);
+
+		GLFWimage cursorImage;
+		cursorImage.width = image->Width();
+		cursorImage.height = image->Height();
+		cursorImage.pixels = (UCharacter*)image->Data();
+
+		m_cursor = glfwCreateCursor(&cursorImage, 0, 0);
+		glfwSetCursor(m_id, m_cursor);
 	}
 
-	void Window::SetIcon(const Character* iconPath) const
+	void Window::SetIcon(const RawImage* image)
 	{
 		// TO-DO
 	}
