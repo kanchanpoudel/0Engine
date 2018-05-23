@@ -6,6 +6,7 @@ namespace s00nya
 
 	struct S00NYA_API Material
 	{
+		UInteger frame;
 		UInteger albedo;
 		UInteger normal;
 		UInteger height;

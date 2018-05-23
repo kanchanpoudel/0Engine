@@ -9,9 +9,12 @@ namespace s00nya
 
 	struct S00NYA_API Vector3
 	{
-		union { Float x; Float r; };
-		union { Float y; Float g; };
-		union { Float z; Float b; };
+		union
+		{
+			struct { Float x; Float y; Float z; };
+			struct { Float r; Float g; Float b; };
+			Float values[3];
+		};
 
 		Vector3();	// Initializes everything to zero
 		Vector3(const Vector2& vec, const Float& _z); // Construct from Vector2

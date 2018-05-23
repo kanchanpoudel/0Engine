@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -159,8 +159,12 @@
     <ClCompile Include="GameObject\game_object_2d.cpp" />
     <ClCompile Include="Game\game.cpp" />
     <ClCompile Include="Game\locator.cpp" />
+    <ClCompile Include="Graphics\shader.cpp" />
+    <ClCompile Include="Graphics\vertex.cpp" />
+    <ClCompile Include="Graphics\vertex_buffer_object.cpp" />
     <ClCompile Include="Graphics\material.cpp" />
     <ClCompile Include="Graphics\raw_images.cpp" />
+    <ClCompile Include="Graphics\sprite_2d.cpp" />
     <ClCompile Include="Math\matrix4.cpp" />
     <ClCompile Include="Math\transform_2d.cpp" />
     <ClCompile Include="Math\vector2.cpp" />
@@ -176,6 +180,10 @@
     <ClCompile Include="Input\input.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Headers\Graphics\shader.h" />
+    <ClInclude Include="Headers\Graphics\sprite_2d.h" />
+    <ClInclude Include="Headers\Graphics\vertex.h" />
+    <ClInclude Include="Headers\Graphics\vertex_buffer_object.h" />
     <ClInclude Include="Utility\core\stb_image.h" />
     <ClInclude Include="Headers\GameObject\game_object_2d.h" />
     <ClInclude Include="Headers\Game\locator.h" />

@@ -8,7 +8,7 @@
 #define S00NYA_API
 #endif
 
-#define SetBIT(n, p) n | (0x001 << p)
+#define SetBIT(n, p) n |= (0x001 << p)
 #define GetBIT(n, p) n & (0x001 << p)
 
 #define null 0
@@ -19,13 +19,14 @@ namespace s00nya
 	typedef signed char			Integer8;
 	typedef short				Integer16;
 	typedef int					Integer32;
-	typedef long long			Integer64;
+	typedef long long			Integer64; 
 
 	typedef unsigned int		UInteger;
 	typedef unsigned char		UInteger8;
 	typedef unsigned short		UInteger16;
 	typedef unsigned int		UInteger32;
 	typedef unsigned long long	UInteger64;
+	typedef size_t				PDUInteger;
 
 	typedef signed char       	FInteger8;
 	typedef int               	FInteger16;

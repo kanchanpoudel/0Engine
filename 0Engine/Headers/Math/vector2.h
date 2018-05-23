@@ -9,8 +9,12 @@ namespace s00nya
 
 	struct S00NYA_API Vector2
 	{
-		union { Float x; Float u; };
-		union { Float y; Float v; };
+		union
+		{
+			struct { Float x; Float y; };
+			struct { Float u; Float v; };
+			Float values[2];
+		};
 
 		Vector2();	//Initializes everything to zero
 		Vector2(const Float& _x, const Float& _y);

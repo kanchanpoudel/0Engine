@@ -61,9 +61,4 @@ namespace s00nya
 	{
 	}
 
-	void GameObject2D::Draw()
-	{
-		// TO-DO : Writing renderer
-	}
-
 }

@@ -1,5 +1,6 @@
 #pragma once
-#include "Math\vector3.h"
+#include "Math/vector2.h"
+#include "Math/vector3.h"
 #include "s00nya_defs.h"
 
 namespace s00nya 
@@ -9,10 +10,11 @@ namespace s00nya
 	{
 		Vector3 position;
 		Float rotation;
-		Vector3 scale;
+		Vector2 scale;
+		Vector2 pivot;
 
 		Transform2D();
-		Transform2D(Vector3 pos, Vector3 sc, Float rot);
+		Transform2D(Vector3 pos, Vector2 sc, Float rot);
 
 		// TO-DO : Other methods required
 	};
