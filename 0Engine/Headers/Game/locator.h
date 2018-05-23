@@ -9,6 +9,7 @@ namespace s00nya
 	class Timer;
 	class Input;
 	class InputManager;
+	class Resources;
 	class Locator;
 
 	class S00NYA_API Locator
@@ -25,6 +26,8 @@ namespace s00nya
 		Timer* TimerService() const;
 		Input* InputService(const Window* window) const;
 		InputManager* InputManagerService(Input* input) const;
+		Resources* ResourceService() const;
+		
 
 		static Locator& Get();
 	};

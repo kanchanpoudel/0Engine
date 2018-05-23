@@ -16,15 +16,17 @@ namespace s00nya
 		window(Locator::Get().WindowService(title, width, height)),
 		timer(Locator::Get().TimerService()),
 		input(Locator::Get().InputService(window)),
-		inputManager(Locator::Get().InputManagerService(input))
+		inputManager(Locator::Get().InputManagerService(input)),
+		resource(Locator::Get().ResourceService())
 	{
 		instance = this;
 	}
 
 	Game2D::~Game2D()
 	{
-		delete input;
+		delete resource;
 		delete inputManager;
+		delete input;
 		delete timer;
 		delete window;
 	}

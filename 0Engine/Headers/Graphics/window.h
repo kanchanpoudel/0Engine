@@ -2,13 +2,14 @@
 #include "s00nya_defs.h"
 
 struct GLFWwindow;
+struct GLFWcursor;
 
 namespace s00nya
 {
 
 	class Input;
 	class Locator;
-	class RawImage;
+	struct RawImage;
 
 	class S00NYA_API Window
 	{

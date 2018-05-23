@@ -6,7 +6,8 @@
 namespace s00nya
 {
 
-	class RawImage;
+	struct RawImage;
+	class Locator;
 
 	class S00NYA_API Resources
 	{
@@ -16,14 +17,16 @@ namespace s00nya
 	private:
 		static bool instanced;
 
+		Resources();
 		Resources(const Resources& resources) = delete;
 		Resources& operator=(const Resources& resources) = delete;
 
 	public:
-		Resources();
 		bool LoadRawImage(const Character* path, const Character* name);
 		void FreeRawImage(const Character* name);
 		const RawImage& GetRawImage(const Character* name);
+
+		friend class Locator;
 	};
 
 }

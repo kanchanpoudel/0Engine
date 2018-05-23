@@ -12,6 +12,7 @@ namespace s00nya
 	class Input;
 	class InputManager;
 	class GameObject2D;
+	class Reaources;
 
 	class S00NYA_API Game2D
 	{
@@ -20,6 +21,7 @@ namespace s00nya
 		Timer* timer;
 		Input* input;
 		InputManager* inputManager;
+		Resources* resource;
 
 	private:
 		std::vector<GameObject2D> m_gameObjects;

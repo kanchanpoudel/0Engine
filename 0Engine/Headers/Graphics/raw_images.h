@@ -14,7 +14,7 @@ namespace s00nya
 		Integer m_height;
 		Integer m_channels;
 
-	private:
+	public:
 		RawImage() = default;
 		RawImage(const RawImage& image) = delete;
 		RawImage& operator=(const RawImage& image) = default;
