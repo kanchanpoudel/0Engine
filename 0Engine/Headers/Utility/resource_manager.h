@@ -1,12 +1,12 @@
 #pragma once
 #include "s00nya_defs.h"
+#include "Graphics/raw_images.h"
 #include <map>
 #include <string>
 
 namespace s00nya
 {
 
-	struct RawImage;
 	class Locator;
 
 	class S00NYA_API Resources

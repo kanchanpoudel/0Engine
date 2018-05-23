@@ -3,6 +3,7 @@
 // Wrapper and Utilities include
 #include "Game/game.h"
 #include "Utility/timer.h"
+#include "Utility/resource_manager.h"
 
 // Graphics include
 #include "Graphics/window.h"

@@ -121,25 +121,25 @@ namespace s00nya
 		m_fullscreen = !m_fullscreen;
 	}
 
-	void Window::ChangeCursor(const RawImage* image)
+	void Window::ChangeCursor(const RawImage& image)
 	{
 		if (m_cursor) glfwDestroyCursor(m_cursor);
 
 		GLFWimage cursorImage;
-		cursorImage.width = image->Width();
-		cursorImage.height = image->Height();
-		cursorImage.pixels = (UCharacter*)image->Data();
+		cursorImage.width = image.Width();
+		cursorImage.height = image.Height();
+		cursorImage.pixels = (UCharacter*)image.Data();
 
 		m_cursor = glfwCreateCursor(&cursorImage, 0, 0);
 		glfwSetCursor(m_id, m_cursor);
 	}
 
-	void Window::SetIcon(const RawImage* image)
+	void Window::SetIcon(const RawImage& image)
 	{
 		GLFWimage icon;
-		icon.width = image->Width();
-		icon.height = image->Height();
-		icon.pixels = (UCharacter*)image->Data();
+		icon.width = image.Width();
+		icon.height = image.Height();
+		icon.pixels = (UCharacter*)image.Data();
 		glfwSetWindowIcon(m_id, 1, &icon);
 	}
 

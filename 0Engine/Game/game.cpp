@@ -4,6 +4,7 @@
 #include "Utility/timer.h"
 #include "Input/input.h"
 #include "Input/input_manager.h"
+#include "Utility/resource_manager.h"
 #include "Game/locator.h"
 #include "Physics/collider_sat.h"
 #include "Physics/collision_sat.h"
@@ -98,6 +99,11 @@ namespace s00nya
 	InputManager& Game2D::GetInputManager()
 	{
 		return *(instance->inputManager);
+	}
+
+	Resources& Game2D::GetResourceManager()
+	{
+		return *(instance->resource);
 	}
 
 	const Float Game2D::fps = 60.0f;

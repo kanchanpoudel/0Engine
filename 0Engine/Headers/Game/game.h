@@ -12,7 +12,7 @@ namespace s00nya
 	class Input;
 	class InputManager;
 	class GameObject2D;
-	class Reaources;
+	class Resources;
 
 	class S00NYA_API Game2D
 	{
@@ -47,6 +47,7 @@ namespace s00nya
 		static Input& GetInput();
 		static Timer& GetTimer();
 		static InputManager& GetInputManager();
+		static Resources& GetResourceManager();
 
 	protected:
 		static const Float fps; // Frames per second

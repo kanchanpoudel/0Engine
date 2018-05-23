@@ -1,4 +1,5 @@
 #include "Utility/resource_manager.h"
+#define STB_IMAGE_IMPLEMENTATION
 #include "core/stb_image.h"
 #include "Graphics/raw_images.h"
 #include "Debugger/logger.h"
@@ -11,7 +12,7 @@ namespace s00nya
 
 	Resources::Resources()
 	{
-		assert(instanced);
+		assert(!instanced);
 		instanced = true;
 	}
 
@@ -25,6 +26,7 @@ namespace s00nya
 			return false;
 		}
 		m_rawImages[std::string(name)] = newImage;
+		return true;
 	}
 
 	void Resources::FreeRawImage(const Character* name)
