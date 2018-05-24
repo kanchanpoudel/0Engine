@@ -16,7 +16,7 @@ namespace s00nya
 	public:
 		VertexBufferObject();
 		void Bind() const;
-		~VertexBufferObject();
+		virtual ~VertexBufferObject();
 	};
 
 }

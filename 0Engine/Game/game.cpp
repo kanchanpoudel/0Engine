@@ -18,13 +18,19 @@ namespace s00nya
 		timer(Locator::Get().TimerService()),
 		input(Locator::Get().InputService(window)),
 		inputManager(Locator::Get().InputManagerService(input)),
-		resource(Locator::Get().ResourceService())
+		resource(Locator::Get().ResourceService()),
+		renderer(Locator::Get().RendererService())
 	{
+		m_shaders["Default2DShader"] = Locator::Get().ShaderService("./Resources/default2dshader.glsl");
 		instance = this;
 	}
 
 	Game2D::~Game2D()
 	{
+		delete m_shaders["Default2DShader"];
+
+		m_shaders.clear();
+
 		delete resource;
 		delete inputManager;
 		delete input;
@@ -75,15 +81,15 @@ namespace s00nya
 
 	void Game2D::FixedUpdate()
 	{
-		for (auto& object : m_gameObjects)
+		/*for (auto& object : m_gameObjects)
 			object.FixedUpdate();
-		CollisionSAT::CollsionResolution(m_gameObjects);
+		CollisionSAT::CollsionResolution(m_gameObjects);*/
 	}
 
 	void Game2D::Update()
 	{
-		for (auto& object : m_gameObjects)
-			object.Update();
+		/*for (auto& object : m_gameObjects)
+			object.Update();*/
 	}
 
 	Input& Game2D::GetInput()

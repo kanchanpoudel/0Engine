@@ -5,6 +5,8 @@
 #include "Input/input.h"
 #include "Input/input_manager.h"
 #include "Utility/resource_manager.h"
+#include "Graphics/renderer.h"
+#include "Graphics/shader.h"
 
 namespace s00nya
 {
@@ -49,6 +51,48 @@ namespace s00nya
 	Resources* Locator::ResourceService() const
 	{
 		return new Resources();
+	}
+
+	Shader* Locator::ShaderService(const Character* path) const
+	{
+		std::ifstream file(path, std::ios::in);
+		std::stringstream stream;
+		stream << file.rdbuf();
+		file.close();
+		std::string content(stream.str());
+
+		PDUInteger vertexPos = content.find("@Vertex Shader");
+		PDUInteger fragmentPos = content.find("@Fragment Shader");
+		PDUInteger geometryPos = content.find("@Geometry Shader");
+		if (vertexPos == std::string::npos || fragmentPos == std::string::npos)
+		{
+			Debug::Add("Could not load Shader - " + std::string(path), Debug::S00NYA_LOG_WARNING);
+			return nullptr;
+		}
+
+		if (geometryPos == std::string::npos)
+		{
+			std::string vertex(content.substr(vertexPos + 14, fragmentPos - vertexPos - 14));
+			std::string fragment(content.substr(fragmentPos + 16, content.length() - fragmentPos - 16));
+			const Character* vertexCstr(vertex.c_str());
+			const Character* fragmentCstr(fragment.c_str());
+			return new Shader(vertexCstr, fragmentCstr);
+		}
+		else
+		{
+			std::string vertex(content.substr(vertexPos + 14, geometryPos - vertexPos - 14));
+			std::string geometry(content.substr(geometryPos + 16, fragmentPos - geometryPos - 16));
+			std::string fragment(content.substr(fragmentPos + 16, content.length() - fragmentPos - 16));
+			const Character* vertexCstr(vertex.c_str());
+			const Character* geometryCstr(geometry.c_str());
+			const Character* fragmentCstr(fragment.c_str());
+			return new Shader(vertexCstr, fragmentCstr, geometryCstr);
+		}
+	}
+
+	Renderer* Locator::RendererService() const
+	{
+		return new Renderer();
 	}
 
 	Locator& Locator::Get()

@@ -7,7 +7,7 @@
 namespace s00nya
 {
 
-	class Resources;
+	class Locator;
 
 	class S00NYA_API Shader
 	{
@@ -30,7 +30,7 @@ namespace s00nya
 
 		~Shader();
 
-		friend class Resources;
+		friend class Locator;
 	};
 
 }

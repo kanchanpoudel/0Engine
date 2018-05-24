@@ -10,6 +10,8 @@ namespace s00nya
 	class Input;
 	class InputManager;
 	class Resources;
+	class Shader;
+	class Renderer;
 	class Locator;
 
 	class S00NYA_API Locator
@@ -27,7 +29,8 @@ namespace s00nya
 		Input* InputService(const Window* window) const;
 		InputManager* InputManagerService(Input* input) const;
 		Resources* ResourceService() const;
-		
+		Shader* ShaderService(const Character* path) const;
+		Renderer* RendererService() const;
 
 		static Locator& Get();
 	};

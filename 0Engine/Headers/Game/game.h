@@ -11,8 +11,11 @@ namespace s00nya
 	class Timer;
 	class Input;
 	class InputManager;
-	class GameObject2D;
 	class Resources;
+	class Renderer;
+
+	class Shader;
+	class Scene;
 
 	class S00NYA_API Game2D
 	{
@@ -22,10 +25,11 @@ namespace s00nya
 		Input* input;
 		InputManager* inputManager;
 		Resources* resource;
+		Renderer* renderer;
 
 	private:
-		std::vector<GameObject2D> m_gameObjects;
-		std::map<std::string, UInteger> m_gameObjectsName;
+		std::vector<Scene> m_scenes;
+		std::map<std::string, Shader*> m_shaders;
 
 	public:
 		Game2D(const Character* title = "s00nya Game", const Integer& width = 800, const Integer& height = 600);

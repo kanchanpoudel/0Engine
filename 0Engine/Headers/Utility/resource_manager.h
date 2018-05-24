@@ -34,10 +34,6 @@ namespace s00nya
 		void FreeSpriteSheet(const Character* name);
 		const SpriteSheet& GetSpriteSheet(const Character* name);
 
-		Boolean LoadShader(const Character* path, const Character* name);
-		void FreeShader(const Character* name);
-		const Shader& GetShader(const Character* name);
-
 		friend class Locator;
 	};
 
