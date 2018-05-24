@@ -13,4 +13,12 @@ namespace s00nya
 	{
 	}
 
+	Matrix4 Transform2D::GetModalMatrix() const
+	{
+		return 
+			Matrix4::Scale(Vector3(scale, 0.0f)) * 
+			Matrix4::Rotation(rotation, { 0.0f, 0.0f, -1.0f }) * 
+			Matrix4::Translation(position);
+	}
+
 }

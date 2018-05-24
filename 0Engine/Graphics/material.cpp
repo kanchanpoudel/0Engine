@@ -4,7 +4,16 @@ namespace s00nya
 {
 
 	Material::Material():
-		albedo(0), normal(0), height(0), metallic(0), smoothness(0), emission(false)
+		frame(0),
+		type(Type::CLAMP_TO_EDGE),
+		color(0.0f, 0.0f, 0.0f), 
+		diffuse(), 
+		normal(), 
+		height(), 
+		metallic(), 
+		smoothness(0.0f),
+		colorBlend(0.0f),
+		emission(false)
 	{
 	}
 

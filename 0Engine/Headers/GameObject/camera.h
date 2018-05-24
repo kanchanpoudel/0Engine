@@ -1,30 +1,28 @@
 #pragma once
+#include "s00nya_defs.h"
 #include "Math/matrix4.h"
 #include "Math/vector2.h"
 #include "Math/vector3.h"
-#include "s00nya_defs.h"
 
-namespace s00nya 
+namespace s00nya
 {
 
 	class Renderer;
 
-	struct S00NYA_API Transform2D
+	class S00NYA_API Camera
 	{
-		Vector3 position;
+	public:
+		Vector2 position;
 		Float rotation;
 		Vector2 scale;
-		Vector2 pivot;
 
-		Transform2D();
-		Transform2D(Vector3 pos, Vector2 sc, Float rot);
+		Camera();
+		Camera(const Vector2& pos, const Float& rot = 0.0f, const Vector2& sca = { 1.0f, 1.0f });
 
 	private:
 		Matrix4 GetModalMatrix() const;
 
 		friend class Renderer;
-
-		// TO-DO : Other methods required
 	};
 
 }

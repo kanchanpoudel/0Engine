@@ -33,16 +33,15 @@ namespace s00nya
 		return true;
 	}
 
-	void Resources::FreeRawImage(const Character* name)
+	void Resources::FreeRawImage(const std::string& name)
 	{
-		std::string namestr(name);
-		stbi_image_free(m_rawImages[namestr].m_data);
-		m_rawImages.erase(namestr);
+		stbi_image_free(m_rawImages[name].m_data);
+		m_rawImages.erase(name);
 	}
 
-	const RawImage& Resources::GetRawImage(const Character* name)
+	const RawImage& Resources::GetRawImage(const std::string& name)
 	{
-		return m_rawImages[std::string(name)];
+		return m_rawImages[name];
 	}
 
 	Boolean Resources::LoadSpriteSheet(
@@ -81,19 +80,20 @@ namespace s00nya
 		}
 
 		glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+		glGenerateMipmap(GL_TEXTURE_2D);
 
 		m_spriteSheets[std::string(name)] = SpriteSheet(texID, width, height, horizontal, vertical);
 		return true;
 	}
 
-	void Resources::FreeSpriteSheet(const Character* name)
+	void Resources::FreeSpriteSheet(const std::string& name)
 	{
-		m_spriteSheets.erase(std::string(name));
+		m_spriteSheets.erase(name);
 	}
 
-	const SpriteSheet& Resources::GetSpriteSheet(const Character* name)
+	const SpriteSheet& Resources::GetSpriteSheet(const std::string& name)
 	{
-		return m_spriteSheets[std::string(name)];
+		return m_spriteSheets[name];
 	}
 
 }

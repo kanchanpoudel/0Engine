@@ -8,7 +8,10 @@
 #include "Game/locator.h"
 #include "Physics/collider_sat.h"
 #include "Physics/collision_sat.h"
+#include "GameObject/scene_2d.h"
 #include "GameObject/game_object_2d.h"
+#include "Graphics/renderer.h"
+#include "GL/glew.h"
 
 namespace s00nya
 {
@@ -55,15 +58,15 @@ namespace s00nya
 				Tick();
 			}
 
-			// As fast as possible
-			Update();
-			
 			// Runs 60 times a second
 			if (deltaTimeForSecond * fps > 1.0f)
 			{
 				deltaTimeForSecond = 0.0f;
 				FixedUpdate();
 			}
+
+			// As fast as possible
+			Update();
 
 			// Sum up delta time to get total time difference
 			deltaTimeForSecond += timer->DeltaTime();
@@ -81,15 +84,25 @@ namespace s00nya
 
 	void Game2D::FixedUpdate()
 	{
-		/*for (auto& object : m_gameObjects)
-			object.FixedUpdate();
-		CollisionSAT::CollsionResolution(m_gameObjects);*/
+		auto& objects(Locator::Get().GetAllObjects2D(m_scenes[m_activeScene]));
+		for (auto& object : objects)
+			object.second.FixedUpdate();
+			
+		//CollisionSAT::CollsionResolution(m_gameObjects);
 	}
 
 	void Game2D::Update()
 	{
-		/*for (auto& object : m_gameObjects)
-			object.Update();*/
+		auto& objects(Locator::Get().GetAllObjects2D(m_scenes[m_activeScene]));
+		for (auto& object : objects)
+			object.second.Update();
+
+		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+		renderer->Initialize(*m_scenes[m_activeScene], Renderer::Type::GAME_OBJECT_2D, *m_shaders["DefaultShader2D"]);
+		for (auto& object : objects)
+			renderer->Draw(object.second, resource->GetSpriteSheet(object.second.material.diffuse));
 	}
 
 	Input& Game2D::GetInput()
@@ -110,6 +123,36 @@ namespace s00nya
 	Resources& Game2D::GetResourceManager()
 	{
 		return *(instance->resource);
+	}
+
+	void Game2D::ActivateScene(const UInteger& id)
+	{
+		instance->m_activeScene = id;
+	}
+
+	void Game2D::PushScene(Scene* scene)
+	{
+		instance->m_scenes.push_back(scene);
+	}
+
+	void Game2D::PopSceneBack()
+	{
+		instance->m_scenes.pop_back();
+	}
+
+	void Game2D::PopSceneFront()
+	{
+		instance->m_scenes.pop_front();
+	}
+
+	GameObject2D& Game2D::GetObject2D(const Character* name)
+	{
+		return instance->m_scenes[instance->m_activeScene]->GetObject2D(name);
+	}
+
+	void Game2D::RemoveObject2D(const Character* name)
+	{
+		instance->m_scenes[instance->m_activeScene]->RemoveObject2D(name);
 	}
 
 	const Float Game2D::fps = 60.0f;

@@ -5,6 +5,7 @@ namespace s00nya
 {
 
 	class Resources;
+	class Renderer;
 
 	class SpriteSheet
 	{
@@ -30,6 +31,7 @@ namespace s00nya
 		Integer Vertical(UInteger index) const;
 
 		friend class Resources;
+		friend class Renderer;
 	};
 
 }

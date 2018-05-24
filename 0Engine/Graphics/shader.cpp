@@ -103,6 +103,14 @@ namespace s00nya
 		);
 	}
 
+	void Shader::SetTexture2D(const Character* name, const Integer& id) const
+	{
+		glUniform1i(
+			glGetUniformLocation(m_id, name),
+			id
+		);
+	}
+
 	Shader::~Shader()
 	{
 		glDeleteShader(m_id);

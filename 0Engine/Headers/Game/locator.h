@@ -1,5 +1,7 @@
 #pragma once
 #include "s00nya_defs.h"
+#include <map>
+#include <string>
 
 namespace s00nya
 {
@@ -12,6 +14,8 @@ namespace s00nya
 	class Resources;
 	class Shader;
 	class Renderer;
+	class GameObject2D;
+	class Scene;
 	class Locator;
 
 	class S00NYA_API Locator
@@ -31,6 +35,7 @@ namespace s00nya
 		Resources* ResourceService() const;
 		Shader* ShaderService(const Character* path) const;
 		Renderer* RendererService() const;
+		std::map<std::string, GameObject2D>& GetAllObjects2D(Scene* scene);
 
 		static Locator& Get();
 	};

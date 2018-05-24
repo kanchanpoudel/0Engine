@@ -95,6 +95,11 @@ namespace s00nya
 		return new Renderer();
 	}
 
+	std::map<std::string, GameObject2D>& Locator::GetAllObjects2D(Scene* scene)
+	{
+		return scene->m_renderableObjects;
+	}
+
 	Locator& Locator::Get()
 	{
 		if (instance) return *instance;

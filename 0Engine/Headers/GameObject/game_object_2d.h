@@ -40,6 +40,7 @@ namespace s00nya
 		virtual void Update();
 
 		virtual void OnTrigger();
+
 	};
 
 }
