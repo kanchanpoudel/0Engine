@@ -1,5 +1,6 @@
 #pragma once
 #include "Math/transform_2d.h"
+#include "Math/dimension.h"
 #include "Graphics/material.h"
 #include "Physics/collider_sat.h"
 #include "Physics/rigid_body.h"
@@ -16,6 +17,7 @@ namespace s00nya
 	{
 	public:
 		Transform2D transform;
+		Dimension dimension;
 		Material material;
 		Collider2D collider;
 		RigidBody body;
@@ -30,9 +32,9 @@ namespace s00nya
 
 	public:
 		GameObject2D();
-		GameObject2D(const Transform2D& transform, const Material& material);
-		GameObject2D(const Transform2D& transform, const Material& material, const Collider2D& collider);
-		GameObject2D(const Transform2D& transform, const Material& material, const Collider2D& collider, const RigidBody& body);
+		GameObject2D(const Transform2D& transform, const Dimension& dimension, const Material& material);
+		GameObject2D(const Transform2D& transform, const Dimension& dimension, const Material& material, const Collider2D& collider);
+		GameObject2D(const Transform2D& transform, const Dimension& dimension, const Material& material, const Collider2D& collider, const RigidBody& body);
 
 		void SetFlags(UInteger falgs);
 		const UInteger& GetFlags();

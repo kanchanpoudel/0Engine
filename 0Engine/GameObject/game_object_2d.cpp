@@ -11,9 +11,11 @@ namespace s00nya
 
 	GameObject2D::GameObject2D(
 		const Transform2D& transform, 
+		const Dimension& dimension,
 		const Material& material
 	):
 		transform(transform), 
+		dimension(dimension),
 		material(material), 
 		m_flags(RENDER_OBJECT)
 	{
@@ -21,10 +23,12 @@ namespace s00nya
 
 	GameObject2D::GameObject2D(
 		const Transform2D& transform, 
+		const Dimension& dimension,
 		const Material& material, 
 		const Collider2D& collider
 	):
 		transform(transform), 
+		dimension(dimension),
 		material(material), 
 		collider(collider), 
 		m_flags(RENDER_OBJECT | DETECT_COLLISION)
@@ -33,11 +37,13 @@ namespace s00nya
 
 	GameObject2D::GameObject2D(
 		const Transform2D& transform, 
+		const Dimension& dimension,
 		const Material& material, 
 		const Collider2D& collider, 
 		const RigidBody& body
 	):
 		transform(transform),
+		dimension(dimension),
 		material(material),
 		collider(collider),
 		body(body),

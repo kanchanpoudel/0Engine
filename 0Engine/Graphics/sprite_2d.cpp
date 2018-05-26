@@ -8,14 +8,11 @@ namespace s00nya
 		const Float& width,
 		const Float& height,
 		const UInteger& horizontal,
-		const UInteger& vertical,
-		const Float& rWidth,
-		const Float& rHeight
+		const UInteger& vertical
 		):
 		m_id(texID), 
 		m_spriteWidth(width), m_spriteHeight(height), 
-		m_horizontal(horizontal), m_vertical(vertical),
-		m_rWidth(rWidth), m_rHeight(rHeight)
+		m_horizontal(horizontal), m_vertical(vertical)
 	{
 	}
 

@@ -88,9 +88,7 @@ namespace s00nya
 			1.0f / (Float)horizontal,
 			1.0f / (Float)vertical,
 			horizontal, 
-			vertical,
-			(Float)width/(Float)horizontal,
-			(Float)height/(Float)vertical
+			vertical
 		);
 		return true;
 	}

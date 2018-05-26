@@ -14,7 +14,6 @@ namespace s00nya
 		Vector3 position;
 		Float rotation;
 		Vector2 scale;
-		Vector2 pivot;
 
 		Transform2D();
 		Transform2D(Vector3 pos, Vector2 sc, Float rot);

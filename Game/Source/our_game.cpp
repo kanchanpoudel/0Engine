@@ -12,8 +12,11 @@ s00nyaApp::s00nyaApp() :
 
 	resource->LoadSpriteSheet("./Resources/player.png", 4, 4, "Player");
 
+	Dimension dimension({ 0.0f, 0.0f }, 200.0f, 200.0f);
+	Collider2D col(50.0f, 50.0f);
+
 	Transform2D playerTrans;
-	playerTrans.position = { 0.0f, 0.0f, 0.0f };
+	playerTrans.position = { 200.0f, 200.0f, 0.0f };
 	playerTrans.rotation = 0.0f;
 	playerTrans.scale = { 0.5f, 0.5f };
 
@@ -30,6 +33,6 @@ s00nyaApp::s00nyaApp() :
 	level1 = PushScene(new Scene({ -1.0f, 1.0f }, { 0.0f, 800.0f }, { 600.0f, 0.0f }));
 	ActivateScene(level1);
 
-	AddGameObject2D(new Player(playerTrans, playerMat), "Hero");
-	AddGameObject2D(new GameObject2D(another, playerMat), "Another");
+	AddGameObject2D(new Player(playerTrans, dimension, playerMat, col), "Hero");
+	AddGameObject2D(new GameObject2D(another, dimension, playerMat, col), "Another");
 }

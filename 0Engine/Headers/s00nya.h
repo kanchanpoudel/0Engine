@@ -21,8 +21,10 @@
 #include "Math/vector4.h"
 #include "Math/matrix4.h"
 #include "Math/transform_2d.h"
+#include "Math/dimension.h"
 
 // Game Objects and Components
 #include "GameObject/scene_2d.h"
 #include "GameObject/game_object_2d.h"
 #include "GameObject/scene_2d.h"
+#include "Physics/collider_sat.h"

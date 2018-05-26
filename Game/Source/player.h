@@ -11,8 +11,13 @@ public:
 	Float speed = 200.0f;
 	Float lastTime = 0.0f;
 
-	Player(const Transform2D& trans, const Material& mat) :
-		GameObject2D(trans, mat)
+	Player(const Transform2D& trans, const Dimension& dim, const Material& mat) :
+		GameObject2D(trans, dim, mat)
+	{
+	}
+
+	Player(const Transform2D& trans, const Dimension& dim, const Material& mat, const Collider2D& col) :
+		GameObject2D(trans, dim, mat, col)
 	{
 	}
 

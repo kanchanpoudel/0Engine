@@ -15,11 +15,9 @@ namespace s00nya
 		Float m_spriteHeight;
 		UInteger m_horizontal;
 		UInteger m_vertical;
-		Float m_rWidth;
-		Float m_rHeight;
 
 	private:
-		SpriteSheet(const UInteger& texID, const Float& width, const Float& height, const UInteger& horizontal, const UInteger& vertical, const Float& rWidth, const Float& rHeight);
+		SpriteSheet(const UInteger& texID, const Float& width, const Float& height, const UInteger& horizontal, const UInteger& vertical);
 
 	public:
 		SpriteSheet() = default;

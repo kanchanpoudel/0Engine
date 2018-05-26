@@ -1,6 +1,7 @@
 #include "Physics/collision_sat.h"
 #include "Physics/collider_sat.h"
 #include "GameObject/game_object_2d.h"
+#include <iostream>
 
 namespace s00nya
 {
@@ -15,9 +16,11 @@ namespace s00nya
 		}
 	}
 
-	void CollisionSAT::CollsionResolution(const std::vector<GameObject2D>& objects)
+	void CollisionSAT::CollsionResolution(const std::vector<GameObject2D*>& objects)
 	{
 		// TO-DO : Collision Detector and Resolution loop
+		if (!DetectCollision(*objects[0], *objects[1]))
+			std::cout << "Collides" << std::endl;
 	}
 	
 	bool CollisionSAT::DetectCollision(const GameObject2D& lhs, const GameObject2D& rhs)
