@@ -52,6 +52,7 @@ namespace s00nya
 	)
 	{
 		Integer width, height, channels;
+		stbi_set_flip_vertically_on_load(true);
 		UCharacter* data = stbi_load(path, &width, &height, &channels, 0);
 		if (!data)
 		{
@@ -64,7 +65,7 @@ namespace s00nya
 		glBindTexture(GL_TEXTURE_2D, texID);
 
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
@@ -82,7 +83,15 @@ namespace s00nya
 		glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
 		glGenerateMipmap(GL_TEXTURE_2D);
 
-		m_spriteSheets[std::string(name)] = SpriteSheet(texID, width, height, horizontal, vertical);
+		m_spriteSheets[std::string(name)] = SpriteSheet(
+			texID, 
+			1.0f / (Float)horizontal,
+			1.0f / (Float)vertical,
+			horizontal, 
+			vertical,
+			(Float)width/(Float)horizontal,
+			(Float)height/(Float)vertical
+		);
 		return true;
 	}
 

@@ -23,7 +23,7 @@ namespace s00nya
 			2, 3, 0
 		};
 
-		glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex2D) * vertices.size(), vertices.data(), GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex2D) * vertices.size(), vertices.data(), GL_DYNAMIC_DRAW);
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(UInteger) * 6, indices, GL_STATIC_DRAW);
 
 		glEnableVertexAttribArray(Vertex2D::POSITION);

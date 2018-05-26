@@ -24,15 +24,18 @@ namespace s00nya
 		resource(Locator::Get().ResourceService()),
 		renderer(Locator::Get().RendererService())
 	{
-		m_shaders["Default2DShader"] = Locator::Get().ShaderService("./Resources/default2dshader.glsl");
+		m_shaders["Default2DShader"] = Locator::Get().ShaderService("./Resources/Default2DShader.glsl");
 		instance = this;
 	}
 
 	Game2D::~Game2D()
 	{
 		delete m_shaders["Default2DShader"];
-
 		m_shaders.clear();
+
+		for (auto& scene : m_scenes)
+			delete scene;
+		m_scenes.clear();
 
 		delete resource;
 		delete inputManager;
@@ -78,15 +81,15 @@ namespace s00nya
 
 	void Game2D::Tick()
 	{
-		Debug::Log(true, true);
+		Debug::Log(true);
 		printf("\nFPS : %d", (Integer)(1.0f / timer->DeltaTime()));
 	}
 
 	void Game2D::FixedUpdate()
 	{
 		auto& objects(Locator::Get().GetAllObjects2D(m_scenes[m_activeScene]));
-		for (auto& object : objects)
-			object.second.FixedUpdate();
+		for (auto* object : objects)
+			object->FixedUpdate();
 			
 		//CollisionSAT::CollsionResolution(m_gameObjects);
 	}
@@ -94,15 +97,18 @@ namespace s00nya
 	void Game2D::Update()
 	{
 		auto& objects(Locator::Get().GetAllObjects2D(m_scenes[m_activeScene]));
-		for (auto& object : objects)
-			object.second.Update();
+		for (auto* object : objects)
+			object->Update();
 
 		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		renderer->Initialize(*m_scenes[m_activeScene], Renderer::Type::GAME_OBJECT_2D, *m_shaders["DefaultShader2D"]);
-		for (auto& object : objects)
-			renderer->Draw(object.second, resource->GetSpriteSheet(object.second.material.diffuse));
+		renderer->Initialize(*m_scenes[m_activeScene], Renderer::Type::GAME_OBJECT_2D, m_shaders["Default2DShader"]);
+		for (auto* object : objects)
+		{
+			if(GetBIT(object->GetFlags(), 0))
+				renderer->Draw(*object, resource->GetSpriteSheet(object->material.diffuse));
+		}
 	}
 
 	Input& Game2D::GetInput()
@@ -125,24 +131,42 @@ namespace s00nya
 		return *(instance->resource);
 	}
 
-	void Game2D::ActivateScene(const UInteger& id)
+	void Game2D::ActivateScene(const PDUInteger& id)
 	{
 		instance->m_activeScene = id;
 	}
 
-	void Game2D::PushScene(Scene* scene)
+	void Game2D::ActivateNextScene()
+	{
+		instance->m_activeScene++;
+	}
+
+	PDUInteger Game2D::PushScene(Scene* scene)
 	{
 		instance->m_scenes.push_back(scene);
+		return instance->m_scenes.size() - 1;
 	}
 
 	void Game2D::PopSceneBack()
 	{
+		delete (instance->m_scenes.back());
 		instance->m_scenes.pop_back();
 	}
 
 	void Game2D::PopSceneFront()
 	{
+		delete (instance->m_scenes.front());
 		instance->m_scenes.pop_front();
+	}
+
+	Scene& Game2D::GetCurrentScene()
+	{
+		return *instance->m_scenes[instance->m_activeScene];
+	}
+
+	void Game2D::AddGameObject2D(GameObject2D* object2D, const Character* name)
+	{
+		instance->m_scenes[instance->m_activeScene]->AddObject2D(object2D, name);
 	}
 
 	GameObject2D& Game2D::GetObject2D(const Character* name)

@@ -190,7 +190,7 @@ namespace s00nya
 			currentInput->m_keyMaps[keyCode] = InputState::DOWN;
 			return;
 		case GLFW_REPEAT:
-			currentInput->m_keyMaps[keyCode] = InputState::REPEATED;
+			currentInput->m_keyMaps[keyCode] = InputState::DOWN;
 			return;
 		}
 
@@ -281,11 +281,6 @@ namespace s00nya
 	Boolean Input::Held(const Keys& key)
 	{
 		return m_keyMaps[key] == InputState::DOWN;
-	}
-
-	Boolean Input::Repeated(const Keys& key)
-	{
-		return m_keyMaps[key] == InputState::REPEATED;
 	}
 
 	Boolean Input::Combined(const Keys& hold, const Keys& press)

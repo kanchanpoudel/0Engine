@@ -50,6 +50,11 @@ namespace s00nya
 		m_flags = flags;
 	}
 
+	const UInteger& GameObject2D::GetFlags()
+	{
+		return m_flags;
+	}
+
 	void GameObject2D::FixedUpdate()
 	{
 	}

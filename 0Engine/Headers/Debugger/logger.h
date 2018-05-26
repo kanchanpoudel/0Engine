@@ -27,7 +27,7 @@ namespace s00nya
 		enum { S00NYA_LOG_INFO, S00NYA_LOG_ERROR, S00NYA_LOG_WARNING };
 
 		static void Add(const std::string& logStr, Integer level);
-		static void Log(Boolean logToConsole = true, Boolean logToFile = false);
+		static void Log( Boolean logToFile = false);
 		
 	private:
 		static void __stdcall OpenGLErrorCallback(
@@ -50,7 +50,7 @@ namespace s00nya
 namespace s00nya
 {
 	
-	class S00NYA_ENTRY Debug
+	class Debug
 	{
 	private:
 		Debug() = delete;

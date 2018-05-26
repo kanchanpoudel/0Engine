@@ -113,7 +113,7 @@ namespace s00nya
 
 	Shader::~Shader()
 	{
-		glDeleteShader(m_id);
+		glDeleteProgram(m_id);
 	}
 
 }

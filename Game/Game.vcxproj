@@ -168,6 +168,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\our_game.h" />
+    <ClInclude Include="Source\player.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\cursor_grey_light.png" />

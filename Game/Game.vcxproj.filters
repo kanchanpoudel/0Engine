@@ -26,6 +26,9 @@
     <ClInclude Include="Source\our_game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Source\player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\window_test_icon.png">
@@ -37,5 +40,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\simpleShader.glsl" />
+    <None Include="Resources\Default2DShader.glsl" />
   </ItemGroup>
 </Project>

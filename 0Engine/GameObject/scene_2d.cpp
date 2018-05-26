@@ -13,6 +13,7 @@ namespace s00nya
 		),
 		camera()
 	{
+		m_projectionMatrix = Matrix4::Orthographic(0.0f, 800.0f, 0.0f, 600.0f, -1.0f, 1.0f);
 	}
 
 	Scene::Scene(const Vector2& nearFar, const Float& fov, const Float& aspectRatio) :
@@ -25,19 +26,27 @@ namespace s00nya
 	{
 	}
 
-	void Scene::AddObject2D(const GameObject2D& object, const Character* name)
+	Scene::~Scene()
 	{
-		m_renderableObjects[std::string(name)] = object;
+		for (auto* object : m_renderableObjects)
+			delete object;
+	}
+
+	void Scene::AddObject2D(GameObject2D* object, const Character* name)
+	{
+		m_renderableObjects.push_back(object);
+		m_renderableObjectsID[std::string(name)] = m_renderableObjects.size() - 1;
 	}
 
 	GameObject2D& Scene::GetObject2D(const Character* name)
 	{
-		return m_renderableObjects[std::string(name)];
+		return *m_renderableObjects[m_renderableObjectsID[std::string(name)]];
 	}
 
 	void Scene::RemoveObject2D(const Character* name)
 	{
-		m_renderableObjects.erase(std::string(name));
+		m_renderableObjects.erase(m_renderableObjects.begin() + m_renderableObjectsID[std::string(name)]);
+		m_renderableObjectsID.erase(std::string(name));
 	}
 
 }

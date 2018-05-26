@@ -8,7 +8,7 @@ namespace s00nya
 
 	struct S00NYA_API Material
 	{
-		enum Type : int
+		enum class Type : int
 		{
 			CLAMP_TO_EDGE = 0x812F,
 			REPEAT = 0x2901

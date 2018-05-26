@@ -34,7 +34,7 @@ namespace s00nya
 	public:
 		~Renderer();
 
-		void Initialize(const Scene& scene, const Type& type, const Shader& shader);
+		void Initialize(const Scene& scene, const Type& type, const Shader* shader);
 		void Draw(const GameObject2D& renderable, const SpriteSheet& spriteSheet) const;
 
 		friend class Locator;

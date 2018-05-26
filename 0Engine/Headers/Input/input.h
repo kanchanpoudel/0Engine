@@ -51,7 +51,6 @@ namespace s00nya
 	public:
 		Boolean Pressed(const Keys& key);
 		Boolean Held(const Keys& key);
-		Boolean Repeated(const Keys& key);
 		// Two key combination, e.g. [Ctrl] + [C]
 		Boolean Combined(const Keys& hold, const Keys& press);
 		// Three key combination, e.g. [Ctrl] + [Shift] + [V]

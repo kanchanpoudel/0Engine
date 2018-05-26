@@ -49,24 +49,24 @@ namespace s00nya
 		{
 		case Debug::S00NYA_LOG_INFO:
 			Debug::m_s_logs += ("INFO :: " + logStr + '\n');
+			std::cout << "INFO :: " + logStr + '\n';
 			return;
 		case Debug::S00NYA_LOG_WARNING:
 			Debug::m_s_logs += ("WARNING :: " + logStr + '\n');
+			std::cout << "WARNING :: " + logStr + '\n';
 			return;
 		case Debug::S00NYA_LOG_ERROR:
 			Debug::m_s_logs += ("ERROR :: " + logStr + '\n');
+			std::cout << "ERROR :: " + logStr + '\n';
 			return;
 		default:
 			Debug::m_s_logs += ("UNSPECIFIED :: " + logStr + '\n');
+			std::cout << "UNSPECIFIED :: " + logStr + '\n';
 		}
 	}
 
-	void Debug::Log(Boolean logToConsole, Boolean logToFile)
+	void Debug::Log(Boolean logToFile)
 	{
-		if (logToConsole)
-		{
-			std::cout << Debug::m_s_logs;
-		}
 		if (logToFile)
 		{
 			m_s_logFile << Debug::m_s_logs;

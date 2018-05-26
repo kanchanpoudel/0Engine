@@ -4,6 +4,7 @@
 #include "Game/game.h"
 #include "Utility/timer.h"
 #include "Utility/resource_manager.h"
+#include "s00nya_defs.h"
 
 // Graphics include
 #include "Graphics/window.h"
@@ -23,3 +24,4 @@
 // Game Objects and Components
 #include "GameObject/scene_2d.h"
 #include "GameObject/game_object_2d.h"
+#include "GameObject/scene_2d.h"

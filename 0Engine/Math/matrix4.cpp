@@ -508,10 +508,11 @@ namespace s00nya
 	)
 	{
 		return Matrix4(
-			2.0f / (right - left), 0.0f, 0.0f, -(right + left) / (right - left),
-			0.0f, 2.0f / (top - bottom), 0.0f, -(top + bottom) / (top - bottom),
-			0.0f, 0.0f, -2.0f / (far - near), -(far + near) / (far - near),
-			0.0f, 0.0f, 0.0f, 1.0f);
+			2.0f / (right - left), 0.0f, 0.0f, 0.0f,
+			0.0f, 2.0f / (top - bottom), 0.0f, 0.0f,
+			0.0f, 0.0f, -2.0f / (far - near), 0.0f,
+			-(right + left) / (right - left), -(top + bottom) / (top - bottom), -(far + near) / (far - near), 1.0f
+		);
 	}
 
 	Matrix4 Matrix4::Perspective(

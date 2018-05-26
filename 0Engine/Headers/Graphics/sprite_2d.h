@@ -11,13 +11,15 @@ namespace s00nya
 	{
 	private:
 		UInteger m_id;
-		Integer m_spriteWidth;
-		Integer m_spriteHeight;
+		Float m_spriteWidth;
+		Float m_spriteHeight;
 		UInteger m_horizontal;
 		UInteger m_vertical;
+		Float m_rWidth;
+		Float m_rHeight;
 
 	private:
-		SpriteSheet(const UInteger& texID, const Integer& width, const Integer& height, const UInteger& horizontal, const UInteger& vertical);
+		SpriteSheet(const UInteger& texID, const Float& width, const Float& height, const UInteger& horizontal, const UInteger& vertical, const Float& rWidth, const Float& rHeight);
 
 	public:
 		SpriteSheet() = default;
@@ -25,10 +27,10 @@ namespace s00nya
 		SpriteSheet& operator=(const SpriteSheet& spriteSheet) = default;
 
 	public:
-		const Integer& Width() const;
-		const Integer& Height() const;
-		Integer Horizontal(UInteger index) const;
-		Integer Vertical(UInteger index) const;
+		const Float& Width() const;
+		const Float& Height() const;
+		Float XPosition(UInteger index) const;
+		Float YPosition(UInteger index) const;
 
 		friend class Resources;
 		friend class Renderer;

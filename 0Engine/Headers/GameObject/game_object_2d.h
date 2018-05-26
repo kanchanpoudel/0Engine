@@ -35,6 +35,7 @@ namespace s00nya
 		GameObject2D(const Transform2D& transform, const Material& material, const Collider2D& collider, const RigidBody& body);
 
 		void SetFlags(UInteger falgs);
+		const UInteger& GetFlags();
 
 		virtual void FixedUpdate();
 		virtual void Update();

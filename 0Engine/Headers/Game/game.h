@@ -29,7 +29,7 @@ namespace s00nya
 		Renderer* renderer;
 
 	private:
-		UInteger m_activeScene;
+		PDUInteger m_activeScene;
 		std::deque<Scene*> m_scenes;
 		std::map<std::string, Shader*> m_shaders;
 
@@ -55,11 +55,14 @@ namespace s00nya
 		static InputManager& GetInputManager();
 		static Resources& GetResourceManager();
 
-		static void ActivateScene(const UInteger& id);
-		static void PushScene(Scene* scene);
+		static void ActivateScene(const PDUInteger& id);
+		static void ActivateNextScene();
+		static PDUInteger PushScene(Scene* scene);
 		static void PopSceneBack();
 		static void PopSceneFront();
+		static Scene& GetCurrentScene();
 		
+		static void AddGameObject2D(GameObject2D* object2D, const Character* name);
 		static GameObject2D& GetObject2D(const Character* name);
 		static void RemoveObject2D(const Character* name);
 

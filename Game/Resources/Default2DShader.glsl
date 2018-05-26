@@ -11,13 +11,13 @@ uniform mat4 modal;
 uniform mat4 view;
 uniform mat4 projection;
 
-int main()
+void main()
 {
-	gl_Position = projection * view * modal * vec4(vPosition, 1.0f);
+	gl_Position = vec4(vPosition, 1.0f) * modal * view * projection;
 	fTexCoords = vTexCoords;
 }
 
-@fragment Shader
+@Fragment Shader
 
 #version 420 core
 
@@ -26,7 +26,7 @@ in vec2 fTexCoords;
 
 uniform sampler2D diffuse;
 
-int main()
+void main()
 {
 	fColor = texture(diffuse, fTexCoords);
 }
