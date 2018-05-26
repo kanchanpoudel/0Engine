@@ -44,7 +44,7 @@ namespace s00nya
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, spriteSheet.m_id);
 
-		static UInteger frame = renderable.material.frame;
+		UInteger frame = renderable.material.frame;
 		Float x = spriteSheet.XPosition(frame);
 		Float y = spriteSheet.YPosition(frame);
 		Float offX = spriteSheet.Width();

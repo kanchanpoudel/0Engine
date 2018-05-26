@@ -4,64 +4,51 @@
 namespace s00nya
 {
 
-	void EventManager::Push(Events enum_event, const std::string& event)
+	void EventManager::Push(const Events& enumEvent, const std::string& event)
 	{
-		switch (enum_event)
+		switch (enumEvent)
 		{
-		case Events::BEHAVIOUR:
-			m_behaviourEvents.push_back(event);
-			break;
-
-		case Events::PHYSICS:
-			m_physicsEvents.push_back(event);
-			break;
-
-		case Events::RENDERER:
-			m_rendererEvents.push_back(event);
-			break;
-
-		case Events::SYSTEM:
-			m_systemEvents.push_back(event);
-			break;
-
-		case Events::USER:
-			m_userEvents.push_back(event);
-			break;
-
-		default:
-			break;
+		case Events::BEHAVIOUR: m_behaviourEvents.push_back(event); return;
+		case Events::PHYSICS:	m_physicsEvents.push_back(event);	return;
+		case Events::RENDERER:	m_rendererEvents.push_back(event);	return;
+		case Events::SYSTEM:	m_systemEvents.push_back(event);	return;
+		case Events::USER:		m_userEvents.push_back(event);		return;
 		}
 	}
 
-	std::string EventManager::Receive(Events enum_event)
+	Boolean EventManager::Receive(const Events& enumEvent, std::string& outEvent)
 	{
-		std::string first;
-		switch (enum_event)
+		switch (enumEvent)
 		{
+		case Events::SYSTEM:
+			if (m_systemEvents.empty()) return false;
+			outEvent = m_systemEvents.front();
+			m_systemEvents.pop_front();
+			return true;
+
 		case Events::BEHAVIOUR:
-			first = m_behaviourEvents.front();
+			if (m_behaviourEvents.empty()) return false;
+			outEvent = m_behaviourEvents.front();
 			m_behaviourEvents.pop_front();
-			return first;
+			return true;
 
 		case Events::PHYSICS:
-			first = m_physicsEvents.front();
+			if (m_physicsEvents.empty()) return false;
+			outEvent = m_physicsEvents.front();
 			m_physicsEvents.pop_front();
-			return first;
+			return true;
 
 		case Events::RENDERER:
-			first = m_rendererEvents.front();
+			if (m_rendererEvents.empty()) return false;
+			outEvent = m_rendererEvents.front();
 			m_rendererEvents.pop_front();
-			return first;
-
-		case Events::SYSTEM:
-			first = m_systemEvents.front();
-			m_systemEvents.pop_front();
-			return first;
+			return true;
 
 		case Events::USER:
-			first = m_userEvents.front();
+			if (m_userEvents.empty()) return false;
+			outEvent = m_userEvents.front();
 			m_userEvents.pop_front();
-			return first;
+			return true;
 
 		default:
 			return NULL;

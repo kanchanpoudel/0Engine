@@ -11,7 +11,6 @@ s00nyaApp::s00nyaApp() :
 	window->SetIcon(resource->GetRawImage("WolfIcon"));
 
 	resource->LoadSpriteSheet("./Resources/player.png", 4, 4, "Player");
-	resource->LoadSpriteSheet("./Resources/character.png", 1, 1, "Character");
 
 	Transform2D playerTrans;
 	playerTrans.position = { 0.0f, 0.0f, 0.0f };
@@ -20,7 +19,7 @@ s00nyaApp::s00nyaApp() :
 
 	Material playerMat;
 	playerMat.diffuse = "Player";
-	playerMat.frame = 9;
+	playerMat.frame = 0;
 	playerMat.type = Material::Type::CLAMP_TO_EDGE;
 
 	level1 = PushScene(new Scene({ -1.0f, 1.0f }, { 0.0f, 800.0f }, { 600.0f, 0.0f }));

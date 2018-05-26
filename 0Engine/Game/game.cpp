@@ -4,6 +4,7 @@
 #include "Utility/timer.h"
 #include "Input/input.h"
 #include "Input/input_manager.h"
+#include "Utility/resource_manager.h"
 #include "Utility/events.h"
 #include "Utility/event_manager.h"
 #include "Physics/collider_sat.h"
@@ -23,9 +24,8 @@ namespace s00nya
 		input(Locator::Get().InputService(window)),
 		inputManager(Locator::Get().InputManagerService(input)),
 		resource(Locator::Get().ResourceService()),
-		renderer(Locator::Get().RendererService())
-		eventManager(Locator::Get().EventManagerService()),
-		resource(Locator::Get().ResourceService())
+		renderer(Locator::Get().RendererService()),
+		eventManager(Locator::Get().EventManagerService())
 	{
 		m_shaders["Default2DShader"] = Locator::Get().ShaderService("./Resources/Default2DShader.glsl");
 		instance = this;
@@ -113,8 +113,12 @@ namespace s00nya
 			if(GetBIT(object->GetFlags(), 0))
 				renderer->Draw(*object, resource->GetSpriteSheet(object->material.diffuse));
 		}
-		if (eventManager->Receive(Events::SYSTEM) == "ShutDown")
-			window->Close();
+		
+		std::string event;
+		while (eventManager->Receive(Events::SYSTEM, event))
+		{
+			if (event == "ShutDown") window->Close();
+		}
 	}
 
 	Input& Game2D::GetInput()
@@ -130,6 +134,11 @@ namespace s00nya
 	InputManager& Game2D::GetInputManager()
 	{
 		return *(instance->inputManager);
+	}
+
+	EventManager& Game2D::GetEventManager()
+	{
+		return *(instance->eventManager);
 	}
 
 	Resources& Game2D::GetResourceManager()

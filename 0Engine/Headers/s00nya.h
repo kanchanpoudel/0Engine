@@ -4,6 +4,7 @@
 #include "Game/game.h"
 #include "Utility/timer.h"
 #include "Utility/resource_manager.h"
+#include "Utility/event_manager.h"
 #include "s00nya_defs.h"
 
 // Graphics include

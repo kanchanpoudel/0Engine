@@ -34,12 +34,11 @@
     <Image Include="Resources\window_test_icon.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="Resources\cursor_grey_light.png">
+    <Image Include="Resources\player.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\simpleShader.glsl" />
     <None Include="Resources\Default2DShader.glsl" />
   </ItemGroup>
 </Project>

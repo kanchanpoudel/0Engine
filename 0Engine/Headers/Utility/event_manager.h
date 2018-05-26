@@ -1,7 +1,8 @@
 #pragma once
 #include <deque>
-#include <s00nya_defs.h>
-#include <Utility/events.h>
+#include <string>
+#include "s00nya_defs.h"
+#include "Utility/events.h"
 
 namespace s00nya
 {
@@ -18,12 +19,10 @@ namespace s00nya
 		std::deque<std::string> m_userEvents;
 
 	public:
-		EventManager()
-		{
-		}
+		EventManager() = default;
 
-		void Push(Events enum_event,const std::string& event);
-		std::string Receive(Events enum_event);
+		void Push(const Events& enumEvent, const std::string& event);
+		Boolean Receive(const Events& enuEvent, std::string& outEvent);
 
 		friend class Locator;
 	};

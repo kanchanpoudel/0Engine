@@ -171,12 +171,11 @@
     <ClInclude Include="Source\player.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Resources\cursor_grey_light.png" />
+    <Image Include="Resources\player.png" />
     <Image Include="Resources\window_test_icon.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Default2DShader.glsl" />
-    <None Include="Resources\simpleShader.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
