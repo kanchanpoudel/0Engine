@@ -12,6 +12,13 @@ namespace s00nya
 		std::vector<Vector2> m_points;
 	public:
 		bool isTrigger;
+		float width, height;
+
+		Collider2D(float w, float h) :
+			width(w),height(h)
+	{
+
+	}
 
 	public:
 		Collider2D();
