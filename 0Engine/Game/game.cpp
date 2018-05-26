@@ -95,7 +95,7 @@ namespace s00nya
 		for (auto* object : objects)
 			object->FixedUpdate();
 			
-		CollisionSAT::CollsionResolution(Locator::Get().GetAllObjects2D(m_scenes[m_activeScene]));
+		//CollisionSAT::CollsionResolution(Locator::Get().GetAllObjects2D(m_scenes[m_activeScene]));
 	}
 
 	void Game2D::Update()
