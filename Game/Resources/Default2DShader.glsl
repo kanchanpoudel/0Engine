@@ -28,5 +28,5 @@ uniform sampler2D diffuse;
 
 void main()
 {
-	fColor = texture(diffuse, fTexCoords);
+	fColor = texture(diffuse, fTexCoords).rgba;
 }

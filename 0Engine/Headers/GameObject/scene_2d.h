@@ -19,7 +19,7 @@ namespace s00nya
 	private:
 		Matrix4 m_projectionMatrix;
 		std::vector<GameObject2D*> m_renderableObjects;
-		std::map<std::string, PDUInteger> m_renderableObjectsID;
+		std::map<std::string, GameObject2D*> m_renderableObjectsID;
 		
 	public:
 		Camera camera;

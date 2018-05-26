@@ -17,6 +17,11 @@ s00nyaApp::s00nyaApp() :
 	playerTrans.rotation = 0.0f;
 	playerTrans.scale = { 0.5f, 0.5f };
 
+	Transform2D another;
+	another.position = { 0.0f, 0.0f, 0.0f };
+	another.rotation = 0.0f;
+	another.scale = { 0.5f, 0.5f };
+
 	Material playerMat;
 	playerMat.diffuse = "Player";
 	playerMat.frame = 0;
@@ -26,4 +31,5 @@ s00nyaApp::s00nyaApp() :
 	ActivateScene(level1);
 
 	AddGameObject2D(new Player(playerTrans, playerMat), "Hero");
+	AddGameObject2D(new GameObject2D(another, playerMat), "Another");
 }

@@ -1,4 +1,5 @@
 #include "GameObject/scene_2d.h"
+#include <algorithm>
 
 namespace s00nya
 {
@@ -35,17 +36,29 @@ namespace s00nya
 	void Scene::AddObject2D(GameObject2D* object, const Character* name)
 	{
 		m_renderableObjects.push_back(object);
-		m_renderableObjectsID[std::string(name)] = m_renderableObjects.size() - 1;
+		
+		std::sort(m_renderableObjects.begin(), m_renderableObjects.end(), 
+			[](const GameObject2D* first, const GameObject2D* second) 
+			{
+				return first->transform.position.z < second->transform.position.z;
+			});
+
+		m_renderableObjectsID[std::string(name)] = object;
 	}
 
 	GameObject2D& Scene::GetObject2D(const Character* name)
 	{
-		return *m_renderableObjects[m_renderableObjectsID[std::string(name)]];
+		return *m_renderableObjectsID[std::string(name)];
 	}
 
 	void Scene::RemoveObject2D(const Character* name)
 	{
-		m_renderableObjects.erase(m_renderableObjects.begin() + m_renderableObjectsID[std::string(name)]);
+		auto* current = m_renderableObjectsID[std::string(name)];
+		for (UInteger i(0); i < m_renderableObjects.size(); i++)
+		{
+			if (current == m_renderableObjects[i])
+				m_renderableObjects.erase(m_renderableObjects.begin() + i);
+		}
 		m_renderableObjectsID.erase(std::string(name));
 	}
 

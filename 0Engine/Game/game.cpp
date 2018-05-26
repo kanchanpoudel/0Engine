@@ -104,8 +104,8 @@ namespace s00nya
 		for (auto* object : objects)
 			object->Update();
 
-		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
 
 		renderer->Initialize(*m_scenes[m_activeScene], Renderer::Type::GAME_OBJECT_2D, m_shaders["Default2DShader"]);
 		for (auto* object : objects)
