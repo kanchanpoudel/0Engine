@@ -4,14 +4,15 @@
 #include "Utility/timer.h"
 #include "Input/input.h"
 #include "Input/input_manager.h"
-#include "Utility/resource_manager.h"
-#include "Game/locator.h"
+#include "Utility/events.h"
+#include "Utility/event_manager.h"
 #include "Physics/collider_sat.h"
 #include "Physics/collision_sat.h"
 #include "GameObject/scene_2d.h"
 #include "GameObject/game_object_2d.h"
 #include "Graphics/renderer.h"
 #include "GL/glew.h"
+#include "Game/locator.h"
 
 namespace s00nya
 {
@@ -23,6 +24,8 @@ namespace s00nya
 		inputManager(Locator::Get().InputManagerService(input)),
 		resource(Locator::Get().ResourceService()),
 		renderer(Locator::Get().RendererService())
+		eventManager(Locator::Get().EventManagerService()),
+		resource(Locator::Get().ResourceService())
 	{
 		m_shaders["Default2DShader"] = Locator::Get().ShaderService("./Resources/Default2DShader.glsl");
 		instance = this;
@@ -39,6 +42,7 @@ namespace s00nya
 
 		delete resource;
 		delete inputManager;
+		delete eventManager;
 		delete input;
 		delete timer;
 		delete window;
@@ -109,6 +113,8 @@ namespace s00nya
 			if(GetBIT(object->GetFlags(), 0))
 				renderer->Draw(*object, resource->GetSpriteSheet(object->material.diffuse));
 		}
+		if (eventManager->Receive(Events::SYSTEM) == "ShutDown")
+			window->Close();
 	}
 
 	Input& Game2D::GetInput()

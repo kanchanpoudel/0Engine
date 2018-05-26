@@ -21,42 +21,6 @@
     <ClCompile Include="Game\game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Input\input.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Debugger\logger.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Input\input_manager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObject\game_object_2d.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Utility\timer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\locator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Physics\collider_sat.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Graphics\material.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Physics\rigid_body.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Physics\collision_sat.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Math\matrix4.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Math\transform_2d.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Math\vector2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -66,10 +30,46 @@
     <ClCompile Include="Math\vector4.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Graphics\raw_images.cpp">
+    <ClCompile Include="Input\input.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Debugger\logger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Input\input_manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\matrix4.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject\game_object_2d.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\transform_2d.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\timer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\locator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\event_manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\rigid_body.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\collision_sat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\collider_sat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Utility\resource_manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\raw_images.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Graphics\sprite_2d.cpp">
@@ -104,6 +104,15 @@
     <ClInclude Include="Headers\s00nya.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\Math\vector2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Math\vector3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Math\vector4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Headers\Graphics\window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -122,7 +131,13 @@
     <ClInclude Include="Headers\Input\input_manager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\Math\matrix4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Headers\GameObject\game_object_2d.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Math\transform_2d.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Headers\Utility\events.h">
@@ -137,34 +152,22 @@
     <ClInclude Include="Headers\Game\locator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\Physics\collider_sat.h">
+    <ClInclude Include="Headers\Utility\event_manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Graphics\raw_images.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Headers\Graphics\material.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\Physics\rigid_body.h">
+    <ClInclude Include="Headers\Physics\collider_sat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Headers\Physics\collision_sat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\Math\matrix4.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Headers\Math\transform_2d.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Headers\Math\vector2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Headers\Math\vector3.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Headers\Math\vector4.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Headers\Graphics\raw_images.h">
+    <ClInclude Include="Headers\Physics\rigid_body.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Headers\Utility\resource_manager.h">
