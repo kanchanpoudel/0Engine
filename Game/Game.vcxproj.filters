@@ -41,4 +41,7 @@
   <ItemGroup>
     <None Include="Resources\Default2DShader.glsl" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="LICENSE.txt" />
+  </ItemGroup>
 </Project>
