@@ -4,6 +4,8 @@
 #include "Utility/timer.h"
 #include "Input/input.h"
 #include "Input/input_manager.h"
+#include "Utility\event_manager.h"
+#include "Utility\events.h"
 
 namespace s00nya
 {
@@ -43,6 +45,11 @@ namespace s00nya
 	InputManager* Locator::InputManagerService(Input* input) const
 	{
 		return new InputManager(input);
+	}
+
+	EventManager* Locator::EventManagerService() const
+	{
+		return new EventManager();
 	}
 
 	Locator& Locator::Get()

@@ -159,6 +159,7 @@
     <ClCompile Include="GameObject\game_object_2d.cpp" />
     <ClCompile Include="Game\game.cpp" />
     <ClCompile Include="Game\locator.cpp" />
+    <ClCompile Include="Utility\event_manager.cpp" />
     <ClCompile Include="Utility\timer.cpp" />
     <ClCompile Include="Graphics\window.cpp" />
     <ClCompile Include="Input\input_manager.cpp" />
@@ -177,6 +178,7 @@
     <ClInclude Include="Headers\s00nya_defs.h" />
     <ClInclude Include="Headers\Utility\events.h" />
     <ClInclude Include="Headers\Game\game.h" />
+    <ClInclude Include="Headers\Utility\event_manager.h" />
     <ClInclude Include="Headers\Utility\timer.h" />
     <ClInclude Include="Headers\Input\input.h" />
     <ClInclude Include="Headers\Input\input_actions.h" />

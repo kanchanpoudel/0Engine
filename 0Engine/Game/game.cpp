@@ -5,6 +5,8 @@
 #include "Input/input.h"
 #include "Input/input_manager.h"
 #include "Game/locator.h"
+#include "Utility\event_manager.h"
+#include "Utility\events.h"
 
 namespace s00nya
 {
@@ -13,7 +15,8 @@ namespace s00nya
 		window(Locator::Get().WindowService(title, width, height)),
 		timer(Locator::Get().TimerService()),
 		input(Locator::Get().InputService(window)),
-		inputManager(Locator::Get().InputManagerService(input))
+		inputManager(Locator::Get().InputManagerService(input)),
+		eventManager(Locator::Get().EventManagerService())
 	{
 		instance = this;
 	}
@@ -73,6 +76,8 @@ namespace s00nya
 
 	void Game2D::Update()
 	{
+		if (eventManager->Receive(Events::SYSTEM) == "ShutDown")
+			window->Close();
 	}
 
 	Input& Game2D::GetInput()

@@ -8,6 +8,7 @@ namespace s00nya
 	class Timer;
 	class Input;
 	class InputManager;
+	class EventManager;
 
 	class S00NYA_API Game2D
 	{
@@ -16,6 +17,7 @@ namespace s00nya
 		Timer* timer;
 		Input* input;
 		InputManager* inputManager;
+		EventManager* eventManager;
 
 	public:
 		Game2D(const Character* title = "s00nya Game", const Integer& width = 800, const Integer& height = 600);
@@ -40,6 +42,7 @@ namespace s00nya
 		static Input& GetInput();
 		static Timer& GetTimer();
 		static InputManager& GetInputManager();
+		static EventManager& GetEventManager();
 
 	protected:
 		static const Float fps; // Frames per second
