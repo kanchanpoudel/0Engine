@@ -9,6 +9,7 @@ namespace s00nya
 	class Timer;
 	class Input;
 	class InputManager;
+	class EventManager;
 	class Resources;
 	class Locator;
 
@@ -26,6 +27,7 @@ namespace s00nya
 		Timer* TimerService() const;
 		Input* InputService(const Window* window) const;
 		InputManager* InputManagerService(Input* input) const;
+		EventManager* EventManagerService() const;
 		Resources* ResourceService() const;
 		
 

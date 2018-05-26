@@ -4,8 +4,8 @@
 #include "Utility/timer.h"
 #include "Input/input.h"
 #include "Input/input_manager.h"
-#include "Utility/resource_manager.h"
-#include "Game/locator.h"
+#include "Utility\events.h"
+#include "Utility\event_manager.h"
 #include "Physics/collider_sat.h"
 #include "Physics/collision_sat.h"
 #include "GameObject/game_object_2d.h"
@@ -18,6 +18,7 @@ namespace s00nya
 		timer(Locator::Get().TimerService()),
 		input(Locator::Get().InputService(window)),
 		inputManager(Locator::Get().InputManagerService(input)),
+		eventManager(Locator::Get().EventManagerService()),
 		resource(Locator::Get().ResourceService())
 	{
 		instance = this;
@@ -27,6 +28,7 @@ namespace s00nya
 	{
 		delete resource;
 		delete inputManager;
+		delete eventManager;
 		delete input;
 		delete timer;
 		delete window;
@@ -82,8 +84,8 @@ namespace s00nya
 
 	void Game2D::Update()
 	{
-		for (auto& object : m_gameObjects)
-			object.Update();
+		if (eventManager->Receive(Events::SYSTEM) == "ShutDown")
+			window->Close();
 	}
 
 	Input& Game2D::GetInput()

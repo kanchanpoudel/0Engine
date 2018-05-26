@@ -11,6 +11,7 @@ namespace s00nya
 	class Timer;
 	class Input;
 	class InputManager;
+	class EventManager;
 	class GameObject2D;
 	class Resources;
 
@@ -21,6 +22,7 @@ namespace s00nya
 		Timer* timer;
 		Input* input;
 		InputManager* inputManager;
+		EventManager* eventManager;
 		Resources* resource;
 
 	private:
@@ -47,6 +49,7 @@ namespace s00nya
 		static Input& GetInput();
 		static Timer& GetTimer();
 		static InputManager& GetInputManager();
+		static EventManager& GetEventManager();
 		static Resources& GetResourceManager();
 
 	protected:
