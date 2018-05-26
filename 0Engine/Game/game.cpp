@@ -9,6 +9,7 @@
 #include "Physics/collider_sat.h"
 #include "Physics/collision_sat.h"
 #include "GameObject/game_object_2d.h"
+#include "Game/locator.h"
 
 namespace s00nya
 {

@@ -170,6 +170,7 @@
     <ClInclude Include="Source\our_game.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Resources\cursor_grey_light.png" />
     <Image Include="Resources\window_test_icon.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

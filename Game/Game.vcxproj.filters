@@ -31,5 +31,8 @@
     <Image Include="Resources\window_test_icon.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resources\cursor_grey_light.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
