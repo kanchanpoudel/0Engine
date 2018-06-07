@@ -41,6 +41,11 @@ namespace s00nya
 		Matrix3& operator+=(const Matrix3& mat);
 		Matrix3& operator-=(const Matrix3& mat);
 
+		static Matrix3 Identity(); // Not an Identity matrix but identity convolution matrix
+		static Matrix3 EdgeDetection();
+		static Matrix3 BoxBlur();
+		static Matrix3 GaussianBlur();
+
 		friend Matrix3 operator*(const Float& scalar, const Matrix3& mat);
 		friend Matrix3 operator*(const Matrix3& mat, const Float& scalar);
 

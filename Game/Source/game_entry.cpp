@@ -12,7 +12,7 @@ public:
 	MyGame() :
 		Game2D("Example Game", 800, 600, Samples::SAMPLE_DOUBLE)
 	{
-		SetClearColor(0.2f, 0.3f, 0.5f);
+		SetClearColor(0.0f, 0.0f, 0.01f);
 
 		resource->LoadRawImage("./Resources/window_test_icon.png", "WolfIcon");
 		window->SetIcon(resource->GetRawImage("WolfIcon"));

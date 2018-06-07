@@ -136,6 +136,38 @@ namespace s00nya
 		return *this;
 	}
 
+	Matrix3 Matrix3::Identity()
+	{
+		return Matrix3();
+	}
+
+	Matrix3 Matrix3::EdgeDetection()
+	{
+		return Matrix3(
+			-1.0f, -1.0f, -1.0f,
+			-1.0f,  9.0f, -1.0f,
+			-1.0f, -1.0f, -1.0f
+		);
+	}
+
+	Matrix3 Matrix3::BoxBlur()
+	{
+		return (1.0f / 9.0f) * Matrix3(
+			1.0f, 1.0f, 1.0f,
+			1.0f, 1.0f, 1.0f,
+			1.0f, 1.0f, 1.0f
+		);
+	}
+
+	Matrix3 Matrix3::GaussianBlur()
+	{
+		return (1.0f / 16.0f) * Matrix3(
+			1.0f, 2.0f, 1.0f,
+			2.0f, 4.0f, 2.0f,
+			1.0f, 2.0f, 1.0f
+		);
+	}
+
 	Matrix3 operator*(const Float & scalar, const Matrix3 & mat)
 	{
 		return Matrix3(

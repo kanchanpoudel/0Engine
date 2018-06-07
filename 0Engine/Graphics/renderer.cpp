@@ -95,7 +95,10 @@ namespace s00nya
 		shader->Bind();
 		shader->SetTexture2D("textureMap", 0);
 
-		shader->SetSwitches("greyscale", true);
+		shader->SetSwitches("greyscale_switch", true);
+		shader->SetSwitches("filterSlot0_switch", true);
+		shader->SetSwitches("filterSlot1_switch", false);
+		shader->SetSwitches("filterSlot2_switch", false);
 
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, m_frameColorBuffer);
