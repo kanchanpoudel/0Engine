@@ -103,6 +103,14 @@ namespace s00nya
 		);
 	}
 
+	void Shader::SetSwitches(const Character * name, const Boolean & value) const
+	{
+		glUniform1i(
+			glGetUniformLocation(m_id, name),
+			value
+		);
+	}
+
 	void Shader::SetTexture2D(const Character* name, const Integer& id) const
 	{
 		glUniform1i(

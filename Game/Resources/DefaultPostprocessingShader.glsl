@@ -20,10 +20,19 @@ void main()
 layout (location = 0) out vec4 fColor;
 in vec2 fTexCoords;
 
-uniform sampler2D inTexture;
+uniform sampler2D textureMap;
+
+uniform bool greyscale;
 
 void main()
 {
-	fColor = texture(inTexture, fTexCoords).rgba;
-	//fColor.a = 1.0f;
+	vec4 initialColor = texture(textureMap, fTexCoords).rgba;
+
+	if(greyscale)
+	{
+		float average = 0.2126 * initialColor.r + 0.7152 * initialColor.g + 0.0722 * initialColor.b;
+		initialColor.rgb = vec3(average, average, average);
+	}
+
+	fColor = initialColor;
 }

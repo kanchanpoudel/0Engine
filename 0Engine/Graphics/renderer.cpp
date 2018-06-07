@@ -93,7 +93,9 @@ namespace s00nya
 		glViewport(0, 0, m_displayWidth, m_displayHeight);
 
 		shader->Bind();
-		shader->SetTexture2D("inTexture", 0);
+		shader->SetTexture2D("textureMap", 0);
+
+		shader->SetSwitches("greyscale", true);
 
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, m_frameColorBuffer);
