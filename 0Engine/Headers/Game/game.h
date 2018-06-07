@@ -22,6 +22,9 @@ namespace s00nya
 
 	class S00NYA_API Game2D
 	{
+	public:
+		enum class Samples : Integer { NO_SAMPLE = 1, SAMPLE_DOUBLE = 2, SAMPLE_FOUR = 4, SAMPLE_EIGHT = 8 };
+
 	protected:
 		Window* window;
 		Timer* timer;
@@ -37,7 +40,7 @@ namespace s00nya
 		std::map<std::string, Shader*> m_shaders;
 
 	public:
-		Game2D(const Character* title = "s00nya Game", const Integer& width = 800, const Integer& height = 600);
+		Game2D(const Character* title = "s00nya Game", const Integer& width = 800, const Integer& height = 600, const Samples& sample = Samples::NO_SAMPLE);
 		virtual ~Game2D();
 
 	private:

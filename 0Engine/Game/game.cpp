@@ -17,14 +17,19 @@
 namespace s00nya
 {
 
-	Game2D::Game2D(const Character* title, const Integer& width, const Integer& height) :
+	Game2D::Game2D(const Character* title, const Integer& width, const Integer& height, const Samples& sample) :
 		window(Locator::Get().WindowService(title, width, height)),
 		timer(Locator::Get().TimerService()),
 		input(Locator::Get().InputService(window)),
 		inputManager(Locator::Get().InputManagerService(input)),
 		eventManager(Locator::Get().EventManagerService()),
 		resource(Locator::Get().ResourceService()),
-		renderer(Locator::Get().RendererService(window->Width(), window->Height(), window->Width(), window->Height()))
+		renderer(Locator::Get().RendererService(
+			window->Width() * (Integer)sample, 
+			window->Height() * (Integer)sample, 
+			window->Width(),
+			window->Height()
+		))
 	{
 		m_shaders["Default2DShader"] = Locator::Get().ShaderService("./Resources/Default2DShader.glsl");
 		m_shaders["DefaultPostprocessingShader"] = Locator::Get().ShaderService("./Resources/DefaultPostprocessingShader.glsl");
