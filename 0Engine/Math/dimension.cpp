@@ -4,53 +4,53 @@ namespace s00nya
 {
 
 	Dimension::Dimension() :
-		pivot(0.0f, 0.0f), halfWidth(10.0f), halfHeight(10.0f)
+		halfWidth(10.0f), halfHeight(10.0f)
 	{
 	}
 
-	Dimension::Dimension(const Vector2& _pivot, const Float& _halfWidth, const Float& _halfHeight) :
-		pivot(_pivot), halfWidth(_halfWidth), halfHeight(_halfHeight)
+	Dimension::Dimension(const Float& _halfWidth, const Float& _halfHeight) :
+		halfWidth(_halfWidth), halfHeight(_halfHeight)
 	{
 	}
 
-	Boolean Dimension::Intersect(const Dimension& lhs, const Dimension& rhs)
+	Boolean Dimension::Intersect(const Dimension& lhs, const Dimension& rhs, const Vector2& lhspivot, const Vector2& rhspivot)
 	{
-		return
-			(
-			(lhs.pivot.x + lhs.halfWidth) >= (rhs.pivot.x - rhs.halfWidth) &&
-			((rhs.pivot.x + rhs.halfWidth) > (lhs.pivot.x - lhs.halfWidth))
-			) 
-			&&
-			(
-			(lhs.pivot.y + lhs.halfHeight) >= (rhs.pivot.y - rhs.halfHeight) && 
-			((rhs.pivot.y + rhs.halfHeight) > (lhs.pivot.y - lhs.halfHeight))
+		Boolean xcol = (
+			(lhspivot.x + lhs.halfWidth) >= (rhspivot.x - rhs.halfWidth) &&
+			((rhspivot.x + rhs.halfWidth) >= (lhspivot.x - lhs.halfWidth))
 			);
+		Boolean ycol = 
+			(
+			(lhspivot.y + lhs.halfHeight) >= (rhspivot.y - rhs.halfHeight) && 
+			((rhspivot.y + rhs.halfHeight) >= (lhspivot.y - lhs.halfHeight))
+			);
+		return xcol && ycol;
 	}
 
-	Boolean Dimension::Intersect(const Dimension& lhs, const Dimension& rhs, Vector2& outMTV)
+	Boolean Dimension::Intersect(const Dimension& lhs, const Dimension& rhs, const Vector2& lhspivot, const Vector2& rhspivot, Vector2& outMTV)
 	{
-		if (lhs.pivot.x < rhs.pivot.x)
+		if (lhspivot.x < rhspivot.x)
 		{
-			if (!(lhs.pivot.x + lhs.halfWidth > rhs.pivot.x - rhs.halfWidth)) return false;
-			outMTV.x = lhs.pivot.x + lhs.halfWidth - rhs.pivot.x + rhs.halfWidth;
+			if (!(lhspivot.x + lhs.halfWidth > rhspivot.x - rhs.halfWidth)) return false;
+			outMTV.x = lhspivot.x + lhs.halfWidth - rhspivot.x + rhs.halfWidth;
 		}
-		else if (lhs.pivot.x > rhs.pivot.x)
+		else if (lhspivot.x > rhspivot.x)
 		{
-			if (!(rhs.pivot.x + rhs.halfWidth > lhs.pivot.x - lhs.halfWidth)) return false;
-			outMTV.x = rhs.pivot.x + rhs.halfWidth - lhs.pivot.x + lhs.halfWidth;
+			if (!(rhspivot.x + rhs.halfWidth > lhspivot.x - lhs.halfWidth)) return false;
+			outMTV.x = rhspivot.x + rhs.halfWidth - lhspivot.x + lhs.halfWidth;
 		}
 		else
 			outMTV.x = 0.0f;
 
-		if (lhs.pivot.y < rhs.pivot.y)
+		if (lhspivot.y < rhspivot.y)
 		{
-			if (!(lhs.pivot.y + lhs.halfHeight > rhs.pivot.y - rhs.halfHeight)) return false;
-			outMTV.y = lhs.pivot.y + lhs.halfHeight - rhs.pivot.y + rhs.halfHeight;
+			if (!(lhspivot.y + lhs.halfHeight > rhspivot.y - rhs.halfHeight)) return false;
+			outMTV.y = lhspivot.y + lhs.halfHeight - rhspivot.y + rhs.halfHeight;
 		}
-		else if (lhs.pivot.y > rhs.pivot.y)
+		else if (lhspivot.y > rhspivot.y)
 		{
-			if (!(rhs.pivot.y + rhs.halfHeight > lhs.pivot.y - lhs.halfHeight)) return false;
-			outMTV.y = rhs.pivot.y + rhs.halfHeight- lhs.pivot.y + lhs.halfHeight;
+			if (!(rhspivot.y + rhs.halfHeight > lhspivot.y - lhs.halfHeight)) return false;
+			outMTV.y = rhspivot.y + rhs.halfHeight- lhspivot.y + lhs.halfHeight;
 		}
 		else
 			outMTV.y = 0.0f;
@@ -58,11 +58,11 @@ namespace s00nya
 		return true;
 	}
 
-	Boolean Dimension::Contains(const Dimension& container, const Dimension& contained)
+	Boolean Dimension::Contains(const Dimension& container, const Dimension& contained, const Vector2& containerpivot, const Vector2& containedpivot)
 	{
 		return
-			(container.pivot.x + container.halfWidth > contained.pivot.x + contained.halfWidth) &&
-			(container.pivot.y + container.halfHeight > contained.pivot.y + contained.halfHeight);
+			(containerpivot.x + container.halfWidth > containedpivot.x + contained.halfWidth) &&
+			(containerpivot.y + container.halfHeight > containedpivot.y + contained.halfHeight);
 	}
 
 }

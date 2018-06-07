@@ -7,13 +7,9 @@ layout (location = 1) in vec2 vTexCoords;
 
 out vec2 fTexCoords;
 
-uniform mat4 modal;
-uniform mat4 view;
-uniform mat4 projection;
-
 void main()
 {
-	gl_Position = vec4(vPosition, 1.0f) * modal * view * projection;
+	gl_Position = vec4(vPosition, 1.0f);
 	fTexCoords = vTexCoords;
 }
 
@@ -24,9 +20,10 @@ void main()
 layout (location = 0) out vec4 fColor;
 in vec2 fTexCoords;
 
-uniform sampler2D diffuse;
+uniform sampler2D inTexture;
 
 void main()
 {
-	fColor = texture(diffuse, fTexCoords).rgba;
+	fColor = texture(inTexture, fTexCoords).rgba;
+	//fColor.a = 1.0f;
 }

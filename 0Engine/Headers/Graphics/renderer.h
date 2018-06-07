@@ -16,26 +16,26 @@ namespace s00nya
 	class S00NYA_API Renderer
 	{
 	public:
-		enum class Type : UInteger
-		{
-			GAME_OBJECT_2D,
-			LINES
-		};
 
 	private:
+		Integer m_frameWidth;
+		Integer m_frameHeight;
+		Integer m_displayWidth;
+		Integer m_displayHeight;
 		VertexBufferObject2D m_vertexBufferObject2D;
-		Type m_active;
 		Shader* m_activeShader;
-		UInteger m_diffuseTexture;
+		UInteger m_frameBuffer;
+		UInteger m_frameColorBuffer;
 
 	private:
-		Renderer();
+		Renderer(const Integer& frameWidth, const Integer& frameHeight, const Integer& displayWidth, const Integer& displayHeight);
 
 	public:
 		~Renderer();
 
-		void Initialize(const Scene& scene, const Type& type, const Shader* shader);
+		void Initialize(const Scene& scene, const Shader* shader);
 		void Draw(const GameObject2D& renderable, const SpriteSheet& spriteSheet) const;
+		void Display(const Shader* shader, const SpriteSheet& spriteSheet) const;
 
 		friend class Locator;
 	};

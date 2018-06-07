@@ -97,9 +97,9 @@ namespace s00nya
 		}
 	}
 
-	Renderer* Locator::RendererService() const
+	Renderer* Locator::RendererService(const Integer& frameWidth, const Integer& frameHeight, const Integer& displayWidth, const Integer& displayHeight) const
 	{
-		return new Renderer();
+		return new Renderer(frameWidth, frameHeight, displayWidth, displayHeight);
 	}
 
 	std::vector<GameObject2D*>& Locator::GetAllObjects2D(Scene* scene)

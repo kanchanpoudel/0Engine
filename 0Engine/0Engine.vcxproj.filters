@@ -39,16 +39,10 @@
     <ClCompile Include="Game\locator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Physics\collider_sat.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Graphics\material.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Physics\rigid_body.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Physics\collision_sat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Math\matrix4.cpp">
@@ -102,6 +96,9 @@
     <ClCompile Include="Utility\event_manager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Physics\collision_2d.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\Graphics\window.h">
@@ -146,16 +143,10 @@
     <ClInclude Include="Headers\Game\locator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\Physics\collider_sat.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Headers\Graphics\material.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Headers\Physics\rigid_body.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Headers\Physics\collision_sat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Headers\Math\matrix4.h">
@@ -210,6 +201,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Headers\Math\dimension.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Physics\collision_2d.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Physics\collider_2d.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

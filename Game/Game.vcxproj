@@ -159,7 +159,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\game_entry.cpp" />
-    <ClCompile Include="Source\our_game.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\0Engine\0Engine.vcxproj">
@@ -167,7 +166,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\our_game.h" />
     <ClInclude Include="Source\player.h" />
   </ItemGroup>
   <ItemGroup>
@@ -176,6 +174,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Default2DShader.glsl" />
+    <None Include="Resources\DefaultPostprocessingShader.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="LICENSE.txt" />

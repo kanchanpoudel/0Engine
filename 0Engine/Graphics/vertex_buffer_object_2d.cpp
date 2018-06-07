@@ -11,10 +11,10 @@ namespace s00nya
 	{
 		std::vector<Vertex2D> vertices
 		{
-			{ Vector3(0.0f, 0.0f, 0.0f), Vector2(0.0f, 0.0f) },
-			{ Vector3(1.0f, 0.0f, 0.0f), Vector2(1.0f, 0.0f) },
-			{ Vector3(1.0f, 1.0f, 0.0f), Vector2(1.0f, 1.0f) },
-			{ Vector3(0.0f, 1.0f, 0.0f), Vector2(0.0f, 1.0f) }
+			{ Vector3(-1.0f, -1.0f, 0.0f), Vector2(0.0f, 0.0f) },
+			{ Vector3( 1.0f, -1.0f, 0.0f), Vector2(1.0f, 0.0f) },
+			{ Vector3( 1.0f,  1.0f, 0.0f), Vector2(1.0f, 1.0f) },
+			{ Vector3(-1.0f,  1.0f, 0.0f), Vector2(0.0f, 1.0f) }
 		};
 
 		UInteger indices[]

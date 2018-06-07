@@ -7,8 +7,7 @@
 #include "Utility/resource_manager.h"
 #include "Utility/events.h"
 #include "Utility/event_manager.h"
-#include "Physics/collider_sat.h"
-#include "Physics/collision_sat.h"
+#include "Physics/collision_2d.h"
 #include "GameObject/scene_2d.h"
 #include "GameObject/game_object_2d.h"
 #include "Graphics/renderer.h"
@@ -23,11 +22,13 @@ namespace s00nya
 		timer(Locator::Get().TimerService()),
 		input(Locator::Get().InputService(window)),
 		inputManager(Locator::Get().InputManagerService(input)),
+		eventManager(Locator::Get().EventManagerService()),
 		resource(Locator::Get().ResourceService()),
-		renderer(Locator::Get().RendererService()),
-		eventManager(Locator::Get().EventManagerService())
+		renderer(Locator::Get().RendererService(window->Width(), window->Height(), window->Width(), window->Height()))
 	{
 		m_shaders["Default2DShader"] = Locator::Get().ShaderService("./Resources/Default2DShader.glsl");
+		m_shaders["DefaultPostprocessingShader"] = Locator::Get().ShaderService("./Resources/DefaultPostprocessingShader.glsl");
+		SetClearColor(0.0f, 0.0f, 0.0f);
 		instance = this;
 	}
 
@@ -83,6 +84,11 @@ namespace s00nya
 		}
 	}
 
+	void Game2D::SetClearColor(const Float & r, const Float & g, const Float & b)
+	{
+		glClearColor(r, g, b, 1.0f);
+	}
+
 	void Game2D::Tick()
 	{
 		Debug::Log(true);
@@ -95,7 +101,7 @@ namespace s00nya
 		for (auto* object : objects)
 			object->FixedUpdate();
 			
-		//CollisionSAT::CollsionResolution(Locator::Get().GetAllObjects2D(m_scenes[m_activeScene]));
+		//Collision2D::CollisionResolution(Locator::Get().GetAllObjects2D(m_scenes[m_activeScene]));
 	}
 
 	void Game2D::Update()
@@ -104,15 +110,13 @@ namespace s00nya
 		for (auto* object : objects)
 			object->Update();
 
-		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
-
-		renderer->Initialize(*m_scenes[m_activeScene], Renderer::Type::GAME_OBJECT_2D, m_shaders["Default2DShader"]);
+		renderer->Initialize(*m_scenes[m_activeScene], m_shaders["Default2DShader"]);
 		for (auto* object : objects)
 		{
 			if(GetBIT(object->GetFlags(), 0))
 				renderer->Draw(*object, resource->GetSpriteSheet(object->material.diffuse));
 		}
+		renderer->Display(m_shaders["DefaultPostprocessingShader"], resource->GetSpriteSheet(objects[0]->material.diffuse));
 		
 		std::string event;
 		while (eventManager->Receive(Events::SYSTEM, event))

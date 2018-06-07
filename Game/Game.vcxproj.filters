@@ -15,17 +15,11 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\our_game.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source\game_entry.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\our_game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Source\player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -40,6 +34,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Default2DShader.glsl" />
+    <None Include="Resources\DefaultPostprocessingShader.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="LICENSE.txt" />

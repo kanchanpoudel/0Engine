@@ -2,7 +2,7 @@
 #include "Math/transform_2d.h"
 #include "Math/dimension.h"
 #include "Graphics/material.h"
-#include "Physics/collider_sat.h"
+#include "Physics/collider_2d.h"
 #include "Physics/rigid_body.h"
 #include "s00nya_defs.h"
 

@@ -16,9 +16,9 @@ namespace s00nya
 	private:
 		GLFWwindow* m_id;
 		GLFWcursor* m_cursor;
-		int m_width;
-		int m_height;
-		bool m_fullscreen;
+		Integer m_width;
+		Integer m_height;
+		Boolean m_fullscreen;
 
 	public:
 		enum 
@@ -53,6 +53,9 @@ namespace s00nya
 		void DisableCursor() const;
 		void HideCursor() const;
 		void EnableCursor() const;
+
+		const Integer& Width() const;
+		const Integer& Height() const;
 
 		friend class Locator;
 	};

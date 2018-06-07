@@ -175,9 +175,8 @@
     <ClCompile Include="Math\vector2.cpp" />
     <ClCompile Include="Math\vector3.cpp" />
     <ClCompile Include="Math\vector4.cpp" />
-    <ClCompile Include="Physics\collision_sat.cpp" />
+    <ClCompile Include="Physics\collision_2d.cpp" />
     <ClCompile Include="Physics\rigid_body.cpp" />
-    <ClCompile Include="Physics\collider_sat.cpp" />
     <ClCompile Include="Utility\event_manager.cpp" />
     <ClCompile Include="Utility\resource_manager.cpp" />
     <ClCompile Include="Utility\timer.cpp" />
@@ -195,7 +194,9 @@
     <ClInclude Include="Headers\Graphics\vertex_buffer_object.h" />
     <ClInclude Include="Headers\Graphics\vertex_buffer_object_2d.h" />
     <ClInclude Include="Headers\Math\dimension.h" />
+    <ClInclude Include="Headers\Physics\collision_2d.h" />
     <ClInclude Include="Headers\Utility\event_manager.h" />
+    <ClInclude Include="Headers\Physics\collider_2d.h" />
     <ClInclude Include="Utility\core\stb_image.h" />
     <ClInclude Include="Headers\GameObject\game_object_2d.h" />
     <ClInclude Include="Headers\Game\locator.h" />
@@ -208,8 +209,6 @@
     <ClInclude Include="Headers\Math\vector2.h" />
     <ClInclude Include="Headers\Math\vector3.h" />
     <ClInclude Include="Headers\Math\vector4.h" />
-    <ClInclude Include="Headers\Physics\collider_sat.h" />
-    <ClInclude Include="Headers\Physics\collision_sat.h" />
     <ClInclude Include="Headers\Physics\rigid_body.h" />
     <ClInclude Include="Headers\s00nya_defs.h" />
     <ClInclude Include="Headers\Utility\events.h" />

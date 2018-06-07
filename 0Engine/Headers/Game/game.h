@@ -46,6 +46,7 @@ namespace s00nya
 
 	public:
 		void Start();
+		void SetClearColor(const Float& r, const Float& g, const Float& b);
 
 	private:
 		void Tick();			// Call once in a second

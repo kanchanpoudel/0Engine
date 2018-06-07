@@ -1,5 +1,5 @@
 #pragma once
-#include "our_game.h"
+#include "s00nya.h"
 #include <iostream>
 
 using namespace s00nya;
@@ -8,24 +8,26 @@ class Player : public GameObject2D
 {
 
 public:
+	Input& input;
+	Timer& timer;
 	Float speed = 200.0f;
 	Float lastTime = 0.0f;
 
 	Player(const Transform2D& trans, const Dimension& dim, const Material& mat) :
-		GameObject2D(trans, dim, mat)
+		GameObject2D(trans, dim, mat), input(Game2D::GetInput()), timer(Game2D::GetTimer())
 	{
 	}
 
 	Player(const Transform2D& trans, const Dimension& dim, const Material& mat, const Collider2D& col) :
-		GameObject2D(trans, dim, mat, col)
+		GameObject2D(trans, dim, mat, col), input(Game2D::GetInput()), timer(Game2D::GetTimer())
 	{
 	}
 
 	void FixedUpdate() override
 	{
-		if ((s00nyaApp::GetTimer().ElaspedTime() - lastTime) > 1.0f)
+		if ((timer.ElaspedTime() - lastTime) > 1.0f)
 		{
-			lastTime = s00nyaApp::GetTimer().ElaspedTime();
+			lastTime = timer.ElaspedTime();
 			this->material.frame++;
 			if (this->material.frame > 15) material.frame = 0;
 		}
@@ -33,24 +35,24 @@ public:
 
 	void Update() override
 	{
-		if(s00nyaApp::GetInput().Held(Keys::DIRECTIONAL_LEFT))
+		if(input.Held(Keys::DIRECTIONAL_LEFT))
 		{
-			transform.position.x -= (s00nyaApp::GetTimer().DeltaTime()*speed);
+			transform.position.x -= (timer.DeltaTime()*speed);
 		}
-		if (s00nyaApp::GetInput().Held(Keys::DIRECTIONAL_RIGHT))
+		if (input.Held(Keys::DIRECTIONAL_RIGHT))
 		{
-			transform.position.x += (s00nyaApp::GetTimer().DeltaTime()*speed);
+			transform.position.x += (timer.DeltaTime()*speed);
 		}
-		if (s00nyaApp::GetInput().Held(Keys::DIRECTIONAL_UP))
+		if (input.Held(Keys::DIRECTIONAL_UP))
 		{
-			transform.position.y += (s00nyaApp::GetTimer().DeltaTime()*speed);
+			transform.position.y += (timer.DeltaTime()*speed);
 		}
-		if (s00nyaApp::GetInput().Held(Keys::DIRECTIONAL_DOWN))
+		if (input.Held(Keys::DIRECTIONAL_DOWN))
 		{
-			transform.position.y -= (s00nyaApp::GetTimer().DeltaTime()*speed);
+			transform.position.y -= (timer.DeltaTime()*speed);
 		}
-		if (s00nyaApp::GetInput().Pressed(Keys::ESCAPE))
-			s00nyaApp::GetEventManager().Push(Events::SYSTEM, "ShutDown");
+		if (input.Pressed(Keys::ESCAPE))
+			Game2D::GetEventManager().Push(Events::SYSTEM, "ShutDown");
 	}
 
 };

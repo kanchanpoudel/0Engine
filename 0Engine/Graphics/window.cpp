@@ -158,4 +158,14 @@ namespace s00nya
 		glfwSetInputMode(m_id, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 	}
 
+	const Integer& Window::Width() const
+	{
+		return m_width;
+	}
+
+	const Integer& Window::Height() const
+	{
+		return m_height;
+	}
+
 }

@@ -38,7 +38,7 @@ namespace s00nya
 		EventManager* EventManagerService() const;
 		Resources* ResourceService() const;
 		Shader* ShaderService(const Character* path) const;
-		Renderer* RendererService() const;
+		Renderer* RendererService(const Integer& frameWidth, const Integer& frameHeight, const Integer& displayWidth, const Integer& displayHeight) const;
 		std::vector<GameObject2D*>& GetAllObjects2D(Scene* scene);
 
 		static Locator& Get();
