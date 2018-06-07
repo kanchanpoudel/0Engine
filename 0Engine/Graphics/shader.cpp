@@ -75,6 +75,16 @@ namespace s00nya
 		glUseProgram(m_id);
 	}
 
+	void Shader::SetMatrix3(const Character* name, const Matrix3& matrix) const
+	{
+		glUniformMatrix3fv(
+			glGetUniformLocation(m_id, name),
+			1,
+			GL_TRUE,
+			&matrix.elements[0]
+		);
+	}
+
 	void Shader::SetMatrix4(const Character* name, const Matrix4& matrix) const
 	{
 		glUniformMatrix4fv(

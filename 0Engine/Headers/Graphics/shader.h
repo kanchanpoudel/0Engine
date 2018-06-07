@@ -1,5 +1,6 @@
 #pragma once
 #include "s00nya_defs.h"
+#include "Math/matrix3.h"
 #include "Math/matrix4.h"
 #include "Math/vector2.h"
 #include "Math/vector3.h"
@@ -24,6 +25,7 @@ namespace s00nya
 
 	public:
 		void Bind() const;
+		void SetMatrix3(const Character* name, const Matrix3& matrix) const;
 		void SetMatrix4(const Character* name, const Matrix4& matrix) const;
 		void SetVector3(const Character* name, const Vector3& vector) const;
 		void SetVector2(const Character* name, const Vector2& vector) const;
