@@ -17,9 +17,7 @@ namespace s00nya
 	Matrix4::Matrix4(const Float elementsArray[4 * 4])
 	{
 		for (Integer i = 0; i < 16; i++)
-		{
 			this->elements[i] = elementsArray[i];
-		}
 	}
 
 	Matrix4::Matrix4(
@@ -59,7 +57,6 @@ namespace s00nya
 
 	Matrix4::Matrix4(const Matrix4& mat)
 	{
-
 		if (this == &mat)
 			return;
 		this->elements[0] = mat.elements[0];
@@ -78,7 +75,6 @@ namespace s00nya
 		this->elements[13] = mat.elements[13];
 		this->elements[14] = mat.elements[14];
 		this->elements[15] = mat.elements[15];
-
 	}
 
 	Matrix4& Matrix4::operator=(const Matrix4& mat)
@@ -128,15 +124,14 @@ namespace s00nya
 
 	Matrix4& Matrix4::operator*=(const Matrix4& mat)
 	{
-		Matrix4 temp;
-		temp = *this;
-		Integer x, j, k;
-		for (x = 0; x < 4; x++)
+		Matrix4 temp(*this);
+
+		for (Integer x = 0; x < 4; x++)
 		{
-			for (j = 0; j < 4; j++)
+			for (Integer j = 0; j < 4; j++)
 			{
 				this->elements[j + 4 * x] = 0;
-				for (k = 0; k < 4; k++)
+				for (Integer k = 0; k < 4; k++)
 				{
 					this->elements[j + 4 * x] += temp.elements[k + 4 * x] * mat.elements[j + 4 * k];
 				}
@@ -232,13 +227,12 @@ namespace s00nya
 	Matrix4 operator*(const Matrix4& lhs, const Matrix4& rhs)
 	{
 		Matrix4 temp;
-		Integer i, j, k;
-		for (i = 0; i < 4; i++)
+		for (Integer i = 0; i < 4; i++)
 		{
-			for (j = 0; j < 4; j++)
+			for (Integer j = 0; j < 4; j++)
 			{
 				temp.elements[j + 4 * i] = 0;
-				for (k = 0; k < 4; k++)
+				for (Integer k = 0; k < 4; k++)
 				{
 					temp.elements[j + 4 * i] += lhs.elements[k + 4 * i] * rhs.elements[j + 4 * k];
 				}

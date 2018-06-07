@@ -170,6 +170,7 @@
     <ClCompile Include="Graphics\vertex_buffer_object_2d.cpp" />
     <ClCompile Include="GameObject\camera.cpp" />
     <ClCompile Include="Math\dimension.cpp" />
+    <ClCompile Include="Math\matrix3.cpp" />
     <ClCompile Include="Math\matrix4.cpp" />
     <ClCompile Include="Math\transform_2d.cpp" />
     <ClCompile Include="Math\vector2.cpp" />
@@ -194,6 +195,7 @@
     <ClInclude Include="Headers\Graphics\vertex_buffer_object.h" />
     <ClInclude Include="Headers\Graphics\vertex_buffer_object_2d.h" />
     <ClInclude Include="Headers\Math\dimension.h" />
+    <ClInclude Include="Headers\Math\matrix3.h" />
     <ClInclude Include="Headers\Physics\collision_2d.h" />
     <ClInclude Include="Headers\Utility\event_manager.h" />
     <ClInclude Include="Headers\Physics\collider_2d.h" />
