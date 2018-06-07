@@ -10,7 +10,7 @@ private:
 	PDUInteger level1;
 public:
 	MyGame() :
-		Game2D("Example Game", 800, 600)
+		Game2D("Example Game", 800, 600, Samples::SAMPLE_DOUBLE)
 	{
 		SetClearColor(0.2f, 0.3f, 0.5f);
 
