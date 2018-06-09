@@ -16,7 +16,7 @@ public:
 		Game2D("Example Game", 800, 600, Samples::SAMPLE_DOUBLE)
 	{
 		// Clears the screen with black color
-		SetClearColor(0.0f, 0.0f, 0.0f);
+		renderer->SetClearColor(0.0f, 0.0f, 0.0f);
 
 		// Load game resources
 		resource->LoadRawImage("./Resources/window_test_icon.png", "WolfIcon");
