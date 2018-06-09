@@ -4,6 +4,7 @@
 namespace s00nya
 {
 
+	class Game2D;
 	class Locator;
 
 	class S00NYA_API Timer
@@ -18,12 +19,14 @@ namespace s00nya
 		Timer(const Timer& timer) = delete;
 		Timer& operator=(const Timer& timer) = delete;
 
-	public:
 		void Update();
+
+	public:
 		Float DeltaTime() const;
 		
 		static Float ElaspedTime();
 
+		friend class Game2D;
 		friend class Locator;
 	};
 

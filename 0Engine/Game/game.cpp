@@ -93,11 +93,6 @@ namespace s00nya
 		}
 	}
 
-	void Game2D::SetClearColor(const Float & r, const Float & g, const Float & b)
-	{
-		glClearColor(r, g, b, 1.0f);
-	}
-
 	void Game2D::Tick()
 	{
 		// Log to file

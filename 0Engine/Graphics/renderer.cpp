@@ -59,6 +59,11 @@ namespace s00nya
 		glClear(GL_COLOR_BUFFER_BIT);
 	}
 
+	void Renderer::SetClearColor(const Float &r, const Float &g, const Float &b)
+	{
+		glClearColor(r, g, b, 1.0f);
+	}
+
 	void Renderer::Draw(const GameObject2D& renderable, const SpriteSheet& spriteSheet) const
 	{
 		m_activeShader->SetMatrix4("modal", renderable.transform.GetModalMatrix());

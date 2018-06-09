@@ -7,6 +7,7 @@ struct GLFWcursor;
 namespace s00nya
 {
 
+	class Game2D;
 	class Input;
 	class Locator;
 	struct RawImage;
@@ -38,13 +39,13 @@ namespace s00nya
 		Window(const Window& window) = delete;
 		Window& operator=(const Window& window) = delete;
 
-	public:
 		void Show() const;
 		void Update() const;
 
 		void Close() const;
 		bool IsRunning() const;
 
+	public:
 		void Resize(const Integer& width, const Integer& height);
 		void ToggleFullscreen();
 
@@ -57,6 +58,7 @@ namespace s00nya
 		const Integer& Width() const;
 		const Integer& Height() const;
 
+		friend class Game2D;
 		friend class Locator;
 	};
 

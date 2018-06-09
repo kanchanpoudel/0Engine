@@ -9,6 +9,7 @@
 namespace s00nya
 {
 
+	class Game2D;
 	class Locator;
 	class Shader;
 	class SpriteSheet;
@@ -33,10 +34,15 @@ namespace s00nya
 	public:
 		~Renderer();
 
+	private:
 		void Initialize(const Scene& scene, const Shader* shader);
 		void Draw(const GameObject2D& renderable, const SpriteSheet& spriteSheet) const;
 		void Display(const Shader* shader, const SpriteSheet& spriteSheet) const;
 
+	public:
+		void SetClearColor(const Float& r, const Float& g, const Float& b);
+
+		friend class Game2D;
 		friend class Locator;
 	};
 
