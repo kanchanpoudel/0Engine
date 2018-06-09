@@ -100,7 +100,13 @@ namespace s00nya
 
 	void Game2D::Tick()
 	{
+		// Log to file
 		Debug::Log(true);
+		
+		// Don't log to file
+		//Debug::Log(false);
+
+		// Display FPS to console window
 		printf("\nFPS : %d", (Integer)(1.0f / timer->DeltaTime()));
 	}
 
@@ -110,6 +116,7 @@ namespace s00nya
 		for (auto* object : objects)
 			object->FixedUpdate();
 			
+		// Commented out because not complete and doesn't work properly
 		//Collision2D::CollisionResolution(Locator::Get().GetAllObjects2D(m_scenes[m_activeScene]));
 	}
 
@@ -119,14 +126,17 @@ namespace s00nya
 		for (auto* object : objects)
 			object->Update();
 
+		// Render to frame
 		renderer->Initialize(*m_scenes[m_activeScene], m_shaders["Default2DShader"]);
 		for (auto* object : objects)
 		{
 			if(GetBIT(object->GetFlags(), 0))
 				renderer->Draw(*object, resource->GetSpriteSheet(object->material.diffuse));
 		}
+		// Postprocess and render to display frame
 		renderer->Display(m_shaders["DefaultPostprocessingShader"], resource->GetSpriteSheet(objects[0]->material.diffuse));
 		
+		// Check for all the events and resolve them
 		std::string event;
 		while (eventManager->Receive(Events::SYSTEM, event))
 		{

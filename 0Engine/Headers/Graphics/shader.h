@@ -25,6 +25,8 @@ namespace s00nya
 
 	public:
 		void Bind() const;
+
+		// Setting up uniforms in Shaders
 		void SetMatrix3(const Character* name, const Matrix3& matrix) const;
 		void SetMatrix4(const Character* name, const Matrix4& matrix) const;
 		void SetVector3(const Character* name, const Vector3& vector) const;

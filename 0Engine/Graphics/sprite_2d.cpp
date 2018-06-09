@@ -28,11 +28,15 @@ namespace s00nya
 
 	Float SpriteSheet::XPosition(UInteger index) const
 	{
+		// Remainder gives the X value in 2D array of the given size and index of 1D array
+		// (X value in 2D array) = (Index in 1D array) % (X size of 2D array)
 		return (Float)(index % m_horizontal) * m_spriteWidth;
 	}
 	
 	Float SpriteSheet::YPosition(UInteger index) const
 	{
+		// Quotient gives the Y value in 2D array of the given size and index of 1D array
+		// (Y value in 2D array) = (Index in 1D array) / (Y size of 2D array)
 		return (Float)(index / m_vertical) * m_spriteHeight;
 	}
 

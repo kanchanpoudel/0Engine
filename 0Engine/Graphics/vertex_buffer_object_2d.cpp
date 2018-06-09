@@ -9,6 +9,10 @@ namespace s00nya
 	VertexBufferObject2D::VertexBufferObject2D() :
 		VertexBufferObject()
 	{
+		// No need to bind the Vertex Array because parent class leaves it bound
+		//glBindVertexArray(m_id);
+
+		// Default buffer data for 2D objects
 		std::vector<Vertex2D> vertices
 		{
 			{ Vector3(-1.0f, -1.0f, 0.0f), Vector2(0.0f, 0.0f) },
@@ -31,6 +35,9 @@ namespace s00nya
 
 		glVertexAttribPointer(Vertex2D::POSITION, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex2D), (void*)offsetof(Vertex2D, Vertex2D::position));
 		glVertexAttribPointer(Vertex2D::TEXTURE_COORDS, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex2D), (void*)offsetof(Vertex2D, Vertex2D::textureCoords));
+
+		// Vertex Array is left bound
+		//glBindVertexArray(0);
 	}
 
 	VertexBufferObject2D::~VertexBufferObject2D()

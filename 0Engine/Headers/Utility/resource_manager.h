@@ -17,7 +17,7 @@ namespace s00nya
 		std::map<std::string, SpriteSheet> m_spriteSheets;
 
 	private:
-		static Boolean instanced;
+		static Boolean instanced;	// Allow this class to be instanced only once
 
 		Resources();
 		Resources(const Resources& resources) = delete;

@@ -57,12 +57,14 @@ namespace s00nya
 		void Update();			// Call as frequent as possible OR Vsync-ed
 
 	public:
+		// These methods are intended to call from within the GameObject inherited class
 		static Input& GetInput();
 		static Timer& GetTimer();
 		static InputManager& GetInputManager();
 		static EventManager& GetEventManager();
 		static Resources& GetResourceManager();
 
+		// Scene Management
 		static void ActivateScene(const PDUInteger& id);
 		static void ActivateNextScene();
 		static PDUInteger PushScene(Scene* scene);
@@ -70,15 +72,19 @@ namespace s00nya
 		static void PopSceneFront();
 		static Scene& GetCurrentScene();
 		
+		// GameObjects are added, returned or removed from the currently active scene
 		static void AddGameObject2D(GameObject2D* object2D, const Character* name);
 		static GameObject2D& GetObject2D(const Character* name);
 		static void RemoveObject2D(const Character* name);
 
 	protected:
-		static const Float fps; // Frames per second
+		// Frames per second for FixedUpdate methods
+		// Defaults to 60.0f
+		static const Float fps;
 	
 	private:
-		static Game2D* instance;
+		// this pointer is used in the static methods above
+		static Game2D* instance; // pointer to this instance of Game2D class
 	};
 
 }

@@ -21,7 +21,7 @@ namespace s00nya
 		return true;
 	}
 
-	Boolean InputManager::RemoveKeyMaps(const std::string & name)
+	Boolean InputManager::RemoveKeyMaps(const std::string& name)
 	{
 		for (auto& keymap : m_keyMaps)
 		{
@@ -35,7 +35,7 @@ namespace s00nya
 		return false;
 	}
 
-	Boolean InputManager::KeyMapPressed(const std::string & name)
+	Boolean InputManager::KeyMapPressed(const std::string& name)
 	{
 		for (auto& keymap : m_keyMaps)
 		{
@@ -52,7 +52,7 @@ namespace s00nya
 		return false;
 	}
 
-	Boolean InputManager::KeyMapHeld(const std::string & name)
+	Boolean InputManager::KeyMapHeld(const std::string& name)
 	{
 		for (auto& keymap : m_keyMaps)
 		{

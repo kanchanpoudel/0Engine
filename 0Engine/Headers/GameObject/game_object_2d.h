@@ -6,9 +6,9 @@
 #include "Physics/rigid_body.h"
 #include "s00nya_defs.h"
 
-#define RENDER_OBJECT 0x001
-#define DETECT_COLLISION 0x01 << 1
-#define DYNAMIC_OBJECT 0x01 << 2
+#define RENDER_OBJECT 		0x001 << 0
+#define DETECT_COLLISION 	0x001 << 1
+#define DYNAMIC_OBJECT 		0x001 << 2
 
 namespace s00nya 
 {

@@ -8,10 +8,10 @@ class PlayerAnimated : public GameObject2D
 {
 
 public:
-	Input& input;
-	Timer& timer;
-	Float speed = 200.0f;
-	Float lastTime = 0.0f;
+	Input& input;					// Requires Input component
+	Timer& timer;					// Requires Timer component
+	Float speed = 200.0f;			// Movement speed
+	Float lastTime = 0.0f;			// Time information for animation
 
 	PlayerAnimated() :
 		GameObject2D(
@@ -21,6 +21,7 @@ public:
 		input(Game2D::GetInput()),
 		timer(Game2D::GetTimer())
 	{
+		// Setting up Material properties
 		this->material.frame = 0;
 		this->material.diffuse = "Player";
 		this->material.type = Material::Type::CLAMP_TO_EDGE;
@@ -28,6 +29,7 @@ public:
 
 	void FixedUpdate() override
 	{
+		// Change the animation frame every second
 		if ((timer.ElaspedTime() - lastTime) > 1.0f)
 		{
 			lastTime = timer.ElaspedTime();
@@ -38,6 +40,8 @@ public:
 
 	void Update() override
 	{
+		// Control game component using Directional keys
+
 		if(input.Held(Keys::DIRECTIONAL_LEFT))
 			transform.position.x -= (timer.DeltaTime()*speed);
 	
@@ -50,6 +54,7 @@ public:
 		if (input.Held(Keys::DIRECTIONAL_DOWN))
 			transform.position.y -= (timer.DeltaTime()*speed);
 		
+		// If [ESCAPE] is pressed then Quit the Game
 		if (input.Pressed(Keys::ESCAPE))
 			Game2D::GetEventManager().Push(Events::SYSTEM, "ShutDown");
 	}

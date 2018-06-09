@@ -10,11 +10,11 @@ namespace s00nya
 	class SpriteSheet
 	{
 	private:
-		UInteger m_id;
-		Float m_spriteWidth;
-		Float m_spriteHeight;
-		UInteger m_horizontal;
-		UInteger m_vertical;
+		UInteger m_id;				// ID to the texture
+		Float m_spriteWidth;		// Width of the single sprite in normalized form
+		Float m_spriteHeight;		// Height of the single sprite in normalized form
+		UInteger m_horizontal;		// NUmber of sprites in X Axis
+		UInteger m_vertical;		// Number of sprites in Y Axis
 
 	private:
 		SpriteSheet(const UInteger& texID, const Float& width, const Float& height, const UInteger& horizontal, const UInteger& vertical);
@@ -25,9 +25,13 @@ namespace s00nya
 		SpriteSheet& operator=(const SpriteSheet& spriteSheet) = default;
 
 	public:
+		// Returns Width / Height of the sprite in Normalized form
 		const Float& Width() const;
 		const Float& Height() const;
+		
+		// Normalized X value of the sprite of the given index origin being the bottom-left
 		Float XPosition(UInteger index) const;
+		// Normalized Y value of the sprite of the given index origin being the bottom-left
 		Float YPosition(UInteger index) const;
 
 		friend class Resources;

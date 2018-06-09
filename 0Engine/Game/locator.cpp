@@ -22,16 +22,12 @@ namespace s00nya
 	Locator::~Locator()
 	{
 		if (instance)
-		{
-			Debug::ShutDown();
 			delete instance;
-		}
 	}
 
 	Window* Locator::WindowService(const Character* title, const Integer& width, const Integer& height) const
 	{
 		Window* temp = new Window(title, width, height);
-		Debug::Initialize();
 		return temp;
 	}
 
@@ -62,21 +58,36 @@ namespace s00nya
 
 	Shader* Locator::ShaderService(const Character* path) const
 	{
+		// Read all content from the file
 		std::ifstream file(path, std::ios::in);
 		std::stringstream stream;
 		stream << file.rdbuf();
 		file.close();
 		std::string content(stream.str());
 
+		/*
+		 * All shader code are expected in a single file
+		 * Three types of shaders are suppported : Vertex, Fragment and Geometry
+		 * Geometry shader is optional
+		 * Shader code must be in the order: Vertex, Geometry and Fragment with Goemetry being optional
+		 * Every shader must begin with a declaration of their respective type
+		 	- `@Vertex Shader` : Vertex Shader
+			- `@Fragment Shader` : Fragment Shader
+			- `@Geometry Shader` : Geometry Shader
+		*/
+
+		// Extract codes for Vertex, Geometry (if available) and Fragment Shader
 		PDUInteger vertexPos = content.find("@Vertex Shader");
 		PDUInteger fragmentPos = content.find("@Fragment Shader");
 		PDUInteger geometryPos = content.find("@Geometry Shader");
+		// Given file content error / unsatisfied
 		if (vertexPos == std::string::npos || fragmentPos == std::string::npos)
 		{
 			Debug::Add("Could not load Shader - " + std::string(path), Debug::S00NYA_LOG_WARNING);
 			return nullptr;
 		}
 
+		// Return the Shader
 		if (geometryPos == std::string::npos)
 		{
 			std::string vertex(content.substr(vertexPos + 14, fragmentPos - vertexPos - 14));

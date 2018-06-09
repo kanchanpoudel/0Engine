@@ -16,7 +16,7 @@ namespace s00nya
 
 	Resources::Resources()
 	{
-		assert(!instanced);
+		assert(!instanced); // Assert if the class is already instanced
 		instanced = true;
 	}
 

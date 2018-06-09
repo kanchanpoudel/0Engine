@@ -49,6 +49,9 @@ namespace s00nya
 
 		glfwSetWindowAspectRatio(m_id, m_width, m_height);
 		glViewport(0, 0, m_width, m_height);
+
+		// Initialize OpenGL Debugger
+		Debug::Initialize();
 	}
 
 	Input* Window::GetInputSystem() const
@@ -58,6 +61,7 @@ namespace s00nya
 	
 	Window::~Window()
 	{
+		Debug::ShutDown();
 		if (m_cursor) glfwDestroyCursor(m_cursor);
 		glfwDestroyWindow(m_id);
 		glfwTerminate();

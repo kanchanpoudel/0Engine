@@ -8,10 +8,9 @@ class Player : public GameObject2D
 {
 
 public:
-	Input & input;
-	Timer& timer;
-	Float speed = 200.0f;
-	Float lastTime = 0.0f;
+	Input& input;				// Requires Input component
+	Timer& timer;				// Requires Timer component
+	Float speed = 200.0f;		// Movement speed
 
 	Player() :
 		GameObject2D(
@@ -21,6 +20,7 @@ public:
 		input(Game2D::GetInput()),
 		timer(Game2D::GetTimer())
 	{
+		// Setting up material properties
 		this->material.frame = 0;
 		this->material.diffuse = "Player";
 		this->material.type = Material::Type::CLAMP_TO_EDGE;
@@ -28,6 +28,8 @@ public:
 
 	void Update() override
 	{
+		// Control Game Object using W, A, S, D keys
+
 		if (input.Held(Keys::KEY_A))
 			transform.position.x -= (timer.DeltaTime()*speed);
 
