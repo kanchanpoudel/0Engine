@@ -128,7 +128,7 @@ namespace s00nya
 			object->Update();
 
 		for (auto* camera : cameras)
-			camera->FixedUpdate();
+			camera->Update();
 
 		// Render to frame
 		renderer->Initialize(*m_scenes[m_activeScene], m_shaders["Default2DShader"]);

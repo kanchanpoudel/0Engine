@@ -8,7 +8,7 @@ class MainCamera : public Camera
 
 public:
 	Input& input;				// Requires Input component
-	Timer& timer;
+	Timer& timer;				// Requires Timer component
 	Float speed = 200.0f;		// Movement speed
 
 	MainCamera() :
@@ -21,7 +21,7 @@ public:
 	{
 	}
 
-	void Update()
+	void Update() override
 	{
 		// Control Game Object using I, J, K, L keys
 
