@@ -3,8 +3,6 @@
 namespace s00nya
 {
 
-	
-
 	Matrix3::Matrix3():
 		elements{
 		0.0f, 0.0f, 0.0f,

@@ -1,6 +1,6 @@
 #pragma once
-#include "s00nya.h"
 #include "vector3.h"
+#include "s00nya.h"
 #include <array>
 
 namespace s00nya

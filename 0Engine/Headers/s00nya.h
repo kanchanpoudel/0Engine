@@ -9,6 +9,7 @@
 
 // Graphics include
 #include "Graphics/window.h"
+#include "Graphics/renderer.h"
 
 // Input manager include
 #include "Input/input_values.h"

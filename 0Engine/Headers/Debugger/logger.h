@@ -8,6 +8,7 @@
 namespace s00nya
 {
 
+	class Window;
 	class Locator;
 
 	class S00NYA_API Debug
@@ -40,6 +41,7 @@ namespace s00nya
 			const void* userParam
 		);
 
+		friend class Window;
 		friend class Locator;
 	};
 

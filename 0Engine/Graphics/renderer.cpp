@@ -16,6 +16,8 @@ namespace s00nya
 		m_vertexBufferObject2D(), 
 		m_activeShader(nullptr)
 	{
+		SetClearColor(0.0f, 0.0f, 0.0f);
+
 		glEnable(GL_CULL_FACE);
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -100,8 +102,8 @@ namespace s00nya
 		shader->Bind();
 		shader->SetTexture2D("textureMap", 0);
 
-		shader->SetSwitches("greyscale_switch", true);
-		shader->SetSwitches("filterSlot0_switch", true);
+		shader->SetSwitches("greyscale_switch", false);
+		shader->SetSwitches("filterSlot0_switch", false);
 		shader->SetSwitches("filterSlot1_switch", false);
 		shader->SetSwitches("filterSlot2_switch", false);
 

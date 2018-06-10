@@ -37,7 +37,6 @@ namespace s00nya
 		m_shaders["DefaultPostprocessingShader"]->SetMatrix3("filterSlot0", Matrix3::EdgeDetection());
 		m_shaders["DefaultPostprocessingShader"]->SetMatrix3("filterSlot1", Matrix3::BoxBlur());
 		m_shaders["DefaultPostprocessingShader"]->SetMatrix3("filterSlot2", Matrix3::GaussianBlur());
-		SetClearColor(0.0f, 0.0f, 0.0f);
 		instance = this;
 	}
 
