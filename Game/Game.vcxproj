@@ -166,6 +166,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\camera.h" />
     <ClInclude Include="Source\player.h" />
     <ClInclude Include="Source\player_animated.h" />
   </ItemGroup>

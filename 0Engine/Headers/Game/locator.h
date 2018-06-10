@@ -16,6 +16,7 @@ namespace s00nya
 	class Shader;
 	class Renderer;
 	class GameObject2D;
+	class Camera;
 	class Scene;
 	class Locator;
 
@@ -51,6 +52,7 @@ namespace s00nya
 		
 		// Returns all of the GameObjects from the given scene
 		std::vector<GameObject2D*>& GetAllObjects2D(Scene* scene);
+		std::vector<Camera*>& GetAllCameras(Scene* scene);
 
 		static Locator& Get();
 	};

@@ -10,6 +10,7 @@
 #include "Physics/collision_2d.h"
 #include "GameObject/scene_2d.h"
 #include "GameObject/game_object_2d.h"
+#include "GameObject/camera.h"
 #include "Graphics/renderer.h"
 #include "Math/matrix3.h"
 #include "GL/glew.h"
@@ -68,6 +69,10 @@ namespace s00nya
 		
 		while (window->IsRunning())
 		{
+			// Get all the entities of the current scene
+			auto& objects(Locator::Get().GetAllObjects2D(m_scenes[m_activeScene]));
+			auto& cameras(Locator::Get().GetAllCameras(m_scenes[m_activeScene]));
+
 			// Runs every 1 second
 			if (Timer::ElaspedTime() - now > 1.0f)
 			{
@@ -79,11 +84,11 @@ namespace s00nya
 			if (deltaTimeForSecond * fps > 1.0f)
 			{
 				deltaTimeForSecond = 0.0f;
-				FixedUpdate();
+				FixedUpdate(objects, cameras);
 			}
 
 			// As fast as possible
-			Update();
+			Update(objects, cameras);
 
 			// Sum up delta time to get total time difference
 			deltaTimeForSecond += timer->DeltaTime();
@@ -105,21 +110,25 @@ namespace s00nya
 		printf("\nFPS : %d", (Integer)(1.0f / timer->DeltaTime()));
 	}
 
-	void Game2D::FixedUpdate()
+	void Game2D::FixedUpdate(std::vector<GameObject2D*>& objects, std::vector<Camera*>& cameras)
 	{
-		auto& objects(Locator::Get().GetAllObjects2D(m_scenes[m_activeScene]));
 		for (auto* object : objects)
 			object->FixedUpdate();
+
+		for (auto* camera : cameras)
+			camera->FixedUpdate();
 			
 		// Commented out because not complete and doesn't work properly
 		//Collision2D::CollisionResolution(Locator::Get().GetAllObjects2D(m_scenes[m_activeScene]));
 	}
 
-	void Game2D::Update()
+	void Game2D::Update(std::vector<GameObject2D*>& objects, std::vector<Camera*>& cameras)
 	{
-		auto& objects(Locator::Get().GetAllObjects2D(m_scenes[m_activeScene]));
 		for (auto* object : objects)
 			object->Update();
+
+		for (auto* camera : cameras)
+			camera->FixedUpdate();
 
 		// Render to frame
 		renderer->Initialize(*m_scenes[m_activeScene], m_shaders["Default2DShader"]);
@@ -210,6 +219,21 @@ namespace s00nya
 	void Game2D::RemoveObject2D(const Character* name)
 	{
 		instance->m_scenes[instance->m_activeScene]->RemoveObject2D(name);
+	}
+
+	void Game2D::AddCamera(Camera* camera, const Character* name)
+	{
+		instance->m_scenes[instance->m_activeScene]->AddCamera(camera, name);
+	}
+
+	Camera& Game2D::GetCamera(const Character* name)
+	{
+		return instance->m_scenes[instance->m_activeScene]->GetCamera(name);
+	}
+
+	void Game2D::RemoveCamera(const Character* name)
+	{
+		instance->m_scenes[instance->m_activeScene]->RemoveCamera(name);
 	}
 
 	const Float Game2D::fps = 60.0f;

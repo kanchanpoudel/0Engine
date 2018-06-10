@@ -55,8 +55,8 @@ namespace s00nya
 		m_vertexBufferObject2D.Bind();
 
 		shader->Bind();
-		shader->SetMatrix4("view", scene.camera.GetModalMatrix());
-		shader->SetMatrix4("projection", scene.m_projectionMatrix);
+		shader->SetMatrix4("view", scene.m_activeCamera->transform.GetModalMatrix());
+		shader->SetMatrix4("projection", scene.m_activeCamera->m_projection);
 
 		glClear(GL_COLOR_BUFFER_BIT);
 	}

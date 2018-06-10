@@ -4,22 +4,36 @@ namespace s00nya
 {
 
 	Camera::Camera() :
-		position(0.0f, 0.0f), rotation(0.0f), scale(1.0f, 1.0f)
+		transform(), m_projection(Matrix4::Orthographic(0.0f, 800.0f, 0.0f, 600.0f, -1.0f, 1.0f))
 	{
 	}
 
-	Camera::Camera(const Vector2& pos, const Float& rot, const Vector2& sca) :
-		position(pos), rotation(rot), scale(sca)
+	Camera::Camera(const Transform2D& transform, const Vector4& ltrb, const Vector2& nearFar) :
+		transform(transform), m_projection(Matrix4::Orthographic(ltrb.x, ltrb.z, ltrb.w, ltrb.y, nearFar.x, nearFar.y))
 	{
 	}
 
-	Matrix4 Camera::GetModalMatrix() const
+	Camera::Camera(const Transform2D & transform, const Float & fov, const Float & aspectRatio, const Vector2 & nearFar):
+		transform(transform), m_projection(Matrix4::Perspective(fov, aspectRatio, nearFar.x, nearFar.y))
 	{
-		return Matrix4::Inverse(
-			Matrix4::Scale(Vector3(scale, 1.0f)) * 
-			Matrix4::Rotation(rotation, { 0.0f, 0.0f, -1.0f }) *
-			Matrix4::Translation(Vector3(position, 0.0f))
-		);
+	}
+
+	void Camera::ChangeCameraProperties(const Vector4& ltrb, const Vector2& nearFar)
+	{
+		m_projection = Matrix4::Orthographic(ltrb.x, ltrb.z, ltrb.w, ltrb.y, nearFar.x, nearFar.y);
+	}
+
+	void Camera::ChangeCameraProperties(const Float & fov, const Float & aspectRatio, const Vector2 & nearFar)
+	{
+		m_projection = Matrix4::Perspective(fov, aspectRatio, nearFar.x, nearFar.y);
+	}
+
+	void Camera::FixedUpdate()
+	{
+	}
+
+	void Camera::Update()
+	{
 	}
 
 }

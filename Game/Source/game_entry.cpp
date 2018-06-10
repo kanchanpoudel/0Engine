@@ -1,6 +1,7 @@
 #include "s00nya.h"
 #include "player_animated.h"
 #include "player.h"
+#include "camera.h"
 
 using namespace s00nya;
 
@@ -26,7 +27,7 @@ public:
 		window->SetIcon(resource->GetRawImage("WolfIcon"));
 
 		// Create a new Scene with orthographic camera
-		level1 = PushScene(new Scene({ -1.0f, 1.0f }, { 0.0f, 800.0f }, { 600.0f, 0.0f }));
+		level1 = PushScene(new Scene(new MainCamera(), "DefaultCamera"));
 		ActivateScene(level1);
 
 		// Add Objects to the currently active scene

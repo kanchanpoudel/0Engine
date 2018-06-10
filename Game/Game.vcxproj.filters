@@ -41,5 +41,8 @@
     <ClInclude Include="Source\player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Source\camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

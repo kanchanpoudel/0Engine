@@ -17,20 +17,28 @@ namespace s00nya
 	class Scene
 	{
 	private:
-		Matrix4 m_projectionMatrix;
+		Camera* m_activeCamera;
+		std::vector<Camera*> m_cameras;
+		std::map<std::string, Camera*> m_camerasID;
+
 		std::vector<GameObject2D*> m_renderableObjects;
 		std::map<std::string, GameObject2D*> m_renderableObjectsID;
-		
+
 	public:
 		Camera camera;
 
-		Scene(const Vector2& nearFar, const Vector2& leftRight, const Vector2& topBottom);
-		Scene(const Vector2& nearFar, const Float& fov, const Float& aspectRatio);
+		Scene();
+		Scene(Camera* camera, const Character* name);
 		~Scene();
 
 		void AddObject2D(GameObject2D* object, const Character* name);
 		GameObject2D& GetObject2D(const Character* name);
 		void RemoveObject2D(const Character* name);
+
+		void AddCamera(Camera* camera, const Character* name);
+		Camera& GetCamera(const Character* name);
+		void RemoveCamera(const Character* name);
+		void SwitchCamera(const Character* name);
 
 		friend class Locator;
 		friend class Renderer;

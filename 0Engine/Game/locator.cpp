@@ -4,8 +4,8 @@
 #include "Utility/timer.h"
 #include "Input/input.h"
 #include "Input/input_manager.h"
-#include "Utility\events.h"
-#include "Utility\event_manager.h"
+#include "Utility/events.h"
+#include "Utility/event_manager.h"
 #include "Utility/resource_manager.h"
 #include "Graphics/renderer.h"
 #include "Graphics/shader.h"
@@ -116,6 +116,11 @@ namespace s00nya
 	std::vector<GameObject2D*>& Locator::GetAllObjects2D(Scene* scene)
 	{
 		return scene->m_renderableObjects;
+	}
+
+	std::vector<Camera*>& Locator::GetAllCameras(Scene* scene)
+	{
+		return scene->m_cameras;
 	}
 
 	Locator& Locator::Get()

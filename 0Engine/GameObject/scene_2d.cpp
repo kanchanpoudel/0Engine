@@ -4,33 +4,24 @@
 namespace s00nya
 {
 
-	Scene::Scene(const Vector2& nearFar, const Vector2& leftRight, const Vector2& topBottom):
-		m_projectionMatrix(
-			Matrix4::Orthographic(
-				leftRight.x, leftRight.y, 
-				topBottom.y, topBottom.x, 
-				nearFar.x, nearFar.y
-			)
-		),
-		camera()
+	Scene::Scene():
+		m_activeCamera(nullptr)
 	{
-		m_projectionMatrix = Matrix4::Orthographic(0.0f, 800.0f, 0.0f, 600.0f, -1.0f, 1.0f);
 	}
 
-	Scene::Scene(const Vector2& nearFar, const Float& fov, const Float& aspectRatio) :
-		m_projectionMatrix(
-			Matrix4::Perspective(
-				fov, aspectRatio, nearFar.x, nearFar.y
-			)
-		),
-		camera()
+	Scene::Scene(Camera* camera, const Character* cameraName)
 	{
+		AddCamera(camera, cameraName);
+		SwitchCamera(cameraName);
 	}
 
 	Scene::~Scene()
 	{
 		for (auto* object : m_renderableObjects)
 			delete object;
+
+		for (auto camera : m_cameras)
+			delete camera;
 	}
 
 	void Scene::AddObject2D(GameObject2D* object, const Character* name)
@@ -60,6 +51,33 @@ namespace s00nya
 				m_renderableObjects.erase(m_renderableObjects.begin() + i);
 		}
 		m_renderableObjectsID.erase(std::string(name));
+	}
+
+	void Scene::AddCamera(Camera* camera, const Character* name)
+	{
+		m_cameras.push_back(camera);
+		m_camerasID[std::string(name)] = camera;
+	}
+
+	Camera& Scene::GetCamera(const Character* name)
+	{
+		return *m_camerasID[std::string(name)];
+	}
+
+	void Scene::RemoveCamera(const Character* name)
+	{
+		auto* current = m_camerasID[std::string(name)];
+		for (UInteger i(0); i < m_cameras.size(); i++)
+		{
+			if (current == m_cameras[i])
+				m_renderableObjects.erase(m_renderableObjects.begin() + i);
+		}
+		m_camerasID.erase(std::string(name));
+	}
+
+	void Scene::SwitchCamera(const Character* name)
+	{
+		m_activeCamera = m_camerasID[std::string(name)];
 	}
 
 }

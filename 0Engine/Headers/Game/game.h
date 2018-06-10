@@ -1,5 +1,6 @@
 #pragma once
 #include "s00nya_defs.h"
+#include <vector>
 #include <deque>
 #include <map>
 #include <string>
@@ -19,6 +20,7 @@ namespace s00nya
 	class Shader;
 	class Scene;
 	class GameObject2D;
+	class Camera;
 
 	class S00NYA_API Game2D
 	{
@@ -51,9 +53,9 @@ namespace s00nya
 		void Start();
 
 	private:
-		void Tick();			// Call once in a second
-		void FixedUpdate();		// Call 60 times a second
-		void Update();			// Call as frequent as possible OR Vsync-ed
+		void Tick();																				// Call once in a second
+		void FixedUpdate(std::vector<GameObject2D*>& objects, std::vector<Camera*>& cameras);		// Call 60 times a second
+		void Update(std::vector<GameObject2D*>& objects, std::vector<Camera*>& cameras);			// Call as frequent as possible OR Vsync-ed
 
 	public:
 		// These methods are intended to call from within the GameObject inherited class
@@ -75,6 +77,11 @@ namespace s00nya
 		static void AddGameObject2D(GameObject2D* object2D, const Character* name);
 		static GameObject2D& GetObject2D(const Character* name);
 		static void RemoveObject2D(const Character* name);
+
+		// Cameras are added, returned or removed from the currently active scene
+		static void AddCamera(Camera* camera, const Character* name);
+		static Camera& GetCamera(const Character* name);
+		static void RemoveCamera(const Character* name);
 
 	protected:
 		// Frames per second for FixedUpdate methods
