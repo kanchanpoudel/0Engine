@@ -1,14 +1,14 @@
 #pragma once
 #include "s00nya_defs.h"
-#include "Math/matrix3.h"
-#include "Math/matrix4.h"
-#include "Math/vector2.h"
-#include "Math/vector3.h"
 
 namespace s00nya
 {
 
 	class Locator;
+	struct Vector2;
+	struct Vector3;
+	struct Matrix3;
+	struct Matrix4;
 
 	class S00NYA_API Shader
 	{
@@ -25,8 +25,6 @@ namespace s00nya
 
 	public:
 		void Bind() const;
-
-		// Setting up uniforms in Shaders
 		void SetMatrix3(const Character* name, const Matrix3& matrix) const;
 		void SetMatrix4(const Character* name, const Matrix4& matrix) const;
 		void SetVector3(const Character* name, const Vector3& vector) const;

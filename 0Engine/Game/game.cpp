@@ -11,6 +11,7 @@
 #include "GameObject/scene_2d.h"
 #include "GameObject/game_object_2d.h"
 #include "Graphics/renderer.h"
+#include "Math/matrix3.h"
 #include "GL/glew.h"
 #include "Game/locator.h"
 

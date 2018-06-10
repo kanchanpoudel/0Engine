@@ -1,7 +1,10 @@
 #include "Graphics/shader.h"
+#include "Math/matrix3.h"
+#include "Math/matrix4.h"
+#include "Math/vector2.h"
+#include "Math/vector3.h"
 #include "Debugger/logger.h"
 #include "GL/glew.h"
-
 
 namespace s00nya
 {

@@ -1,14 +1,14 @@
 #pragma once
-#include "vector3.h"
 #include "s00nya.h"
+#include "vector3.h"
 #include <array>
 
 namespace s00nya
 {
 
 	/*
-		This struct has been programmed to be used as a Convolution Matrix,
-		and some methods may not work as expected
+	This struct has been programmed to be used as a Convolution Matrix,
+	and some methods may not work as expected
 	*/
 
 	struct S00NYA_API Matrix3
@@ -37,7 +37,7 @@ namespace s00nya
 		Matrix3 operator-() const;
 
 		Matrix3& operator*=(const Matrix3& mat);
-		
+
 		Matrix3& operator+=(const Matrix3& mat);
 		Matrix3& operator-=(const Matrix3& mat);
 
@@ -50,7 +50,7 @@ namespace s00nya
 		friend Matrix3 operator*(const Matrix3& mat, const Float& scalar);
 
 		friend Vector3 operator*(const std::array<Vector3, 9>& inputs, const Matrix3& kernal);
-		
+
 		friend Matrix3 operator*(const Matrix3& lhs, const Matrix3& rhs);
 		friend Matrix3 operator+(const Matrix3& lhs, const Matrix3& rhs);
 		friend Matrix3 operator-(const Matrix3& lhs, const Matrix3& rhs);
