@@ -119,7 +119,7 @@ namespace s00nya
 			camera->FixedUpdate();
 			
 		// Commented out because not complete and doesn't work properly
-		//Collision2D::CollisionResolution(Locator::Get().GetAllObjects2D(m_scenes[m_activeScene]));
+		Collision2D::CollisionResolution(Locator::Get().GetAllObjects2D(m_scenes[m_activeScene]));
 	}
 
 	void Game2D::Update(std::vector<GameObject2D*>& objects, std::vector<Camera*>& cameras)
@@ -134,7 +134,7 @@ namespace s00nya
 		renderer->Initialize(*m_scenes[m_activeScene], m_shaders["Default2DShader"]);
 		for (auto* object : objects)
 		{
-			if(GetBIT(object->GetFlags(), 0))
+			if(object->GetFlags() & RENDER_OBJECT)
 				renderer->Draw(*object, resource->GetSpriteSheet(object->material.diffuse));
 		}
 		// Postprocess and render to display frame

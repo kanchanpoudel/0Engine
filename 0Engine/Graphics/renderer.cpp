@@ -77,14 +77,14 @@ namespace s00nya
 		UInteger frame = renderable.material.frame;
 		Float x = spriteSheet.XPosition(frame);
 		Float y = spriteSheet.YPosition(frame);
-		Float offX = spriteSheet.Width();
-		Float offY = spriteSheet.Height();
+		Float offX = spriteSheet.WidthNorm();
+		Float offY = spriteSheet.HeightNorm();
 
 		Vertex2D* data = (Vertex2D*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
 		(data + 0)->position = Vector3(0.0f, 0.0f, 0.0f);
-		(data + 1)->position = Vector3(renderable.dimension.halfWidth * 2.0f, 0.0f, 0.0f);
-		(data + 2)->position = Vector3(renderable.dimension.halfWidth * 2.0f, renderable.dimension.halfHeight * 2.0f, 0.0f);
-		(data + 3)->position = Vector3(0.0f, renderable.dimension.halfHeight * 2.0f, 0.0f);
+		(data + 1)->position = Vector3(renderable.size.width, 0.0f, 0.0f);
+		(data + 2)->position = Vector3(renderable.size.width, renderable.size.height, 0.0f);
+		(data + 3)->position = Vector3(0.0f, renderable.size.height, 0.0f);
 		(data + 0)->textureCoords = Vector2(x, y);
 		(data + 1)->textureCoords = Vector2(x + offX, y);
 		(data + 2)->textureCoords = Vector2(x + offX, y + offY);

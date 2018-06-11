@@ -15,9 +15,11 @@ public:
 
 	PlayerAnimated() :
 		GameObject2D(
-			Transform2D({ 200.0f, 200.0f, 0.0f }, { 1.0f, 1.0f }, 0.0f), 
-			Dimension(50.0f, 80.0f),
-			Material()),
+			Transform2D({ 200.0f, 200.0f, 0.0f }, { 1.0f, 1.0f }, { 50.0f, 80.0f }, 0.0f),
+			Dimension(100.0f, 160.0f),
+			Material(),
+			Collider2D(Dimension(50.0f, 80.0f), "path_to_sat")
+		),
 		input(Game2D::GetInput()),
 		timer(Game2D::GetTimer())
 	{

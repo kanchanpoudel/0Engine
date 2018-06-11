@@ -15,7 +15,7 @@ namespace s00nya
 		const Material& material
 	):
 		transform(transform), 
-		dimension(dimension),
+		size(dimension),
 		material(material), 
 		m_flags(RENDER_OBJECT)
 	{
@@ -28,7 +28,7 @@ namespace s00nya
 		const Collider2D& collider
 	):
 		transform(transform), 
-		dimension(dimension),
+		size(dimension),
 		material(material), 
 		collider(collider), 
 		m_flags(RENDER_OBJECT | DETECT_COLLISION)
@@ -43,7 +43,7 @@ namespace s00nya
 		const RigidBody& body
 	):
 		transform(transform),
-		dimension(dimension),
+		size(dimension),
 		material(material),
 		collider(collider),
 		body(body),

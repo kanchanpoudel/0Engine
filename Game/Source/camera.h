@@ -13,7 +13,7 @@ public:
 
 	MainCamera() :
 		Camera(
-			Transform2D({ 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f }, 0.0f),
+			Transform2D({ 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f }, { 0.0f, 0.0f }, 0.0f),
 			{ 0.0f, 600.0f, 800.0f, 0.0f }
 		),
 		input(Game2D::GetInput()),

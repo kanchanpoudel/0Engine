@@ -17,7 +17,7 @@ namespace s00nya
 	{
 	public:
 		Transform2D transform;
-		Dimension dimension;
+		Dimension size;
 		Material material;
 		Collider2D collider;
 		RigidBody body;
@@ -43,7 +43,6 @@ namespace s00nya
 		virtual void Update();
 
 		virtual void OnTrigger();
-
 	};
 
 }

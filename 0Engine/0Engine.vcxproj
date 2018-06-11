@@ -176,6 +176,7 @@
     <ClCompile Include="Math\vector2.cpp" />
     <ClCompile Include="Math\vector3.cpp" />
     <ClCompile Include="Math\vector4.cpp" />
+    <ClCompile Include="Physics\collider_2d.cpp" />
     <ClCompile Include="Physics\collision_2d.cpp" />
     <ClCompile Include="Physics\rigid_body.cpp" />
     <ClCompile Include="Utility\event_manager.cpp" />

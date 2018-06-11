@@ -85,6 +85,8 @@ namespace s00nya
 
 		m_spriteSheets[std::string(name)] = SpriteSheet(
 			texID, 
+			(Float)width,
+			(Float)height,
 			1.0f / (Float)horizontal,
 			1.0f / (Float)vertical,
 			horizontal, 

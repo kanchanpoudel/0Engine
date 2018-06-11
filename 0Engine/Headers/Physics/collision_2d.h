@@ -10,10 +10,7 @@ namespace s00nya
 	class Collision2D
 	{
 	public:
-		static void CollisionResolution(const std::vector<GameObject2D*> gameObjects2D);
-	private:
-		static Boolean DimensionCollisionDetection(const GameObject2D& lhs, const GameObject2D& rhs);
-		static void DimensionCollisionDetectionResolution(const GameObject2D& lhs, const GameObject2D& rhs);
+		static void CollisionResolution(const std::vector<GameObject2D*>& objects);
 	};
 
 }

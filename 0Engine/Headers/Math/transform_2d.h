@@ -13,10 +13,11 @@ namespace s00nya
 	{
 		Vector3 position;
 		Float rotation;
+		Vector2 center;
 		Vector2 scale;
 
 		Transform2D();
-		Transform2D(Vector3 pos, Vector2 sc, Float rot);
+		Transform2D(const Vector3& pos, const Vector2& sc, const Vector2& center = Vector2(0.0f, 0.0f), const Float& rot = 0.0f);
 
 	private:
 		Matrix4 GetModalMatrix() const;

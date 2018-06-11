@@ -7,21 +7,34 @@ namespace s00nya
 		const UInteger& texID, 
 		const Float& width,
 		const Float& height,
+		const Float& widthNorm,
+		const Float& heightNorm,
 		const UInteger& horizontal,
 		const UInteger& vertical
 		):
 		m_id(texID), 
-		m_spriteWidth(width), m_spriteHeight(height), 
+		m_width(width), m_height(height),
+		m_spriteWidth(widthNorm), m_spriteHeight(heightNorm), 
 		m_horizontal(horizontal), m_vertical(vertical)
 	{
 	}
 
 	const Float& SpriteSheet::Width() const
 	{
-		return m_spriteWidth;
+		return m_width;
 	}
 
 	const Float& SpriteSheet::Height() const
+	{
+		return m_height;
+	}
+
+	const Float& SpriteSheet::WidthNorm() const
+	{
+		return m_spriteWidth;
+	}
+
+	const Float& SpriteSheet::HeightNorm() const
 	{
 		return m_spriteHeight;
 	}

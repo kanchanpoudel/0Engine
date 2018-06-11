@@ -5,32 +5,22 @@
 namespace s00nya
 {
 
-	void Collision2D::CollisionResolution(const std::vector<GameObject2D*> gameObjects2D)
+	void Collision2D::CollisionResolution(const std::vector<GameObject2D*>& objects)
 	{
-		for (UInteger outer(0); outer<gameObjects2D.size(); outer++)
+		for (Integer i(0); i < objects.size(); i++)
 		{
-			for (UInteger inner(0); inner<gameObjects2D.size(); inner++)
+			for (Integer j(0); j < objects.size(); j++)
 			{
-				if (gameObjects2D[outer] == gameObjects2D[inner]) break;
-				if (DimensionCollisionDetection(*gameObjects2D[outer], *gameObjects2D[inner]))
-					std::cout << "Collided!" << std::endl;
+				if (objects[i] == objects[j]) break;
+				Vector3 objIPos(objects[i]->transform.position);
+				Vector3 objJPos(objects[j]->transform.position);
+				if (Dimension::Intersect(
+					Vector2(objIPos.x, objIPos.y)+ objects[i]->transform.center, objects[i]->collider.aabb,
+					Vector2(objJPos.x, objJPos.y)+ objects[j]->transform.center, objects[j]->collider.aabb
+				))
+					std::cout << " Objects collided! " << std::endl;
 			}
 		}
-	}
-
-	Boolean Collision2D::DimensionCollisionDetection(const GameObject2D& lhs, const GameObject2D& rhs)
-	{
-		Vector2 temp;
-		return Dimension::Intersect(
-			lhs.dimension, 
-			rhs.dimension, 
-			{ lhs.transform.position.x, lhs.transform.position.y },
-			{ rhs.transform.position.x, rhs.transform.position.y }
-		);
-	}
-
-	void Collision2D::DimensionCollisionDetectionResolution(const GameObject2D & lhs, const GameObject2D & rhs)
-	{
 	}
 
 }
