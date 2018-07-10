@@ -32,8 +32,8 @@ namespace s00nya
 			window->Height()
 		))
 	{
-		m_shaders["Default2DShader"] = Game2D::ParseShader("./Resources/Default2DShader.glsl");
-		m_shaders["DefaultPostprocessingShader"] = Game2D::ParseShader("./Resources/DefaultPostprocessingShader.glsl");
+		m_shaders["Default2DShader"] = Shader::ParseShader("./Resources/Default2DShader.glsl");
+		m_shaders["DefaultPostprocessingShader"] = Shader::ParseShader("./Resources/DefaultPostprocessingShader.glsl");
 		m_shaders["DefaultPostprocessingShader"]->Bind();
 		m_shaders["DefaultPostprocessingShader"]->SetMatrix3("filterSlot0", Matrix3::EdgeDetection());
 		m_shaders["DefaultPostprocessingShader"]->SetMatrix3("filterSlot1", Matrix3::BoxBlur());
@@ -69,8 +69,8 @@ namespace s00nya
 		while (app->window->IsRunning())
 		{
 			// Get all the entities of the current scene
-			auto& objects(Game2D::GetAllObjects2D(app->m_scenes[app->m_activeScene]));
-			auto& cameras(Game2D::GetAllCameras(app->m_scenes[app->m_activeScene]));
+			auto& objects(app->m_scenes[app->m_activeScene]->GetAllObjects2D());
+			auto& cameras(app->m_scenes[app->m_activeScene]->GetAllCameras());
 
 			// Runs every 1 second
 			if (Timer::ElaspedTime() - now > 1.0f)
@@ -119,8 +119,8 @@ namespace s00nya
 		for (auto* camera : cameras)
 			camera->FixedUpdate();
 			
-		// Commented out because not complete and doesn't work properly
-		Collision2D::CollisionResolution(Game2D::GetAllObjects2D(m_scenes[m_activeScene]));
+		// Only for checking purpose, not completed
+		Collision2D::CollisionResolution(m_scenes[m_activeScene]->GetAllObjects2D());
 	}
 
 	void Game2D::Update(std::vector<GameObject2D*>& objects, std::vector<Camera*>& cameras)
@@ -240,67 +240,5 @@ namespace s00nya
 	const Float Game2D::fps = 60.0f;
 
 	Game2D* Game2D::instance = nullptr;
-
-	Shader* Game2D::ParseShader(const Character* path)
-	{
-		// Read all content from the file
-		std::ifstream file(path, std::ios::in);
-		std::stringstream stream;
-		stream << file.rdbuf();
-		file.close();
-		std::string content(stream.str());
-
-		/*
-		* All shader code are expected in a single file
-		* Three types of shaders are suppported : Vertex, Fragment and Geometry
-		* Geometry shader is optional
-		* Shader code must be in the order: Vertex, Geometry and Fragment with Goemetry being optional
-		* Every shader must begin with a declaration of their respective type
-		- `@Vertex Shader` : Vertex Shader
-		- `@Fragment Shader` : Fragment Shader
-		- `@Geometry Shader` : Geometry Shader
-		*/
-
-		// Extract codes for Vertex, Geometry (if available) and Fragment Shader
-		PDUInteger vertexPos = content.find("@Vertex Shader");
-		PDUInteger fragmentPos = content.find("@Fragment Shader");
-		PDUInteger geometryPos = content.find("@Geometry Shader");
-		// Given file content error / unsatisfied
-		if (vertexPos == std::string::npos || fragmentPos == std::string::npos)
-		{
-			Debug::Add("Could not load Shader - " + std::string(path), Debug::S00NYA_LOG_WARNING);
-			return nullptr;
-		}
-
-		// Return the Shader
-		if (geometryPos == std::string::npos)
-		{
-			std::string vertex(content.substr(vertexPos + 14, fragmentPos - vertexPos - 14));
-			std::string fragment(content.substr(fragmentPos + 16, content.length() - fragmentPos - 16));
-			const Character* vertexCstr(vertex.c_str());
-			const Character* fragmentCstr(fragment.c_str());
-			return new Shader(vertexCstr, fragmentCstr);
-		}
-		else
-		{
-			std::string vertex(content.substr(vertexPos + 14, geometryPos - vertexPos - 14));
-			std::string geometry(content.substr(geometryPos + 16, fragmentPos - geometryPos - 16));
-			std::string fragment(content.substr(fragmentPos + 16, content.length() - fragmentPos - 16));
-			const Character* vertexCstr(vertex.c_str());
-			const Character* geometryCstr(geometry.c_str());
-			const Character* fragmentCstr(fragment.c_str());
-			return new Shader(vertexCstr, fragmentCstr, geometryCstr);
-		}
-	}
-
-	std::vector<GameObject2D*>& Game2D::GetAllObjects2D(Scene* scene)
-	{
-		return scene->m_renderableObjects;
-	}
-
-	std::vector<Camera*>& Game2D::GetAllCameras(Scene* scene)
-	{
-		return scene->m_cameras;
-	}
 
 }

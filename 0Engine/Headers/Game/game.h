@@ -92,9 +92,6 @@ namespace s00nya
 	private:
 		// this pointer is used in the static methods above
 		static Game2D* instance; // pointer to this instance of Game2D class
-		static Shader* ParseShader(const Character* path);
-		static std::vector<GameObject2D*>& GetAllObjects2D(Scene* scene);
-		static std::vector<Camera*>& GetAllCameras(Scene* scene);
 	};
 
 }

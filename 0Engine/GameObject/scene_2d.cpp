@@ -80,4 +80,14 @@ namespace s00nya
 		m_activeCamera = m_camerasID[std::string(name)];
 	}
 
+	std::vector<GameObject2D*>& Scene::GetAllObjects2D()
+	{
+		return m_renderableObjects;
+	}
+
+	std::vector<Camera*>& Scene::GetAllCameras()
+	{
+		return m_cameras;
+	}
+
 }

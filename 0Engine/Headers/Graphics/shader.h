@@ -32,6 +32,9 @@ namespace s00nya
 		void SetSwitches(const Character* name, const Boolean& value) const;
 		void SetTexture2D(const Character* name, const Integer& id) const;
 
+	private:
+		static Shader* ParseShader(const Character* path);
+
 		~Shader();
 
 		friend class Game2D;

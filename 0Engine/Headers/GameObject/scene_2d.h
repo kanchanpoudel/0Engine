@@ -40,6 +40,10 @@ namespace s00nya
 		void RemoveCamera(const Character* name);
 		void SwitchCamera(const Character* name);
 
+	private:
+		std::vector<GameObject2D*>& GetAllObjects2D();
+		std::vector<Camera*>& GetAllCameras();
+
 		friend class Game2D;
 		friend class Renderer;
 	};
