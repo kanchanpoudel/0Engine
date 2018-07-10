@@ -10,7 +10,6 @@ namespace s00nya
 {
 
 	class Game2D;
-	class Locator;
 	class Shader;
 	class SpriteSheet;
 
@@ -43,7 +42,6 @@ namespace s00nya
 		void SetClearColor(const Float& r, const Float& g, const Float& b);
 
 		friend class Game2D;
-		friend class Locator;
 	};
 
 }

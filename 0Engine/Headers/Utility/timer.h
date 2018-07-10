@@ -5,7 +5,6 @@ namespace s00nya
 {
 
 	class Game2D;
-	class Locator;
 
 	class S00NYA_API Timer
 	{
@@ -27,7 +26,6 @@ namespace s00nya
 		static Float ElaspedTime();
 
 		friend class Game2D;
-		friend class Locator;
 	};
 
 }

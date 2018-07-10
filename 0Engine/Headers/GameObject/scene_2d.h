@@ -11,7 +11,7 @@
 namespace s00nya
 {
 
-	class Locator;
+	class Game2D;
 	class Renderer;
 
 	class Scene
@@ -40,7 +40,7 @@ namespace s00nya
 		void RemoveCamera(const Character* name);
 		void SwitchCamera(const Character* name);
 
-		friend class Locator;
+		friend class Game2D;
 		friend class Renderer;
 	};
 

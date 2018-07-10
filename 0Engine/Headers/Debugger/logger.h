@@ -9,7 +9,7 @@ namespace s00nya
 {
 
 	class Window;
-	class Locator;
+	class Game2D;
 
 	class S00NYA_API Debug
 	{
@@ -42,7 +42,7 @@ namespace s00nya
 		);
 
 		friend class Window;
-		friend class Locator;
+		friend class Game2D;
 	};
 
 }

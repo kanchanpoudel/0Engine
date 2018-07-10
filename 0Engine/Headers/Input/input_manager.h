@@ -9,7 +9,7 @@
 namespace s00nya
 {
 
-	class Locator;
+	class Game2D;
 	
 	class S00NYA_API InputManager
 	{
@@ -27,7 +27,7 @@ namespace s00nya
 		Boolean KeyMapPressed(const std::string& name);
 		Boolean KeyMapHeld(const std::string& name);
 
-		friend class Locator;
+		friend class Game2D;
 	};
 
 }

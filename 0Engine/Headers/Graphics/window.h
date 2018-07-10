@@ -9,7 +9,6 @@ namespace s00nya
 
 	class Game2D;
 	class Input;
-	class Locator;
 	struct RawImage;
 
 	class S00NYA_API Window
@@ -59,7 +58,6 @@ namespace s00nya
 		const Integer& Height() const;
 
 		friend class Game2D;
-		friend class Locator;
 	};
 
 }

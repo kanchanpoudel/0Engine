@@ -8,7 +8,7 @@
 namespace s00nya
 {
 
-	class Locator;
+	class Game2D;
 
 	class S00NYA_API Resources
 	{
@@ -32,7 +32,7 @@ namespace s00nya
 		void FreeSpriteSheet(const std::string& name);
 		const SpriteSheet& GetSpriteSheet(const std::string& name);
 
-		friend class Locator;
+		friend class Game2D;
 	};
 
 }

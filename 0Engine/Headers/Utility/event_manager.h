@@ -7,7 +7,7 @@
 namespace s00nya
 {
 
-	class Locator;
+	class Game2D;
 
 	class S00NYA_API EventManager
 	{
@@ -24,7 +24,7 @@ namespace s00nya
 		void Push(const Events& enumEvent, const std::string& event);
 		Boolean Receive(const Events& enuEvent, std::string& outEvent);
 
-		friend class Locator;
+		friend class Game2D;
 	};
 
 }

@@ -14,27 +14,26 @@
 #include "Graphics/renderer.h"
 #include "Math/matrix3.h"
 #include "GL/glew.h"
-#include "Game/locator.h"
 
 namespace s00nya
 {
 
 	Game2D::Game2D(const Character* title, const Integer& width, const Integer& height, const Samples& sample) :
-		window(Locator::Get().WindowService(title, width, height)),
-		timer(Locator::Get().TimerService()),
-		input(Locator::Get().InputService(window)),
-		inputManager(Locator::Get().InputManagerService(input)),
-		eventManager(Locator::Get().EventManagerService()),
-		resource(Locator::Get().ResourceService()),
-		renderer(Locator::Get().RendererService(
+		window(new Window(title, width, height)),
+		timer(new Timer()),
+		input(new Input(window->m_id)),
+		inputManager(new InputManager(input)),
+		eventManager(new EventManager()),
+		resource(new Resources),
+		renderer(new Renderer(
 			window->Width() * (Integer)sample, 
 			window->Height() * (Integer)sample, 
 			window->Width(),
 			window->Height()
 		))
 	{
-		m_shaders["Default2DShader"] = Locator::Get().ShaderService("./Resources/Default2DShader.glsl");
-		m_shaders["DefaultPostprocessingShader"] = Locator::Get().ShaderService("./Resources/DefaultPostprocessingShader.glsl");
+		m_shaders["Default2DShader"] = Game2D::ParseShader("./Resources/Default2DShader.glsl");
+		m_shaders["DefaultPostprocessingShader"] = Game2D::ParseShader("./Resources/DefaultPostprocessingShader.glsl");
 		m_shaders["DefaultPostprocessingShader"]->Bind();
 		m_shaders["DefaultPostprocessingShader"]->SetMatrix3("filterSlot0", Matrix3::EdgeDetection());
 		m_shaders["DefaultPostprocessingShader"]->SetMatrix3("filterSlot1", Matrix3::BoxBlur());
@@ -59,43 +58,45 @@ namespace s00nya
 		delete window;
 	}
 
-	void Game2D::Start()
+	void Game2D::Run(Game2D* app)
 	{
-		window->Show();
+		app->window->Show();
 
 		// Time Management
 		Float now = Timer::ElaspedTime();
 		Float deltaTimeForSecond = 0.0f;
 		
-		while (window->IsRunning())
+		while (app->window->IsRunning())
 		{
 			// Get all the entities of the current scene
-			auto& objects(Locator::Get().GetAllObjects2D(m_scenes[m_activeScene]));
-			auto& cameras(Locator::Get().GetAllCameras(m_scenes[m_activeScene]));
+			auto& objects(Game2D::GetAllObjects2D(app->m_scenes[app->m_activeScene]));
+			auto& cameras(Game2D::GetAllCameras(app->m_scenes[app->m_activeScene]));
 
 			// Runs every 1 second
 			if (Timer::ElaspedTime() - now > 1.0f)
 			{
 				now = Timer::ElaspedTime();
-				Tick();
+				app->Tick();
 			}
 
 			// Runs 60 times a second
 			if (deltaTimeForSecond * fps > 1.0f)
 			{
 				deltaTimeForSecond = 0.0f;
-				FixedUpdate(objects, cameras);
+				app->FixedUpdate(objects, cameras);
 			}
 
 			// As fast as possible
-			Update(objects, cameras);
+			app->Update(objects, cameras);
 
 			// Sum up delta time to get total time difference
-			deltaTimeForSecond += timer->DeltaTime();
+			deltaTimeForSecond += app->timer->DeltaTime();
 
-			timer->Update();
-			window->Update();
+			app->timer->Update();
+			app->window->Update();
 		}
+
+		delete app;
 	}
 
 	void Game2D::Tick()
@@ -119,7 +120,7 @@ namespace s00nya
 			camera->FixedUpdate();
 			
 		// Commented out because not complete and doesn't work properly
-		Collision2D::CollisionResolution(Locator::Get().GetAllObjects2D(m_scenes[m_activeScene]));
+		Collision2D::CollisionResolution(Game2D::GetAllObjects2D(m_scenes[m_activeScene]));
 	}
 
 	void Game2D::Update(std::vector<GameObject2D*>& objects, std::vector<Camera*>& cameras)
@@ -239,5 +240,67 @@ namespace s00nya
 	const Float Game2D::fps = 60.0f;
 
 	Game2D* Game2D::instance = nullptr;
+
+	Shader* Game2D::ParseShader(const Character* path)
+	{
+		// Read all content from the file
+		std::ifstream file(path, std::ios::in);
+		std::stringstream stream;
+		stream << file.rdbuf();
+		file.close();
+		std::string content(stream.str());
+
+		/*
+		* All shader code are expected in a single file
+		* Three types of shaders are suppported : Vertex, Fragment and Geometry
+		* Geometry shader is optional
+		* Shader code must be in the order: Vertex, Geometry and Fragment with Goemetry being optional
+		* Every shader must begin with a declaration of their respective type
+		- `@Vertex Shader` : Vertex Shader
+		- `@Fragment Shader` : Fragment Shader
+		- `@Geometry Shader` : Geometry Shader
+		*/
+
+		// Extract codes for Vertex, Geometry (if available) and Fragment Shader
+		PDUInteger vertexPos = content.find("@Vertex Shader");
+		PDUInteger fragmentPos = content.find("@Fragment Shader");
+		PDUInteger geometryPos = content.find("@Geometry Shader");
+		// Given file content error / unsatisfied
+		if (vertexPos == std::string::npos || fragmentPos == std::string::npos)
+		{
+			Debug::Add("Could not load Shader - " + std::string(path), Debug::S00NYA_LOG_WARNING);
+			return nullptr;
+		}
+
+		// Return the Shader
+		if (geometryPos == std::string::npos)
+		{
+			std::string vertex(content.substr(vertexPos + 14, fragmentPos - vertexPos - 14));
+			std::string fragment(content.substr(fragmentPos + 16, content.length() - fragmentPos - 16));
+			const Character* vertexCstr(vertex.c_str());
+			const Character* fragmentCstr(fragment.c_str());
+			return new Shader(vertexCstr, fragmentCstr);
+		}
+		else
+		{
+			std::string vertex(content.substr(vertexPos + 14, geometryPos - vertexPos - 14));
+			std::string geometry(content.substr(geometryPos + 16, fragmentPos - geometryPos - 16));
+			std::string fragment(content.substr(fragmentPos + 16, content.length() - fragmentPos - 16));
+			const Character* vertexCstr(vertex.c_str());
+			const Character* geometryCstr(geometry.c_str());
+			const Character* fragmentCstr(fragment.c_str());
+			return new Shader(vertexCstr, fragmentCstr, geometryCstr);
+		}
+	}
+
+	std::vector<GameObject2D*>& Game2D::GetAllObjects2D(Scene* scene)
+	{
+		return scene->m_renderableObjects;
+	}
+
+	std::vector<Camera*>& Game2D::GetAllCameras(Scene* scene)
+	{
+		return scene->m_cameras;
+	}
 
 }

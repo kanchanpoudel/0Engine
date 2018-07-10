@@ -159,7 +159,6 @@
     <ClCompile Include="GameObject\game_object_2d.cpp" />
     <ClCompile Include="GameObject\scene_2d.cpp" />
     <ClCompile Include="Game\game.cpp" />
-    <ClCompile Include="Game\locator.cpp" />
     <ClCompile Include="Graphics\renderer.cpp" />
     <ClCompile Include="Graphics\shader.cpp" />
     <ClCompile Include="Graphics\vertex.cpp" />
@@ -202,7 +201,6 @@
     <ClInclude Include="Headers\Physics\collider_2d.h" />
     <ClInclude Include="Utility\core\stb_image.h" />
     <ClInclude Include="Headers\GameObject\game_object_2d.h" />
-    <ClInclude Include="Headers\Game\locator.h" />
     <ClInclude Include="Headers\Graphics\material.h" />
     <ClInclude Include="Headers\Graphics\raw_images.h" />
     <ClInclude Include="Headers\Input\input_manager.h" />

@@ -39,10 +39,5 @@ public:
 
 int main()
 {
-	MyGame* game = new MyGame; 	// Construct game class
-	game->Start();				// Game loop
-	delete game;
-
-	//system("pause");
-	return 0;
+	Game2D::Run(new MyGame);
 }

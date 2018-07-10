@@ -21,6 +21,7 @@ namespace s00nya
 	class Scene;
 	class GameObject2D;
 	class Camera;
+	class Game2D;
 
 	class S00NYA_API Game2D
 	{
@@ -50,7 +51,7 @@ namespace s00nya
 		Game2D& operator=(const Game2D& game) = delete;
 
 	public:
-		void Start();
+		static void Run(Game2D* app);
 
 	private:
 		void Tick();																				// Call once in a second
@@ -91,6 +92,9 @@ namespace s00nya
 	private:
 		// this pointer is used in the static methods above
 		static Game2D* instance; // pointer to this instance of Game2D class
+		static Shader* ParseShader(const Character* path);
+		static std::vector<GameObject2D*>& GetAllObjects2D(Scene* scene);
+		static std::vector<Camera*>& GetAllCameras(Scene* scene);
 	};
 
 }

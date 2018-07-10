@@ -4,7 +4,7 @@
 namespace s00nya
 {
 
-	class Locator;
+	class Game2D;
 	struct Vector2;
 	struct Vector3;
 	struct Matrix3;
@@ -34,7 +34,7 @@ namespace s00nya
 
 		~Shader();
 
-		friend class Locator;
+		friend class Game2D;
 	};
 
 }
